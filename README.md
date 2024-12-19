@@ -1,4 +1,4 @@
-# Tourista ( Tour management system)
+# Tourista ( Tour package booking system)
 
 ## Group Members
 - **Member 1**: Ammar Haziq bin Zainal (2217763)
