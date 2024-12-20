@@ -9,14 +9,14 @@
 
 ## Introduction
 Tourista is a user-friendly web application designed to streamline the process of booking and managing tour packages. With an intuitive interface, Tourista connects travelers with tour providers, offering a seamless experience from discovery to booking.
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
    Tourista is a comprehensive web-based tour management system designed to streamline the process of planning and booking tours for customers. Developed using the Laravel framework, the system leverages modern web technologies to provide an intuitive and user-friendly interface. Tourista caters to individuals and families seeking seamless travel arrangements, combining essential features like flight, hotel, rental vehicle, and attraction bookings into a unified platform.
 
    The system empowers users to explore curated travel packages, customize their itineraries, and manage all aspects of their travel plans effortlessly. With a secure payment gateway integration, Tourista ensures safe and reliable financial transactions, making it the go-to platform for stress-free travel planning.
 
 ## Objectives
 Tourista aims to enhance the travel experience by providing an all-in-one platform where users can easily explore, book, and review tours, while enabling administrators to efficiently manage tour packages, bookings, and customer feedback. By combining user-friendly features with efficient management tools, Tourista enhances convenience, fosters engagement, and elevates the travel planning process for both customers and service providers.
-
+-------------------------------------------------------------------------------------
 The primary goal of Tourista is to simplify travel planning by integrating multiple booking options into a single platform. It is designed to:
 
 - Save users time and effort by consolidating services.
