@@ -29,7 +29,7 @@ Tourista aims to enhance the travel experience by providing an all-in-one platfo
 6. **Admin Panel**:
    - Manage users, tour packages, and bookings.
 7. **Vehicle Rental**:  
-   - Enable users to search, filter, and book vehicles by type, availability, and location, with real-time pricing and secure payment options.
+   - Enable users to search, filter, and book vehicles by type, availability, and location, with real-time pricing and secure payment.
 
 ## Entity-Relationship Diagram (ERD)
 
