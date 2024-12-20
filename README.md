@@ -57,5 +57,6 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 
 
 ## References
-
+1. Athuraliya, A., & Creately. (2022, December 12). *Sequence Diagram Tutorial – Complete Guide with Examples.* Creately. https://creately.com/guides/sequence-diagram-tutorial/
+2. *Car rental in Malaysia | Book a car Online - WAHDAH.* (n.d.). https://www.wahdah.my/
 
