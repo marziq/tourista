@@ -23,9 +23,15 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 
 ## Features and Functionalities
 1. **User Authentication**: 
-   - Provide a secure register and log in to the system.
+   - Create: Allow users to register by providing personal information such as username, email, and password.
+   - Read: Allow users to log in using their email and password. Upon successful login, they can access their profile and other features.
+   - Update: Allow users to update their profile information, such as changing their email address, password, and contact details.
+   - Delete: Allow users to delete or deactivate their accounts.
 2. **Ratings and Reviews**: 
-   - Allow users to leave, read, and edit feedback after completing a tour, admin can remove inappropriate or spam feedback.
+   - Create: Allow users to submit reviews and ratings for flights, hotels, vehicles, tour packages, and attraction booking after completing a booking or tour.
+   - Read: Display the reviews and ratings for particular services, with the average rating and the individual feedback from users.
+   - Update: Allow users to edit their own reviews and ratings if they wish to provide updated feedback or correct mistakes in their initial submission.
+   - Delete: Allow users to delete their own reviews. 
 3. **Vehicle Rental**:  
    - Create: Allow users to book a vehicle by entering required details like dates, location, and preferences.
    - Read: Display vehicle listings with detailed descriptions, availability, and pricing.
@@ -41,7 +47,12 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
    - Read: Display available flights schedules based on user inputs
    - Update: Allow users to modify their flight bookings, including changing flight dates and edit passenger count
    - Delete: Let users cancel their flight
-6. **Payment Integration**: 
+6. **Hotel Booking**:
+   - Create: Allow users to book hotel rooms by selecting a hotel, room type, check-in and check-out dates, and the number of guests.
+   - Read: Display a list of available hotels with detailed descriptions, including room types, pricing, amenities, and availability based on the selected dates.
+   - Update: Allow users to modify their existing bookings by changing the check-in/out dates, room type, or number of guests, subject to availability and booking policies.
+   - Delete: Allow users with the option to cancel their bookings within a specific timeframe, adhering to the system’s cancellation policy.
+7. **Payment Integration**: 
    - Online payment processing via Stripe or PayPal.
      
 ## Entity-Relationship Diagram (ERD)
