@@ -23,29 +23,22 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 
 ## Features and Functionalities
 1. **User Authentication**: 
-   - Separate portals for users and admin.
    - Provide a secure register and log in to the system.
-2. **Tour Package Listings**: 
-   - Provide detailed descriptions on itineraries, pricing, special offers, and availability.
-3. **Booking System**: 
-   - Book tour packages based on the real-time availability.
-   - Allow users to modify and cancel their bookings, admin can update status based on user actions.
-4. **Payment Integration**: 
-   - Online payment processing via Stripe or PayPal.
-5. **Ratings and Reviews**: 
+2. **Ratings and Reviews**: 
    - Allow users to leave, read, and edit feedback after completing a tour, admin can remove inappropriate or spam feedback.
-6. **Admin Panel**:
-   - Manage users, tour packages, and bookings.
-7. **Vehicle Rental**:  
+3. **Vehicle Rental**:  
    - Create: Allow users to book a vehicle by entering required details like dates, location, and preferences.
    - Read: Display vehicle listings with detailed descriptions, availability, and pricing.
    - Update: Enable users to modify bookings, such as changing dates or vehicle type.
    - Delete: Allow users to cancel bookings within the specified cancellation policy.
-8. **Attraction Booking**:
+4. **Attraction Booking**:
    - Create: Enable users to book attractions by selecting desired locations,date and category       attractions.
    - Read:Display a comprehensive list of available attractions with descriptions, ratings,         operational hours, and ticket pricing.
    - Update:Allow users to modify their bookings, such as adjusting the date and or number of       participants.
    - Delete: Permit users to cancel attraction bookings only before payment is completed.
+5. **Payment Integration**: 
+   - Online payment processing via Stripe or PayPal.
+     
 ## Entity-Relationship Diagram (ERD)
 
 
