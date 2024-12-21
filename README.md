@@ -14,10 +14,6 @@ Tourista is a comprehensive web-based tour management system designed to streaml
 The system empowers users to explore curated travel packages, customize their itineraries, and manage all aspects of their travel plans effortlessly. With a secure payment gateway integration, Tourista ensures safe and reliable financial transactions, making it the go-to platform for stress-free travel planning.
 
 ## Objectives
-Tourista aims to enhance the travel experience by providing an all-in-one platform where users can easily explore, book, and review tours, while enabling administrators to efficiently manage tour packages, bookings, and customer feedback. By combining user-friendly features with efficient management tools, Tourista enhances convenience, fosters engagement, and elevates the travel planning process for both customers and service providers.
-
-**(Second option)**
-
 The primary goal of Tourista is to simplify travel planning by integrating multiple booking options into a single platform. It is designed to:
 
 - Save users time and effort by consolidating services.
@@ -45,6 +41,12 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
    - Read: Display vehicle listings with detailed descriptions, availability, and pricing.
    - Update: Enable users to modify bookings, such as changing dates or vehicle type.
    - Delete: Allow users to cancel bookings within the specified cancellation policy.
+8. **Attraction Booking**:
+   -Create: Enable users to book attractions by selecting desired locations,date and category       attractions.
+   -Read: Display a comprehensive list of available attractions with descriptions, ratings,         operational hours, and ticket pricing.
+   -Update: Allow users to modify their bookings, such as adjusting the date and or number of       participants.
+   -Delete: Permit users to cancel attraction bookings
+   
 
 ## Entity-Relationship Diagram (ERD)
 
