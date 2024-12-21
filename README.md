@@ -52,6 +52,7 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 
 ## Sequence Diagram
 
+## Mockup
 
 ## References
 1. Athuraliya, A., & Creately. (2022, December 12). *Sequence Diagram Tutorial – Complete Guide with Examples.* Creately. https://creately.com/guides/sequence-diagram-tutorial/
