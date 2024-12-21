@@ -44,6 +44,7 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 
 
 ## Sequence Diagram
+![image](https://github.com/user-attachments/assets/b82aeae0-dd12-41b6-ae61-ebca9649b6c4)
 
 ## Mockup
 1. **Log in Page**:
