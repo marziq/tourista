@@ -53,7 +53,16 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 ## Sequence Diagram
 
 ## Mockup
-
+1. **Log in Page**:
+2. **Sign Up Page**:
+3. **Profile Page**:
+4. **Flight Booking Page**:
+5. **Hotel Booking Page**:
+6. **Vehicle Booking Page**:
+7. **Tour Packages Page**:
+8. **Attraction Booking Page**:
+10. **Payment Page**:
+   
 ## References
 1. Athuraliya, A., & Creately. (2022, December 12). *Sequence Diagram Tutorial – Complete Guide with Examples.* Creately. https://creately.com/guides/sequence-diagram-tutorial/
 2. *Car rental in Malaysia | Book a car Online - WAHDAH.* (n.d.). https://www.wahdah.my/
