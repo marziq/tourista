@@ -7,10 +7,7 @@
 - **Member 4**: Amirah Amnani binti Mohd Hushini @ Mohd Husaini (2215714)
 - **Member 5**: Nur Nisa Nasuha Binti Nazri (221645)
 
-## Introduction
-Tourista is a user-friendly web application designed to streamline the process of booking and managing tour packages. With an intuitive interface, Tourista connects travelers with tour providers, offering a seamless experience from discovery to booking.
-
-**(Second option)**
+## Introductio
 
 Tourista is a comprehensive web-based tour management system designed to streamline the process of planning and booking tours for customers. Developed using the Laravel framework, the system leverages modern web technologies to provide an intuitive and user-friendly interface. Tourista caters to individuals and families seeking seamless travel arrangements, combining essential features like flight, hotel, rental vehicle, and attraction bookings into a unified platform.
 
