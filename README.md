@@ -42,11 +42,10 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
    - Update: Enable users to modify bookings, such as changing dates or vehicle type.
    - Delete: Allow users to cancel bookings within the specified cancellation policy.
 8. **Attraction Booking**:
-   - Create: Allow users to book a vehicle by entering required details like dates, location, and preferences.
-   - Read: Display vehicle listings with detailed descriptions, availability, and pricing.
-   - Update: Enable users to modify bookings, such as changing dates or vehicle type.
-   - Delete: Allow users to cancel bookings within the specified cancellation policy.
-
+   - Create: Enable users to book attractions by selecting desired locations,date and category       attractions.
+   - Read:Display a comprehensive list of available attractions with descriptions, ratings,         operational hours, and ticket pricing.
+   - Update:Allow users to modify their bookings, such as adjusting the date and or number of       participants.
+   - Delete:  Permit users to cancel attraction bookings
 ## Entity-Relationship Diagram (ERD)
 
 
