@@ -23,7 +23,10 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 
 ## Features and Functionalities
 1. **User Authentication**: 
-   - Provide a secure register and log in to the system.
+   - Create: Allow users to register by providing personal information such as username, email, and password.
+   - Read: Allow users to log in using their email and password. Upon successful login, they can access their profile and other features.
+   - Update: Allow users to update their profile information, such as changing their email address, password, and contact details.
+   - Delete: Allow users to delete or deactivate their accounts.
 2. **Ratings and Reviews**: 
    - Allow users to leave, read, and edit feedback after completing a tour, admin can remove inappropriate or spam feedback.
 3. **Vehicle Rental**:  
