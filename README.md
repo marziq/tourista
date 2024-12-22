@@ -49,7 +49,8 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 ![ERD WAD Project drawio](https://github.com/user-attachments/assets/729fa1f1-9dc7-4d6c-9b37-9d6f1bd590ce)
 
 ## Sequence Diagram
-![image](https://github.com/user-attachments/assets/45cb4d00-19b9-4c42-b25f-753c97c6baaf)
+![WebApp drawio (1)](https://github.com/user-attachments/assets/34c13d24-2aef-4b9b-9199-d120142e894a)
+
 
 
 ## Mockup
@@ -59,8 +60,10 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 4. **Flight Booking Page**:
 5. **Hotel Booking Page**:
 6. **Vehicle Booking Page**:
-7. **Tour Packages Page**:
-8. **Attraction Booking Page**:
+7. ![Rental](https://github.com/user-attachments/assets/a5afcf88-49b1-4592-aed2-384b44c5a5d4)
+
+8. **Tour Packages Page**:
+9. **Attraction Booking Page**:
 ![13](https://github.com/user-attachments/assets/fae66af2-cff3-4363-b11a-cbd1b8409dfc)
 ![14](https://github.com/user-attachments/assets/d6c80220-be5d-4a95-91ce-3c23f0445d63)
 ![15](https://github.com/user-attachments/assets/385aa4fd-2b1b-4bb0-be39-0c586fa98158)
