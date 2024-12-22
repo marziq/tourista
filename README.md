@@ -29,22 +29,29 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
    - Delete: Allow users to delete or deactivate their accounts.
 2. **Ratings and Reviews**: 
    - Allow users to leave, read, and edit feedback after completing a tour, admin can remove inappropriate or spam feedback.
-3. **Vehicle Rental**:  
+3. **Flight Booking**:
+   - Create: Allow users to book a flight by entering required details such as departure and arrival locations , travel date and passenger count.
+   - Read: Display available flights schedules based on user inputs.
+   - Update: Allow users to modify their flight bookings, including changing flight dates and edit passenger count.
+   - Delete: Let users cancel their flight.
+4. **Hotel Booking**:
+   - Create: Allow users to book hotel rooms by selecting a hotel, room type, check-in and check-out dates, and the number of guests.
+   - Read: Display a list of available hotels with detailed descriptions, including room types, pricing, amenities, and availability based on the selected dates.
+   - Update: Allow users to modify their existing bookings by changing the check-in/out dates, room type, or number of guests, subject to availability and booking policies.
+   - Delete: Allow users with the option to cancel their bookings within a specific timeframe, adhering to the system’s cancellation policy.
+5. **Vehicle Rental Booking**:
    - Create: Allow users to book a vehicle by entering required details like dates, location, and preferences.
    - Read: Display vehicle listings with detailed descriptions, availability, and pricing.
    - Update: Enable users to modify bookings, such as changing dates or vehicle type.
    - Delete: Allow users to cancel bookings within the specified cancellation policy.
-4. **Attraction Booking**:
+6. **Tour Package Booking**:
+
+7. **Attraction Booking**:
    - Create: Enable users to book attractions by selecting desired locations,date and category       attractions.
    - Read:Display a comprehensive list of available attractions with descriptions, ratings,         operational hours, and ticket pricing.
    - Update:Allow users to modify their bookings, such as adjusting the date and or number of       participants.
    - Delete: Permit users to cancel attraction bookings only before payment is completed.
-5. **Flight Booking**: 
-   - Create: Allow users to book a flight by entering required details such as departure and arrival locations , travel date and passenger count
-   - Read: Display available flights schedules based on user inputs
-   - Update: Allow users to modify their flight bookings, including changing flight dates and edit passenger count
-   - Delete: Let users cancel their flight
-6. **Payment Integration**: 
+8. **Payment Integration**:
    - Online payment processing via Stripe or PayPal.
      
 ## Entity-Relationship Diagram (ERD)
