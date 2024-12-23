@@ -55,13 +55,10 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
    - Online payment processing via Stripe or PayPal.
      
 ## Entity-Relationship Diagram (ERD)
-
 ![ERD WAD Project drawio](https://github.com/user-attachments/assets/729fa1f1-9dc7-4d6c-9b37-9d6f1bd590ce)
 
 ## Sequence Diagram
-![WebApp drawio (1)](https://github.com/user-attachments/assets/34c13d24-2aef-4b9b-9199-d120142e894a)
-
-
+![WebApp drawio (2)](https://github.com/user-attachments/assets/dcc6dd52-4157-4a2d-bb0d-f9c1f09c4750)
 
 ## Mockup
 1. **Log in Page**:
