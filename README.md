@@ -67,39 +67,49 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 ![WebApp drawio (2)](https://github.com/user-attachments/assets/dcc6dd52-4157-4a2d-bb0d-f9c1f09c4750)
 
 ## Mockup
-**Home Page**
 
-1. **Log in Page**:
-2. ![image](https://github.com/user-attachments/assets/6e4be415-6668-4265-8256-98be0630ffda)
+1. **Home Page** 
+   ![image](https://github.com/user-attachments/assets/7940cd52-8c01-439f-8d19-5515c097ba5f)
+   ![image](https://github.com/user-attachments/assets/64f6f092-b018-49fe-ad76-5fa39ce46000)
+
+
+
+2. **Log in Page**:
+   ![image](https://github.com/user-attachments/assets/f3f544d8-965a-4d51-b55c-bbddcd2afa25)
+
 
 3. **Sign Up Page**:
-   ![image](https://github.com/user-attachments/assets/f0afb01b-0318-4133-a4b4-5a4537372999)
+   ![image](https://github.com/user-attachments/assets/eea2051c-007e-4fe3-91e1-2aa705eeb32f)
 
-5. **Profile Page**:
-6. **Flight Booking Page**:
+
+4. **Profile Page**:
+   ![image](https://github.com/user-attachments/assets/99bbe6e0-9476-4ba6-adca-ba8d07fa3599)
+
+
+5. **Flight Booking Page**:
    ![image](https://github.com/user-attachments/assets/8c4d0744-a31e-4279-aea3-7f1c1188550c)
    ![image](https://github.com/user-attachments/assets/de78a347-34c7-4a8f-bb20-80d8b491c6a9)
 
 
-7. **Hotel Booking Page**:
+6. **Hotel Booking Page**:
    ![Hotel](https://github.com/user-attachments/assets/1c14bbb0-5f93-4841-92a8-d72281902554)
    ![Hotel (1)](https://github.com/user-attachments/assets/277d2411-c6a2-4ad4-9bac-a25d667eefc2)
 
 
-8. **Vehicle Booking Page**:
+7. **Vehicle Booking Page**:
    ![Rental (1)](https://github.com/user-attachments/assets/2540753a-a620-4a26-97de-b715614ce1c1)
 
-9. **Tour Packages Page**:
+8. **Tour Packages Page**:
   ![Tour Package](https://github.com/user-attachments/assets/ad12cefd-a2aa-44cc-9aef-c45bfadeb2a6)
   ![image](https://github.com/user-attachments/assets/72efd255-49e9-4913-ab7b-bb0010aa6493)
    
-10.  **Attraction Booking Page**:
+9.  **Attraction Booking Page**:
 ![13](https://github.com/user-attachments/assets/d5f992e2-cf6d-4da0-89e3-7fb4b02ce384)
 ![14](https://github.com/user-attachments/assets/a4b79b48-ba5f-4a04-9589-dcaed26495ce)
 ![15](https://github.com/user-attachments/assets/b7bcc2b5-4be5-4457-845f-951174b6c162)
 
 
-11. **Payment Page**:
+10. **Payment Page**:
     ![image](https://github.com/user-attachments/assets/90eb8efd-ad23-4163-9bc6-b64640a19e40)
 
    
