@@ -70,28 +70,36 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 **Home Page**
 
 1. **Log in Page**:
-2. **Sign Up Page**:
-3. **Profile Page**:
-4. **Flight Booking Page**:
-5. **Hotel Booking Page**:
+2. ![image](https://github.com/user-attachments/assets/6e4be415-6668-4265-8256-98be0630ffda)
+
+3. **Sign Up Page**:
+   ![image](https://github.com/user-attachments/assets/f0afb01b-0318-4133-a4b4-5a4537372999)
+
+5. **Profile Page**:
+6. **Flight Booking Page**:
+   ![image](https://github.com/user-attachments/assets/8c4d0744-a31e-4279-aea3-7f1c1188550c)
+   ![image](https://github.com/user-attachments/assets/de78a347-34c7-4a8f-bb20-80d8b491c6a9)
+
+
+7. **Hotel Booking Page**:
    ![Hotel](https://github.com/user-attachments/assets/1c14bbb0-5f93-4841-92a8-d72281902554)
    ![Hotel (1)](https://github.com/user-attachments/assets/277d2411-c6a2-4ad4-9bac-a25d667eefc2)
 
 
-7. **Vehicle Booking Page**:
+8. **Vehicle Booking Page**:
    ![Rental (1)](https://github.com/user-attachments/assets/2540753a-a620-4a26-97de-b715614ce1c1)
 
-8. **Tour Packages Page**:
+9. **Tour Packages Page**:
   ![Tour Package](https://github.com/user-attachments/assets/ad12cefd-a2aa-44cc-9aef-c45bfadeb2a6)
   ![image](https://github.com/user-attachments/assets/72efd255-49e9-4913-ab7b-bb0010aa6493)
    
-9.  **Attraction Booking Page**:
+10.  **Attraction Booking Page**:
 ![13](https://github.com/user-attachments/assets/d5f992e2-cf6d-4da0-89e3-7fb4b02ce384)
 ![14](https://github.com/user-attachments/assets/a4b79b48-ba5f-4a04-9589-dcaed26495ce)
 ![15](https://github.com/user-attachments/assets/b7bcc2b5-4be5-4457-845f-951174b6c162)
 
 
-10. **Payment Page**:
+11. **Payment Page**:
     ![image](https://github.com/user-attachments/assets/90eb8efd-ad23-4163-9bc6-b64640a19e40)
 
    
