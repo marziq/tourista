@@ -79,7 +79,7 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 
 
 7. **Vehicle Booking Page**:
-   ![Rental](https://github.com/user-attachments/assets/7e9b64b5-c0e7-45aa-b758-b1873b876cf5)
+   ![Rental (1)](https://github.com/user-attachments/assets/2540753a-a620-4a26-97de-b715614ce1c1)
 
 8. **Tour Packages Page**:
   ![Tour Package](https://github.com/user-attachments/assets/ad12cefd-a2aa-44cc-9aef-c45bfadeb2a6)
