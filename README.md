@@ -61,6 +61,8 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 ![WebApp drawio (2)](https://github.com/user-attachments/assets/dcc6dd52-4157-4a2d-bb0d-f9c1f09c4750)
 
 ## Mockup
+**Home Page**
+
 1. **Log in Page**:
 2. **Sign Up Page**:
 3. **Profile Page**:
@@ -71,9 +73,10 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 
 7. **Tour Packages Page**:
 8. **Attraction Booking Page**:
-![13](https://github.com/user-attachments/assets/fae66af2-cff3-4363-b11a-cbd1b8409dfc)
-![14](https://github.com/user-attachments/assets/d6c80220-be5d-4a95-91ce-3c23f0445d63)
-![15](https://github.com/user-attachments/assets/385aa4fd-2b1b-4bb0-be39-0c586fa98158)
+![13](https://github.com/user-attachments/assets/d5f992e2-cf6d-4da0-89e3-7fb4b02ce384)
+![14](https://github.com/user-attachments/assets/a4b79b48-ba5f-4a04-9589-dcaed26495ce)
+![15](https://github.com/user-attachments/assets/b7bcc2b5-4be5-4457-845f-951174b6c162)
+
 
 9. **Payment Page**:
    
