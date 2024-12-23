@@ -45,7 +45,10 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
    - Update: Enable users to modify bookings, such as changing dates or vehicle type.
    - Delete: Allow users to cancel bookings within the specified cancellation policy.
 6. **Tour Package Booking**:
-
+   - Create: Allow users to book a tour packages by selecting one of the packages available
+   - Read: Display a complete details about packages like the price per pax, duration and etc.
+   - Update: Allow users to modify the pax for the tour packages.
+   - Deleet: Allow users to cancel their booking.
 7. **Attraction Booking**:
    - Create: Enable users to book attractions by selecting desired locations,date and category       attractions.
    - Read:Display a comprehensive list of available attractions with descriptions, ratings,         operational hours, and ticket pricing.
@@ -76,15 +79,21 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
    ![Rental](https://github.com/user-attachments/assets/7e9b64b5-c0e7-45aa-b758-b1873b876cf5)
 
 8. **Tour Packages Page**:
-9. **Attraction Booking Page**:
+  ![Tour Package](https://github.com/user-attachments/assets/ad12cefd-a2aa-44cc-9aef-c45bfadeb2a6)
+  ![image](https://github.com/user-attachments/assets/72efd255-49e9-4913-ab7b-bb0010aa6493)
+   
+9.  **Attraction Booking Page**:
 ![13](https://github.com/user-attachments/assets/d5f992e2-cf6d-4da0-89e3-7fb4b02ce384)
 ![14](https://github.com/user-attachments/assets/a4b79b48-ba5f-4a04-9589-dcaed26495ce)
 ![15](https://github.com/user-attachments/assets/b7bcc2b5-4be5-4457-845f-951174b6c162)
 
 
 10. **Payment Page**:
+    ![image](https://github.com/user-attachments/assets/90eb8efd-ad23-4163-9bc6-b64640a19e40)
+
    
 ## References
 1. Athuraliya, A., & Creately. (2022, December 12). *Sequence Diagram Tutorial – Complete Guide with Examples.* Creately. https://creately.com/guides/sequence-diagram-tutorial/
 2. *Car rental in Malaysia | Book a car Online - WAHDAH.* (n.d.). https://www.wahdah.my/
+3. Booking.com. (n.d.). https://www.booking.com/
 
