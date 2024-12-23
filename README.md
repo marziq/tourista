@@ -64,7 +64,7 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 ![ERD WAD Project drawio](https://github.com/user-attachments/assets/729fa1f1-9dc7-4d6c-9b37-9d6f1bd590ce)
 
 ## Sequence Diagram
-![WebApp drawio (2)](https://github.com/user-attachments/assets/dcc6dd52-4157-4a2d-bb0d-f9c1f09c4750)
+![WebApp drawio (1)](https://github.com/user-attachments/assets/28e56b3e-9c9d-43a1-aab3-de2878caace1)
 
 ## Mockup
 
