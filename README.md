@@ -40,7 +40,7 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 4. **Hotel Booking**:
    - Create: Allow users to book hotel rooms by selecting a hotel, room type, check-in and check-out dates, and the number of guests.
    - Read: Display a list of available hotels with detailed descriptions, including room types, pricing, amenities, and availability based on the selected dates.
-   - Update: Allow users to modify their existing bookings by changing the check-in/out dates, room type, or number of guests, subject to availability and booking policies.
+   - Update: Allow users to modify their existing bookings by changing the check-in/out dates, room type, or number of guests, subject to availability.
    - Delete: Allow users to cancel their booking.
 5. **Vehicle Rental Booking**:
    - Create: Allow users to book a vehicle by entering required details like dates, location, and preferences.
@@ -48,7 +48,7 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
    - Update: Enable users to modify bookings, such as changing dates or vehicle type.
    - Delete: Allow users to cancel bookings within the specified cancellation policy.
 6. **Tour Package Booking**:
-   - Create: Allow users to book a tour packages by selecting one of the packages available
+   - Create: Allow users to book a tour packages by selecting one of the packages available.
    - Read: Display a complete details about packages like the price per pax, duration and etc.
    - Update: Allow users to modify the pax for the tour packages.
    - Deleet: Allow users to cancel their booking.
@@ -60,8 +60,8 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 8. **Payment Integration**:
    - Create: Allow users to make a payment for their options.
    - Read: Display all the details like total price that need to pay, the information of their information, and etc.
-   - Update: Allows users to modify their payment details like adjusting the number of bank card
-   - Delete: Allow users to cancel the payment
+   - Update: Allows users to modify their payment details like adjusting the number of bank card.
+   - Delete: Allow users to cancel the payment.
      
 ## Entity-Relationship Diagram (ERD)
 ![ERD WAD Project drawio](https://github.com/user-attachments/assets/729fa1f1-9dc7-4d6c-9b37-9d6f1bd590ce)
