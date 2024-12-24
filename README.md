@@ -69,45 +69,45 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 ## Mockup
 
 1. **Home Page** 
-   ![image](https://github.com/user-attachments/assets/7940cd52-8c01-439f-8d19-5515c097ba5f)
+   ![HOME (1)](https://github.com/user-attachments/assets/3388dada-9428-469f-a769-a289d70901d0)
    ![image](https://github.com/user-attachments/assets/64f6f092-b018-49fe-ad76-5fa39ce46000)
 
 
-
-2. **Log in Page**:
+3. **Log in Page**:
    ![image](https://github.com/user-attachments/assets/f3f544d8-965a-4d51-b55c-bbddcd2afa25)
 
 
-3. **Sign Up Page**:
+4. **Sign Up Page**:
    ![image](https://github.com/user-attachments/assets/eea2051c-007e-4fe3-91e1-2aa705eeb32f)
 
 
-4. **Profile Page**:
-   ![profile page](https://github.com/user-attachments/assets/c384704e-9caa-4cb0-8d29-7a3a966cf1ad)
+5. **Profile Page**:
+   ![User Profile (1)](https://github.com/user-attachments/assets/290b79ea-b154-4bec-ad18-0005ae96065c)
 
-5. **Flight Booking Page**:
+
+6. **Flight Booking Page**:
    ![image](https://github.com/user-attachments/assets/8c4d0744-a31e-4279-aea3-7f1c1188550c)
    ![image](https://github.com/user-attachments/assets/de78a347-34c7-4a8f-bb20-80d8b491c6a9)
 
 
-6. **Hotel Booking Page**:
+7. **Hotel Booking Page**:
    ![Hotel booking page 1](https://github.com/user-attachments/assets/313df16f-4b86-428d-ab92-db0d0ae1083e)
    ![Hotel (1)](https://github.com/user-attachments/assets/277d2411-c6a2-4ad4-9bac-a25d667eefc2)
 
 
-7. **Vehicle Booking Page**:
+8. **Vehicle Booking Page**:
    ![Rental (1)](https://github.com/user-attachments/assets/2540753a-a620-4a26-97de-b715614ce1c1)
 
-8. **Tour Packages Page**:
+9. **Tour Packages Page**:
   ![Tour Package 1](https://github.com/user-attachments/assets/ca35407f-8df8-47ba-ada7-35c346c55541)
 ![Tour Package 2](https://github.com/user-attachments/assets/8ec8c8a7-db27-4303-817f-27cbda55c944)
    
-9.  **Attraction Booking Page**:
+10.  **Attraction Booking Page**:
 ![12](https://github.com/user-attachments/assets/4763f105-99da-431d-a50d-37e04272f21e)
 ![13](https://github.com/user-attachments/assets/0fe02263-08dc-4ba8-b347-00ded85ecfd5)
 ![14](https://github.com/user-attachments/assets/9e8e6069-790b-4c05-bba0-d0078553d0a4)
 
-10. **Payment Page**:
+11. **Payment Page**:
    ![Checkout(cart)](https://github.com/user-attachments/assets/bb14a432-9338-4bf5-b420-eb21a0a9d31c)
 
 
