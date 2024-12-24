@@ -111,7 +111,8 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 ![14](https://github.com/user-attachments/assets/9e8e6069-790b-4c05-bba0-d0078553d0a4)
 
 11. **Payment Page**:
-   ![Checkout(cart)](https://github.com/user-attachments/assets/bb14a432-9338-4bf5-b420-eb21a0a9d31c)
+  ![Checkout(cart)](https://github.com/user-attachments/assets/4d1ed0f0-011d-421a-b3de-b718d6079726)
+
 
 
    
