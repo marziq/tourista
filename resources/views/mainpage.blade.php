@@ -844,8 +844,8 @@
 								width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
 								<defs>
 									<linearGradient id='test_grad_prev'>
-										<stop offset='0%' stop-color='#fa9e1b'/>
-										<stop offset='100%' stop-color='#8d4fff'/>
+										<stop offset='0%' stop-color='#426253'/>
+										<stop offset='100%' stop-color='#cdff4f'/>
 									</linearGradient>
 								</defs>
 								<path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
@@ -862,8 +862,8 @@
 							width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
 								<defs>
 									<linearGradient id='test_grad_next'>
-										<stop offset='0%' stop-color='#fa9e1b'/>
-										<stop offset='100%' stop-color='#8d4fff'/>
+										<stop offset='0%' stop-color='#426253'/>
+										<stop offset='100%' stop-color='#cdff4f'/>
 									</linearGradient>
 								</defs>
 							<path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
