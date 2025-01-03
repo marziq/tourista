@@ -16,7 +16,7 @@
 <body>
 
 <div class="super_container">
-	
+
 	<!-- Header -->
 
 	<header class="header">
@@ -44,7 +44,7 @@
 						</div>
 					</div>
 				</div>
-			</div>		
+			</div>
 		</div>
 
 		<!-- Main Navigation -->
@@ -92,13 +92,13 @@
 						<form id="search_form" class="search_form bez_1">
 							<input type="search" class="search_content_input bez_1">
 						</form>
-						
+
 						<div class="hamburger">
 							<i class="fa fa-bars trans_200"></i>
 						</div>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</nav>
 
 	</header>
@@ -135,11 +135,11 @@
 				<!-- Blog Content -->
 
 				<div class="col-lg-8">
-					
+
 					<div class="blog_post_container">
 
 						<!-- Blog Post -->
-						
+
 						<div class="blog_post">
 							<div class="blog_post_image">
 								<img src="images/blog_1.jpg" alt="https://unsplash.com/@anniespratt">
@@ -163,7 +163,7 @@
 						</div>
 
 						<!-- Blog Post -->
-						
+
 						<div class="blog_post">
 							<div class="blog_post_image">
 								<img src="images/blog_2.jpg" alt="https://unsplash.com/@tschax">
@@ -187,7 +187,7 @@
 						</div>
 
 						<!-- Blog Post -->
-						
+
 						<div class="blog_post">
 							<div class="blog_post_image">
 								<img src="images/blog_3.jpg" alt="https://unsplash.com/@stilclassics">
@@ -211,7 +211,7 @@
 						</div>
 
 					</div>
-						
+
 					<div class="blog_navigation">
 						<ul>
 							<li class="blog_dot active"><div></div>01.</li>
@@ -254,7 +254,7 @@
 							</button>
 						</form>
 					</div>
-					
+
 					<!-- Sidebar Archives -->
 					<div class="sidebar_archives">
 						<div class="sidebar_title">Archives</div>
@@ -266,7 +266,7 @@
 							</ul>
 						</div>
 					</div>
-					
+
 					<!-- Sidebar Archives -->
 					<div class="sidebar_categories">
 						<div class="sidebar_title">Categories</div>
@@ -424,7 +424,7 @@
 					<div class="footer_col">
 						<div class="footer_title">blog posts</div>
 						<div class="footer_content footer_blog">
-							
+
 							<!-- Footer blog item -->
 							<div class="footer_blog_item clearfix">
 								<div class="footer_blog_image"><img src="images/footer_blog_1.jpg" alt="https://unsplash.com/@avidenov"></div>
@@ -433,7 +433,7 @@
 									<div class="footer_blog_date">Nov 29, 2017</div>
 								</div>
 							</div>
-							
+
 							<!-- Footer blog item -->
 							<div class="footer_blog_item clearfix">
 								<div class="footer_blog_image"><img src="images/footer_blog_2.jpg" alt="https://unsplash.com/@deannaritchie"></div>
