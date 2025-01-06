@@ -3,12 +3,12 @@
 
 	<!-- Home -->
 
-	<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/about_background.jpg"></div>
-		<div class="home_content">
-			<div class="home_title">about us</div>
-		</div>
-	</div>
+    <div class="home">
+        <div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/about_background.jpg"></div>
+        <div class="home_content">
+            <div class="home_title">Attractions</div>
+        </div>
+    </div>
 
 	<!-- Intro -->
 
