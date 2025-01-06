@@ -15,7 +15,7 @@
 <body>
 
 <div class="super_container">
-	
+
 	<!-- Header -->
 
 	<header class="header">
@@ -43,7 +43,7 @@
 						</div>
 					</div>
 				</div>
-			</div>		
+			</div>
 		</div>
 
 		<!-- Main Navigation -->
@@ -91,13 +91,13 @@
 						<form id="search_form" class="search_form bez_1">
 							<input type="search" class="search_content_input bez_1">
 						</form>
-						
+
 						<div class="hamburger">
 							<i class="fa fa-bars trans_200"></i>
 						</div>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</nav>
 
 	</header>
@@ -135,7 +135,7 @@
 			<div class="search_inner">
 
 				<!-- Search Contents -->
-				
+
 				<div class="container fill_height no-padding">
 					<div class="row fill_height no-margin">
 						<div class="col fill_height no-padding">
@@ -150,7 +150,7 @@
 									<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/island.png" alt="">trips</div>
 									<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/cruise.png" alt="">cruises</div>
 									<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/diving.png" alt="">activities</div>
-								</div>		
+								</div>
 							</div>
 
 							<!-- Search Panel -->
@@ -191,7 +191,7 @@
 												<div class="clearfix">
 													<input type="checkbox" id="search_extras_1" class="search_extras_cb">
 													<label for="search_extras_1">Pet Friendly</label>
-												</div>	
+												</div>
 											</li>
 											<li class="search_extras_item">
 												<div class="clearfix">
@@ -246,7 +246,7 @@
 												<div class="clearfix">
 													<input type="checkbox" id="more_options_1" class="search_extras_cb">
 													<label for="more_options_1">Pet Friendly</label>
-												</div>	
+												</div>
 											</li>
 											<li class="more_options_item">
 												<div class="clearfix">
@@ -441,8 +441,8 @@
 							</div>
 						</div>
 					</div>
-				</div>	
-			</div>	
+				</div>
+			</div>
 		</div>
 
 		<!-- Offers -->
@@ -451,7 +451,7 @@
 			<div class="row">
 				<div class="col-lg-1 temp_col"></div>
 				<div class="col-lg-11">
-					
+
 					<!-- Offers Sorting -->
 					<div class="offers_sorting_container">
 						<ul class="offers_sorting">
@@ -733,7 +733,7 @@
 				</div>
 
 			</div>
-		</div>		
+		</div>
 	</div>
 
 	<!-- Footer -->
@@ -766,7 +766,7 @@
 					<div class="footer_col">
 						<div class="footer_title">blog posts</div>
 						<div class="footer_content footer_blog">
-							
+
 							<!-- Footer blog item -->
 							<div class="footer_blog_item clearfix">
 								<div class="footer_blog_image"><img src="images/footer_blog_1.jpg" alt="https://unsplash.com/@avidenov"></div>
@@ -775,7 +775,7 @@
 									<div class="footer_blog_date">Nov 29, 2017</div>
 								</div>
 							</div>
-							
+
 							<!-- Footer blog item -->
 							<div class="footer_blog_item clearfix">
 								<div class="footer_blog_image"><img src="images/footer_blog_2.jpg" alt="https://unsplash.com/@deannaritchie"></div>
