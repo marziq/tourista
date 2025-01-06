@@ -15,7 +15,7 @@
 <body>
 
 <div class="super_container">
-	
+
 	<!-- Header -->
 
 	<header class="header">
@@ -43,7 +43,7 @@
 						</div>
 					</div>
 				</div>
-			</div>		
+			</div>
 		</div>
 
 		<!-- Main Navigation -->
@@ -91,13 +91,13 @@
 						<form id="search_form" class="search_form bez_1">
 							<input type="search" class="search_content_input bez_1">
 						</form>
-						
+
 						<div class="hamburger">
 							<i class="fa fa-bars trans_200"></i>
 						</div>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</nav>
 
 	</header>
@@ -154,7 +154,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-5">
-					
+
 					<!-- About - Image -->
 
 					<div class="about_image">
@@ -164,7 +164,7 @@
 				</div>
 
 				<div class="col-lg-4">
-					
+
 					<!-- About - Content -->
 
 					<div class="about_content">
@@ -184,7 +184,7 @@
 				</div>
 
 				<div class="col-lg-3">
-					
+
 					<!-- About Info -->
 
 					<div class="about_info">
@@ -215,7 +215,7 @@
 	</div>
 
 	<!-- Google Map -->
-		
+
 	<div class="travelix_map">
 		<div id="google_map" class="google_map">
 			<div class="map_container">
@@ -254,7 +254,7 @@
 					<div class="footer_col">
 						<div class="footer_title">blog posts</div>
 						<div class="footer_content footer_blog">
-							
+
 							<!-- Footer blog item -->
 							<div class="footer_blog_item clearfix">
 								<div class="footer_blog_image"><img src="images/footer_blog_1.jpg" alt="https://unsplash.com/@avidenov"></div>
@@ -263,7 +263,7 @@
 									<div class="footer_blog_date">Nov 29, 2017</div>
 								</div>
 							</div>
-							
+
 							<!-- Footer blog item -->
 							<div class="footer_blog_item clearfix">
 								<div class="footer_blog_image"><img src="images/footer_blog_2.jpg" alt="https://unsplash.com/@deannaritchie"></div>
