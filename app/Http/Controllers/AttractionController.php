@@ -92,6 +92,50 @@ class AttractionController extends Controller
         // Pass the data to the view
         return view('attraction', compact('attractions'));
     }
+public function bookingAttraction(Request $request)
+{
+    $details = [
+        'place' => $request->input('place'),
+        'description' => $request->input('description'),
+        'price' => $request->input('price'),
+        'rating' => $request->input('rating'),
+        'quantity' => $request->input('quantity'),
+        'image' => $request->input('image'), // Ensure this is passed
+        'total_price' => $request->input('price') * $request->input('quantity')
+    ];
+
+    return view('bookingattraction', compact('details'));
+}
+
+
+
+public function paymentBooking(Request $request)
+{
+    $paymentDetails = [
+        'place' => $request->input('place'),
+        'description' => $request->input('description'),
+        'price' => $request->input('price'),
+        'quantity' => $request->input('quantity'),
+        'total_price' => $request->input('total_price'),
+    ];
+
+    return view('paymentbooking', compact('paymentDetails'));
+}
+public function completePayment(Request $request)
+{
+    // Logic to store payment details or process payment
+    // Example: Store in database
+
+    Attraction::create([
+
+        'place' => $request->input('place'),
+        'quantity' => $request->input('quantity'),
+        'total_price' => $request->input('total_price'),
+    ]);
+
+    return redirect()->route('attractions.index')->with('success', 'Payment completed successfully!');
+}
+
     /**
      * Store a new attraction
      */

@@ -42,6 +42,10 @@ Route::get('/about', function () {
 // Attractions Routes
 Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 
+Route::get('/bookingattraction', [AttractionController::class, 'bookingAttraction'])->name('bookingattraction');
+Route::post('/paymentbooking', [AttractionController::class, 'paymentBooking'])->name('paymentbooking');
+Route::post('/completePayment', [AttractionController::class, 'completePayment'])->name('completePayment');
+
 // Store route for creating a new attraction (matches the controller's store method)
 Route::post('/attractions/store', [AttractionController::class, 'store'])->name('attractions.store');
 

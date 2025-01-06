@@ -93,7 +93,18 @@
 
                             <!-- Select Button -->
                             <div class="mt-3 text-center">
-                                <a href="#" class="btn btn-success">Buy Now</a>
+                                <a id="buy-now-{{ $loop->index }}"
+                                   href="{{ route('bookingattraction', [
+
+                                       'image' => $attraction['image'],
+                                       'place' => $attraction['place'],
+                                       'description' => $attraction['description'],
+                                       'price' => $attraction['price'],
+                                       'rating' => $attraction['rating'],
+                                       'quantity' => 1]) }}"
+                                   class="btn btn-success">
+                                    Buy Now
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -118,6 +129,7 @@
 
         quantityInput.value = quantity;
         updatePrice(index);
+        updateBuyNowLink(index);
     }
 
     function updatePrice(index) {
@@ -127,6 +139,29 @@
 
         document.getElementById(`price-${index}`).textContent = `From RM ${totalPrice}`;
     }
+
+    function updateBuyNowLink(index) {
+    const quantity = document.getElementById('quantity-' + index).value;
+    const buyNowLink = document.getElementById('buy-now-' + index);
+    const attraction = attractionPrices[index];
+
+    const updatedURL = '{{ url("bookingattraction") }}?place=' + encodeURIComponent(attraction.place) +
+                       '&description=' + encodeURIComponent(attraction.description) +
+                       '&price=' + attraction.price +
+                       '&rating=' + attraction.rating +
+                       '&quantity=' + quantity +
+                       '&image=' + encodeURIComponent(attraction.image); // Ensure image is added
+
+    buyNowLink.href = updatedURL;
+}
+
+
+    // Add event listener for real-time updates on quantity input
+    document.querySelectorAll('.quantity-control input').forEach((input, index) => {
+        input.addEventListener('change', () => {
+            updateBuyNowLink(index);
+        });
+    });
 </script>
 
 @endsection

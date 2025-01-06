@@ -9,5 +9,6 @@ class Attraction extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['place', 'quantity_ticket', 'description', 'price', 'rating'];
+    protected $fillable = ['place', 'quantity', 'total_price']; // Fixed the extra comma
 }
+
