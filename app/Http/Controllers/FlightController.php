@@ -2,66 +2,69 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Flight;
 use Illuminate\Http\Request;
 
 class FlightController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    // Show search form
+    public function index(Request $request)
     {
-        //
+        if ($request->has(['departure', 'arrival', 'travel_date'])) {
+            $flights = Flight::where('departure', $request->departure)
+                ->where('arrival', $request->arrival)
+                ->where('travel_date', $request->travel_date)
+                ->get();
+            return view('flights.results', compact('flights'));
+        }
+        return view('flights.search');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Store a new flight booking
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'departure' => 'required',
+            'arrival' => 'required',
+            'travel_date' => 'required|date',
+            'passenger_count' => 'required|integer|min:1',
+        ]);
+
+        Flight::create($validated);
+
+        return redirect()->route('flights.index')->with('success', 'Flight booked successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // Edit booking form
+    public function edit($id)
     {
-        //
+        $flight = Flight::findOrFail($id);
+        return view('flights.edit', compact('flight'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    // Update booking
+    public function update(Request $request, $id)
     {
-        //
+        $flight = Flight::findOrFail($id);
+
+        $validated = $request->validate([
+            'travel_date' => 'required|date',
+            'passenger_count' => 'required|integer|min:1',
+        ]);
+
+        $flight->update($validated);
+
+        return redirect()->route('flights.index')->with('success', 'Booking updated successfully!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    // Delete booking
+    public function destroy($id)
     {
-        //
-    }
+        $flight = Flight::findOrFail($id);
+        $flight->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('flights.index')->with('success', 'Booking canceled successfully!');
     }
 }
 
 
-//test 
