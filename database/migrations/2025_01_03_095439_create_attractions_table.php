@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('location');
             $table->string('description');
-            $table->float('price', 2);
+            $table->float('price', 8,2);
             $table->string('image')->nullable();
             $table->timestamps();// Created and updated timestamps
         });

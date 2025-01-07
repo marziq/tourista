@@ -29,4 +29,11 @@ Route::middleware([
     Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
     Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
 });
-route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
+
+Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
+Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
+Route::get('/attractions/search', [AttractionController::class, 'search'])->name('attractions.search');
+// route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
+// Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
+// Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
+
