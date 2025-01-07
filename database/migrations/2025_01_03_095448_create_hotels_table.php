@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hotels', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->hotel_id();
+            $table->string('name');
+            $table->string('location');
+            $table->decimal('price', 10, 2);
+            $table->boolean('availability');
+            $table->timestamps();// Created and updated timestamps
         });
     }
 
