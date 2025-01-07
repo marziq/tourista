@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('rental_type');
             $table->string('brand');
-            $table-decbin('price', 10, 2);
+            $table->float('price', 2);
             $table->boolean('available');
             $table->timestamps();
         });

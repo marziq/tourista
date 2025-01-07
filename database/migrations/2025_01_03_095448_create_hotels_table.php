@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
-            $table->decimal('price', 10, 2);
+            $table->float('price', 2);
             $table->boolean('availability');
             $table->timestamps();// Created and updated timestamps
         });

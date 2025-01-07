@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('arrival_airport');
             $table->string('departure_detail');
             $table->string('arrival_detail');
-            $table-decimal('price', 10, 2);
+            $table->float('price', 2);
             $table->timestamps();
         });
     }
