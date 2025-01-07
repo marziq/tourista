@@ -273,8 +273,8 @@
                     <div class="search_panel">
 
 
-                        <form action="{{ route('attractions.index') }}" id="search_form_5" method="GET" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                            <!-- Destination Field -->
+                        {{-- <form action="{{ route('attractions.index') }}" id="search_form_5" method="GET" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start"> --}}
+                            <form action="#" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">  <!-- Destination Field -->
                             <div class="search_item">
                                 <div>Destination</div>
                                 <input type="text" name="destination" class="destination search_input" placeholder="Enter destination" required="required">
