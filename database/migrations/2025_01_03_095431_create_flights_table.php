@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('departure_detail');
             $table->string('arrival_detail');
             $table->float('price', 2);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

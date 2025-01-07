@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('package_name');
             $table->string('description');
             $table->float('price', 2);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
