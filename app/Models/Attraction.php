@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attraction extends Model
 {
-    use HasFactory;
+    // use HasFactory;
 
-    protected $fillable = ['place', 'quantity', 'total_price'];
+    // protected $fillable = ['place', 'quantity', 'total_price'];
 }
