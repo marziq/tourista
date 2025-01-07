@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tour_packages', function (Blueprint $table) {
-            $table->id();
+            $table->package_id();
+            $table->string('package_name');
+            $table->string('description');
+            $table->decimal('price', 10, 2);
             $table->timestamps();
         });
     }
