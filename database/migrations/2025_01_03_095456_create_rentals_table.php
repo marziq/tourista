@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('brand');
             $table->float('price', 2);
             $table->boolean('available');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
