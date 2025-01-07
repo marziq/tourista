@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\AttractionController;
 
 Route::get('/', function () {
     return view('mainpage');
@@ -28,3 +29,4 @@ Route::middleware([
     Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
     Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
 });
+route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');

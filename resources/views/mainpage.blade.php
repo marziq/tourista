@@ -235,7 +235,7 @@
 						</form>
 					</div>
 
-					<!-- Search Panel -->
+					<!-- Search Panel Tour package-->
 
 					<div class="search_panel">
 						<form action="#" id="search_form_4" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
@@ -252,21 +252,13 @@
 								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
 							</div>
 							<div class="search_item">
-								<div>adults</div>
-								<select name="adults" id="adults_4" class="dropdown_item_select search_input">
-									<option>01</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
+                                <div>adults</div>
+                                <input type="number" name="adults" id="adults" class="search_input" min="1" max="99" value="1">
+                            </div>
 							<div class="search_item">
-								<div>children</div>
-								<select name="children" id="children_4" class="dropdown_item_select search_input">
-									<option>0</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
+                                <div>children</div>
+                                <input type="number" name="children" id="children" class="search_input" min="1" max="99" value="1">
+                            </div>>
 							<button class="button search_button">search<span></span><span></span><span></span></button>
 						</form>
 					</div>
