@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TourPackage;
 
 class TourController extends Controller
 {
@@ -11,27 +12,37 @@ class TourController extends Controller
      */
     public function index()
     {
-        //
+        $package = TourPackage::all();
+
+
+        return view('tourpackage_result', compact('attractions'));
     }
     public function search(Request $request)
     {
         // Retrieve form data
-        $destination = $request->input('destination');
-        $checkIn = $request->input('check_in');
-        $checkOut = $request->input('check_out');
-        $adults = $request->input('adults');
-        $children = $request->input('children');
+        $package = $request->input('package');
+        $minPrice = $request->input('min_price');
+        $maxPrice = $request->input('max_price');
+        $pax = $request->input('Pax');
 
-        // Perform search query (example)
-        $tourPackages = TourPackage::where('destination', 'like', '%' . $destination . '%')
-            ->where('check_in', '>=', $checkIn)
-            ->where('check_out', '<=', $checkOut)
-            ->where('adults', '>=', $adults)
-            ->where('children', '>=', $children)
-            ->get();
+        // Perform search query
+        $query = TourPackage::query();
+
+        if ($package) {
+            $query->where('package_name', 'like', '%' . $package . '%');
+        }
+        if ($minPrice) {
+            $query->where('price', '>=', $minPrice);
+        }
+        if ($maxPrice) {
+            $query->where('price', '<=', $maxPrice);
+        }
+
+
+        $tourPackages = $query->get();
 
         // Return a view with the search results
-        return view('search_results', compact('tourPackages'));
+        return view('tourpackage_result', compact('tourPackages'));
     }
     /**
      * Show the form for creating a new resource.

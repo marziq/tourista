@@ -1,5 +1,4 @@
 @extends('master.layout')
-
 @section('content')
 <style>
     .home {
