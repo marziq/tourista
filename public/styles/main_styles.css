@@ -1098,6 +1098,8 @@ section {
     width: 100%;
     padding-top: 100px;
     padding-bottom: 105px;
+    text-align: center;
+    padding: 50px 0;
 }
 .intro_title {
     font-weight: 700;
@@ -1244,6 +1246,15 @@ section {
 }
 .rating_5 i:nth-child(5) {
     color: #ef910a;
+    content: "\f005";
+}
+.below-intro {
+    padding: 20px;
+}
+
+.below-intro h2 {
+    font-size: 24px;
+    color: #426253; /* Correct usage of the color */
 }
 
 /*********************************
@@ -1491,6 +1502,21 @@ section {
 }
 .offers_link a:hover {
     color: #426253;
+}
+.offer {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.offer h3 {
+    font-size: 20px;
+    color: #426253; /* Correct usage of the color */
+}
+
+.offer p {
+    font-size: 16px;
+    color: #333;
 }
 
 /*********************************
