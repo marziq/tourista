@@ -27,7 +27,24 @@ class RentalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        $request->validate([
+            'pickup_date' => 'required|date|after:today',
+            'return_date' => 'required|date|after:pickup_date',
+            'location' => 'required|string',
+        ]);
+
+        // Process the data and save it to the database
+        // Example: Assuming you have a Rental model and a rentals table
+        \App\Models\Rental::create([
+            'pickup_date' => $request->pickup_date,
+            'return_date' => $request->return_date,
+            'location' => $request->location,
+            // You can also store additional information as needed
+        ]);
+
+        // Redirect or show a confirmation message
+        return redirect()->route('rental')->with('success', 'Rental request saved successfully!');
     }
 
     /**

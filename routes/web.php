@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
 use App\Http\Controllers\TourController;
+use App\Http\Controllers\RentalController;
 
 Route::get('/', function () {
     return view('mainpage');
@@ -41,4 +42,14 @@ Route::get('/attractions/search', [AttractionController::class, 'search'])->name
 
 //Tour Controller
 Route::post('/search', [TourController::class, 'search'])->name('search');
+
+
+//Rental
+Route::get('/rental', function () {
+    return view('rental');
+})->name('rental');
+
+Route::post('/rental', [RentalController::class, 'store'])->name('rental');
+
+
 
