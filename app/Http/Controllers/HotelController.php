@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Hotel; // Hotel model
 
 class HotelController extends Controller
 {
@@ -12,7 +13,7 @@ class HotelController extends Controller
     public function index()  // to display available hotels
     {
         $hotels = Hotel::with('rooms')->get();
-        return view('hotels.index', compact('hotels'));
+        return view('hotel', compact('hotels'));
     }
 
     /**
@@ -28,7 +29,7 @@ class HotelController extends Controller
      */
     public function store(Request $request)  //to create a new booking
     {
-        $validated = $request->validate([
+        /*$validated = $request->validate([
             'hotel_id' => 'required|exists:hotels,id',
             'room_id' => 'required|exists:rooms,id',
             'check_in' => 'required|date|after:today',
@@ -37,7 +38,7 @@ class HotelController extends Controller
         ]);
 
         Booking::create($validated);
-        return redirect()->route('hotels.index')->with('success', 'Booking successfully created!');
+        return redirect()->route('hotels.index')->with('success', 'Booking successfully created!');*/
     }
 
     /**
@@ -45,8 +46,22 @@ class HotelController extends Controller
      */
     public function show(string $id)  //to show hotel details
     {
-        $hotel = Hotel::with('rooms')->findOrFail($id);
-        return view('hotels.show', compact('hotel'));
+        /*$hotel = Hotel::findOrFail($id); // Fetch the hotel by its ID or return a 404 error
+        return view('hotel.show', compact('hotel')); // Return the view with hotel details*/
+    }
+
+    public function search(Request $request)
+    {
+        //Retrieve form data
+        $destination = $request->input('destination');
+        $check_in = $request->input('check_in');
+        $check_out = $request->input('check_out');
+        $adults = $request->input('adults');
+        $children = $request->input('children');
+
+
+        $hotels = Hotel::where('destination', 'like', '%' . $destination . '%')->paginate(10);
+        return view('hotel', ['hotel' => $hotels]);
     }
 
     /**
@@ -54,9 +69,9 @@ class HotelController extends Controller
      */
     public function edit(string $id)  //to edit a booking
     {
-        $booking = Booking::findOrFail($id);
+        /*$booking = Booking::findOrFail($id);
         $rooms = Room::where('hotel_id', $booking->hotel_id)->get();
-        return view('bookings.edit', compact('booking', 'rooms'));
+        return view('bookings.edit', compact('booking', 'rooms'));*/
     }
 
     /**
@@ -64,7 +79,7 @@ class HotelController extends Controller
      */
     public function update(Request $request, string $id)  //to update a booking
     {
-        $booking = Booking::findOrFail($id);
+        /*$booking = Booking::findOrFail($id);
         $validated = $request->validate([
             'check_in' => 'required|date|after:today',
             'check_out' => 'required|date|after:check_in',
@@ -73,7 +88,7 @@ class HotelController extends Controller
         ]);
 
         $booking->update($validated);
-        return redirect()->route('hotels.index')->with('success', 'Booking successfully updated!');
+        return redirect()->route('hotels.index')->with('success', 'Booking successfully updated!');*/
     }
 
     /**
@@ -81,9 +96,9 @@ class HotelController extends Controller
      */
     public function destroy(string $id)  //to delete a booking
     {
-        $booking = Booking::findOrFail($id);
+        /*$booking = Booking::findOrFail($id);
         $booking->delete();
-        return redirect()->route('hotels.index')->with('success', 'Booking successfully cancelled!');
+        return redirect()->route('hotels.index')->with('success', 'Booking successfully cancelled!');*/
     }
 }
 

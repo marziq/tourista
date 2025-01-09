@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
 use App\Http\Controllers\TourController;
+use App\Http\Controllers\HotelController;
 
 Route::get('/', function () {
     return view('mainpage');
@@ -42,3 +43,5 @@ Route::get('/attractions/search', [AttractionController::class, 'search'])->name
 //Tour Controller
 Route::post('/search', [TourController::class, 'search'])->name('search');
 
+//Hotel Controller
+Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');
