@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('tour_packages', function (Blueprint $table) {
             $table->id();
+            $table->string('package_name');
+            $table->string('description');
+            $table->float('price', 2);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

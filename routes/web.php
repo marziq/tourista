@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\AttractionController;
+use App\Http\Controllers\TourController;
 
 Route::get('/', function () {
     return view('mainpage');
@@ -11,7 +13,10 @@ Route::get('/about', function () {
     return view('about');
 });
 
-// Flight booking routes
+Route::get('/offers', function () {
+    return view('offers');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -28,3 +33,12 @@ Route::middleware([
     Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
     Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
 });
+
+Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
+Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
+Route::get('/attractions/search', [AttractionController::class, 'search'])->name('attractions.search');
+
+
+//Tour Controller
+Route::post('/search', [TourController::class, 'search'])->name('search');
+

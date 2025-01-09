@@ -14,12 +14,9 @@ return new class extends Migration
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
             $table->string('departure'); // Departure location
-            $table->string('arrival');   // Arrival location
-            $table->time('departure_time'); // Departure time
-            $table->time('arrival_time');   // Arrival time
-            $table->decimal('price', 8, 2); // Ticket price
-            $table->string('airline')->nullable(); // Airline name
-            $table->string('image')->nullable();   // Image URL (for visuals)
+            $table->string('arrival'); // Arrival location
+            $table->date('travel_date'); // Travel date
+            $table->integer('passenger_count'); // Number of passengers
             $table->timestamps();
         });
     }

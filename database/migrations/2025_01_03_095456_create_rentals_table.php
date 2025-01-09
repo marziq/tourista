@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
+            $table->string('rental_type');
+            $table->string('brand');
+            $table->float('price', 2);
+            $table->boolean('available');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

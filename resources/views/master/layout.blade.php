@@ -15,27 +15,6 @@
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 
 
-{{--
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Tourista</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Tourista Project">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap4/bootstrap.min.css') }}">
-    <!-- Font Awesome -->
-    <link href="{{ asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- OwlCarousel CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/animate.css') }}">
-    <!-- Custom Styles -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('styles/main_styles.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('styles/responsive.css') }}"> --}}
-
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -115,7 +94,6 @@
 							<ul class="main_nav_list">
 								<li class="main_nav_item"><a href="\">home</a></li>
 								<li class="main_nav_item"><a href="\about">about us</a></li>
-								<li class="main_nav_item"><a href="offers.html">offers</a></li>
 								<li class="main_nav_item"><a href="blog.html">news</a></li>
 								<li class="main_nav_item"><a href="contact.html">contact</a></li>
 							</ul>
@@ -146,7 +124,7 @@
                         @if(Auth::check())
                             <li class="user_profile_icon">
                                 <a href="/dashboard">
-                                    <i class="fa fa-user-circle"></i>
+                                    <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="rounded-full" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">
                                 </a>
                             </li>
                         @endif
@@ -170,8 +148,7 @@
 			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
 			<ul>
 				<li class="menu_item"><a href="\">home</a></li>
-				<li class="menu_item"><a href="about.html">about us</a></li>
-				<li class="menu_item"><a href="offers.html">offers</a></li>
+				<li class="menu_item"><a href="\about">about us</a></li>
 				<li class="menu_item"><a href="blog.html">news</a></li>
 				<li class="menu_item"><a href="contact.html">contact</a></li>
 			</ul>
@@ -310,7 +287,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<ul class="footer_nav_list">
 								<li class="footer_nav_item"><a href="/">home</a></li>
 								<li class="footer_nav_item"><a href="/about">about us</a></li>
-								<li class="footer_nav_item"><a href="offers.html">offers</a></li>
 								<li class="footer_nav_item"><a href="blog.html">news</a></li>
 								<li class="footer_nav_item"><a href="contact.html">contact</a></li>
 							</ul>
