@@ -15,7 +15,7 @@ class TourController extends Controller
         $package = TourPackage::all();
 
 
-        return view('tourpackage_result', compact('attractions'));
+        return view('tourpackage_result', compact('package'));
     }
     public function search(Request $request)
     {
