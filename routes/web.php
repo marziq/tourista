@@ -53,3 +53,5 @@ Route::get('/rental', function () {
 })->name('rental');
 
 Route::post('/rental', [RentalController::class, 'store'])->name('rental');
+Route::get('/vehicles/{type}', [RentalController::class, 'showAvailableVehicles'])->name('vehicles.type');
+
