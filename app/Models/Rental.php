@@ -9,13 +9,11 @@ class Rental extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'pick_up_loc',
-        'brand',
-        'model',       // Brand of the vehicle
-        'price_per_day',
-        'pick_up_date',
+        'vehicle_id',
+        'pickup_date',
         'return_date',
-        'total',
-        'available',   // Availability status
+        'price_per_day',
+        'number_of_days',
+        'total_payment'  // Availability status
     ];
 }

@@ -51,17 +51,14 @@ Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');
 Route::get('/rental', function () {
     return view('rental');
 })->name('rental');
-
 Route::post('/rental', [RentalController::class, 'store'])->name('rental');
 // web.php
-
-// Route for navigating to the rental payment form
-Route::get('/rental-payment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');
-
-// Route to handle the payment form submission
-Route::post('/rental-payment', [RentalController::class, 'processPayment'])->name('rentalpayment.submit');
+Route::get('/rental-payment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');// Route for navigating to the rental payment form
+Route::post('/rental-payment', [RentalController::class, 'processPayment'])->name('rentalpayment.submit');// Route to handle the payment form submission
+// Route for success confirmation after booking
 Route::get('/rentalbooking-success', function () {
     return view('rentalbooking-success');
 })->name('rentalbooking.success');
+
 
 

@@ -34,15 +34,14 @@ class RentalController extends Controller
         // Find the price per day based on the vehicle_id passed from the form
         $vehicle_id = $request->vehicle_id;
         $vehicles = [
-            'Toyota Corolla' => 30,
-            'Ford Mustang' => 60,
+            'Toyota Corolla' => 130,
+            'Ford Mustang' => 160,
             'BMW X5' => 100,
-            'Honda Civic' => 40,
-            'Audi A4' => 70,
-            'Nissan Altima' => 50,
-            'Kia Sportage' => 45,
-            'Mazda CX-5' => 55,
-            'Volkswagen Passat' => 65,
+            'Honda Civic' => 140,
+            'Audi A4' => 170,
+            'Nissan Altima' => 150,
+            'Kia Sportage' => 145,
+            'Mazda CX-5' => 155,
         ];
 
         $price_per_day = $vehicles[$vehicle_id] ?? 0;
@@ -50,6 +49,14 @@ class RentalController extends Controller
         // Calculate the total payment
         $total_payment = $diffDays * $price_per_day;
 
+        Rental::create([
+            'vehicle_id' => $vehicle_id,
+            'pickup_date' => $pickup_date,
+            'return_date' => $return_date,
+            'price_per_day' => $price_per_day,
+            'number_of_days' => $diffDays,
+            'total_payment' => $total_payment,
+        ]);
          // Optionally, save the booking details into your database
 
         // Redirect to a confirmation or payment success page

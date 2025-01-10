@@ -13,14 +13,12 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->string('pick_up_loc');
-            $table->string('brand');
-            $table->string('model');
-            $table->float('price_per_day', 2);
-            $table->float('pick-up_date');
-            $table->float('return_date');
-            $table->string('total');
-            $table->boolean('available');
+            $table->string('vehicle_id');
+            $table->date('pickup_date');
+            $table->date('return_date');
+            $table->decimal('price_per_day', 8, 2);
+            $table->integer('number_of_days');
+            $table->decimal('total_payment', 10, 2);
             $table->timestamps();
         });
     }
