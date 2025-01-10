@@ -8,13 +8,13 @@ $vehicles = [
     [
         'brand' => 'Toyota',
         'model' => 'Corolla',
-        'price_per_day' => 80,
+        'price_per_day' => 130,
         'image' => asset('https://via.placeholder.com/150'),
     ],
     [
         'brand' => 'Ford',
         'model' => 'Mustang',
-        'price_per_day' => 90,
+        'price_per_day' => 160,
         'image' => asset('https://via.placeholder.com/150'),
     ],
     [
@@ -26,19 +26,19 @@ $vehicles = [
     [
         'brand' => 'Honda',
         'model' => 'Civic',
-        'price_per_day' => 80,
+        'price_per_day' => 140,
         'image' => asset('https://via.placeholder.com/150'),
     ],
     [
         'brand' => 'Audi',
         'model' => 'A4',
-        'price_per_day' => 70,
+        'price_per_day' => 170,
         'image' => asset('https://via.placeholder.com/150'),
     ],
     [
         'brand' => 'Nissan',
         'model' => 'Altima',
-        'price_per_day' => 50,
+        'price_per_day' => 150,
         'image' => asset('https://via.placeholder.com/150'),
     ],
     [
@@ -53,7 +53,6 @@ $vehicles = [
         'price_per_day' => 155,
         'image' => asset('https://via.placeholder.com/150'),
     ],
-
 ];
 ?>
 
@@ -126,6 +125,11 @@ $vehicles = [
                 width: 100%;
             }
         }
+
+        /* Custom Styles for Date Input */
+        .form-group {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -136,7 +140,8 @@ $vehicles = [
                 <img src="<?php echo $vehicle['image']; ?>" alt="<?php echo $vehicle['brand'] . ' ' . $vehicle['model']; ?>">
                 <h3><?php echo $vehicle['brand'] . ' ' . $vehicle['model']; ?></h3>
                 <p>Price per Day: RM <?php echo $vehicle['price_per_day']; ?></p>
-                <form action="payment.php" method="GET">
+                <form action="{{ route('rentalpayment') }}" method="GET">
+                    <input type="hidden" name="vehicle_id" value="<?php echo $vehicle['brand'] . ' ' . $vehicle['model']; ?>">
                     <button type="submit" class="btn">Book Now</button>
                 </form>
             </div>

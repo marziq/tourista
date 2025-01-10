@@ -53,4 +53,15 @@ Route::get('/rental', function () {
 })->name('rental');
 
 Route::post('/rental', [RentalController::class, 'store'])->name('rental');
+// web.php
+
+// Route for navigating to the rental payment form
+Route::get('/rental-payment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');
+
+// Route to handle the payment form submission
+Route::post('/rental-payment', [RentalController::class, 'processPayment'])->name('rentalpayment.submit');
+Route::get('/rentalbooking-success', function () {
+    return view('rentalbooking-success');
+})->name('rentalbooking.success');
+
 
