@@ -46,6 +46,8 @@ Route::post('/search', [TourController::class, 'search'])->name('search');
 
 //Hotel Controller
 Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');
+Route::post('/hotelRoom', [HotelController::class, 'show'])->name('hotelRoom');
+//Route::post('/hotelBooking', [HotelController::class, 'booking'])->name('hotelBooking');
 
 //Rental
 Route::get('/rental', function () {
