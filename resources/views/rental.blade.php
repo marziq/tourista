@@ -1,159 +1,154 @@
 @extends('master.layout')
 
 @section('content')
-<style>
-    .home {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-    }
 
-    .h1 {
-        font-size: 2rem;
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333;
-    }
+<?php
+// Array of vehicles with image paths and prices in RM
+$vehicles = [
+    [
+        'brand' => 'Toyota',
+        'model' => 'Corolla',
+        'price_per_day' => 130,
+        'image' => asset('https://via.placeholder.com/150'),
+    ],
+    [
+        'brand' => 'Ford',
+        'model' => 'Mustang',
+        'price_per_day' => 160,
+        'image' => asset('https://via.placeholder.com/150'),
+    ],
+    [
+        'brand' => 'BMW',
+        'model' => 'X5',
+        'price_per_day' => 100,
+        'image' => asset('https://via.placeholder.com/150'),
+    ],
+    [
+        'brand' => 'Honda',
+        'model' => 'Civic',
+        'price_per_day' => 140,
+        'image' => asset('https://via.placeholder.com/150'),
+    ],
+    [
+        'brand' => 'Audi',
+        'model' => 'A4',
+        'price_per_day' => 170,
+        'image' => asset('https://via.placeholder.com/150'),
+    ],
+    [
+        'brand' => 'Nissan',
+        'model' => 'Altima',
+        'price_per_day' => 150,
+        'image' => asset('https://via.placeholder.com/150'),
+    ],
+    [
+        'brand' => 'Kia',
+        'model' => 'Sportage',
+        'price_per_day' => 145,
+        'image' => asset('https://via.placeholder.com/150'),
+    ],
+    [
+        'brand' => 'Mazda',
+        'model' => 'CX-5',
+        'price_per_day' => 155,
+        'image' => asset('https://via.placeholder.com/150'),
+    ],
+];
+?>
 
-    .filter-form {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin: 20px 0;
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Rental</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
 
-    .filter-form div {
-        display: flex;
-        flex-direction: column;
-        margin: 0 10px;
-    }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 18%;
+            margin: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
 
-    .filter-form label {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
 
-    .filter-form input[type="text"],
-    .filter-form input[type="datetime-local"] {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 200px;
-    }
+        .card h3 {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
 
-    .filter-form button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
+        .card p {
+            color: #555;
+            font-size: 1em;
+            margin: 5px 0;
+        }
 
-    .filter-form button:hover {
-        background-color: #45a049;
-    }
+        .btn {
+            background-color: #0c4b35;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
 
-    .vehicles {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        margin: 20px;
-    }
+        .btn:hover {
+            background-color: #284d4d;
+        }
 
-    .vehicle-card {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 20px;
-        text-align: center;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        /* Responsive Design */
+        @media screen and (max-width: 1000px) {
+            .card {
+                width: 48%;
+            }
+        }
 
-    .vehicle-card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
+        @media screen and (max-width: 600px) {
+            .card {
+                width: 100%;
+            }
+        }
 
-    .vehicle-card img {
-        max-width: 100%;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
+        /* Custom Styles for Date Input */
+        .form-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
 
-    .vehicle-card h3 {
-        font-size: 1.5rem;
-        margin: 10px 0;
-    }
-
-    .vehicle-card p {
-        margin: 5px 0;
-        color: #555;
-    }
-
-    .vehicle-card button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .vehicle-card button:hover {
-        background-color: #45a049;
-    }
-</style>
-
-<h1>Our Vehicle Model</h1>
-<div class="search_tabs_container">
-    <div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-        <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/departure.png" alt="">Cars</div>
-        <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/island.png" alt="">MPVs</div>
-        <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/diving.png" alt="">Motorcycles</div>
+    <div class="container">
+        <?php foreach ($vehicles as $vehicle): ?>
+            <div class="card">
+                <img src="<?php echo $vehicle['image']; ?>" alt="<?php echo $vehicle['brand'] . ' ' . $vehicle['model']; ?>">
+                <h3><?php echo $vehicle['brand'] . ' ' . $vehicle['model']; ?></h3>
+                <p>Price per Day: RM <?php echo $vehicle['price_per_day']; ?></p>
+                <form action="{{ route('rentalpayment') }}" method="GET">
+                    <input type="hidden" name="vehicle_id" value="<?php echo $vehicle['brand'] . ' ' . $vehicle['model']; ?>">
+                    <button type="submit" class="btn">Book Now</button>
+                </form>
+            </div>
+        <?php endforeach; ?>
     </div>
-</div>
 
-
-<form action="{{ route('rental') }}" method="POST">
-    @csrf
-
-    <!-- Pickup Date -->
-    <label for="pickup_date">Pickup Date:</label>
-    <input type="datetime-local" id="pickup_date" name="pickup_date" required>
-
-    <!-- Return Date -->
-    <label for="return_date">Return Date:</label>
-    <input type="datetime-local" id="return_date" name="return_date" required>
-
-    <!-- Location -->
-    <label for="location">Pick-Up Location:</label>
-    <select id="location" name="location" required>
-        <option value="Kuala Lumpur">Kuala Lumpur</option>
-        <option value="Penang">Penang</option>
-        <option value="Johor Bahru">Johor Bahru</option>
-        <option value="Kota Kinabalu">Kota Kinabalu</option>
-    </select>
-
-    <button type="submit">Save Rental</button>
-</form>
-
-@if($errors->any())
-    <div style="color: red;">
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+</body>
+</html>
 
 @endsection

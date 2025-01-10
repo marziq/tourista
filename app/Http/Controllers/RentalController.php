@@ -6,6 +6,55 @@ use Illuminate\Http\Request;
 
 class RentalController extends Controller
 {
+
+    // Show the payment form
+    public function showPaymentForm(Request $request)
+    {
+        // Retrieve the vehicle ID and pass it to the view
+        $vehicle_id = $request->query('vehicle_id');
+        return view('rentalpayment', compact('vehicle_id'));
+    }
+
+    public function processPayment(Request $request)
+    {
+        // Validate the form input
+        $request->validate([
+            'pickup_date' => 'required|date|after:today',
+            'return_date' => 'required|date|after:pickup_date',
+            'vehicle_id' => 'required|string'
+        ]);
+
+        // Calculate the number of days between pick-up and return dates
+        $pickup_date = $request->pickup_date;
+        $return_date = $request->return_date;
+
+        $diffTime = abs(strtotime($return_date) - strtotime($pickup_date));
+        $diffDays = ceil($diffTime / (60 * 60 * 24)); // Calculate number of days
+
+        // Find the price per day based on the vehicle_id passed from the form
+        $vehicle_id = $request->vehicle_id;
+        $vehicles = [
+            'Toyota Corolla' => 30,
+            'Ford Mustang' => 60,
+            'BMW X5' => 100,
+            'Honda Civic' => 40,
+            'Audi A4' => 70,
+            'Nissan Altima' => 50,
+            'Kia Sportage' => 45,
+            'Mazda CX-5' => 55,
+            'Volkswagen Passat' => 65,
+        ];
+
+        $price_per_day = $vehicles[$vehicle_id] ?? 0;
+
+        // Calculate the total payment
+        $total_payment = $diffDays * $price_per_day;
+
+         // Optionally, save the booking details into your database
+
+        // Redirect to a confirmation or payment success page
+        return redirect()->route('booking.success')->with('total_payment', $total_payment);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -27,24 +76,7 @@ class RentalController extends Controller
      */
     public function store(Request $request)
     {
-        // Validation
-        $request->validate([
-            'pickup_date' => 'required|date|after:today',
-            'return_date' => 'required|date|after:pickup_date',
-            'location' => 'required|string',
-        ]);
-
-        // Process the data and save it to the database
-        // Example: Assuming you have a Rental model and a rentals table
-        \App\Models\Rental::create([
-            'pickup_date' => $request->pickup_date,
-            'return_date' => $request->return_date,
-            'location' => $request->location,
-            // You can also store additional information as needed
-        ]);
-
-        // Redirect or show a confirmation message
-        return redirect()->route('rental')->with('success', 'Rental request saved successfully!');
+       //
     }
 
     /**
