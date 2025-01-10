@@ -185,14 +185,7 @@
 								<div>Return Date</div>
 								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
 							</div>
-							<div class="search_item">
-								<div>Vehicles</div>
-								<select name="vehicles" id="vehicles" class="dropdown_item_select search_input">
-									<option value="car">Cars</option>
-                                    <option value="mpv">MPVs</option>
-                                    <option value="motorcycle">Motorcycles</option>
-								</select>
-							</div>
+
 
 							<button class="button search_button">search<span></span><span></span><span></span></button>
 						</form>
