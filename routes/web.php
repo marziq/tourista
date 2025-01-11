@@ -52,6 +52,9 @@ Route::get('/rental', function () {
     return view('rental');
 })->name('rental');
 Route::post('/rental', [RentalController::class, 'store'])->name('rental');
+Route::get('/rental', [RentalController::class, 'showVehicles'])->name('rental');
+Route::get('/vehicles', [RentalController::class, 'showVehicles'])->name('vehicles');
+
 // web.php
 Route::get('/rental-payment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');// Route for navigating to the rental payment form
 Route::post('/rental-payment', [RentalController::class, 'processPayment'])->name('rentalpayment.submit');// Route to handle the payment form submission
@@ -59,6 +62,8 @@ Route::post('/rental-payment', [RentalController::class, 'processPayment'])->nam
 Route::get('/rentalbooking-success', function () {
     return view('rentalbooking-success');
 })->name('rentalbooking.success');
+Route::get('/rentalpayment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');
+
 
 
 
