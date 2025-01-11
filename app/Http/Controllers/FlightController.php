@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -6,75 +7,46 @@ use App\Models\Flight;
 
 class FlightController extends Controller
 {
-    public function index()
-    {
-        $flights = Flight::all();
-        return view('flights.index', compact('flights'));
-    }
-
+    // Method for handling the flight search
     public function search(Request $request)
     {
+        // Start with the base query
         $query = Flight::query();
 
-        // Filter by departure
+        // Apply filters based on the request data
         if ($request->filled('departure')) {
             $query->where('departure', 'like', '%' . $request->departure . '%');
         }
 
-        // Filter by arrival
         if ($request->filled('arrival')) {
             $query->where('arrival', 'like', '%' . $request->arrival . '%');
         }
 
-        // Filter by travel date
         if ($request->filled('travel_date')) {
             $query->whereDate('travel_date', $request->travel_date);
         }
 
-        // Filter by passenger count
         if ($request->filled('passenger_count')) {
             $query->where('passenger_count', '>=', $request->passenger_count);
         }
 
+        // Execute the query and get the results
         $flights = $query->get();
 
-        return view('flights.index', compact('flights'));
+        // Return the view with the flights data
+        return view('flightresults', compact('flights'));
     }
 
-    public function mainPage()
+    // Method for handling booking (optional)
+    public function book($id)
     {
-        return view('mainpage');
-    }
+        $flight = Flight::find($id);
 
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(string $id)
-    {
-        //
-    }
-
-    public function edit(string $id)
-    {
-        //
-    }
-
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    public function destroy(string $id)
-    {
-        //
+        if ($flight) {
+            // Handle booking logic here (could be saving to a booking table or session)
+            return redirect()->route('flights.search')->with('success', 'Flight booked successfully!');
+        } else {
+            return redirect()->route('flights.search')->with('error', 'Flight not found!');
+        }
     }
 }
-
-

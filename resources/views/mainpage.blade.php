@@ -198,39 +198,29 @@
 		<form action="{{ route('flights.search') }}" method="GET" id="search_form_6" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 			<!-- Departure Field -->
 			<div class="search_item">
-				<label for="departure">Departure</label>
+				<label for="departure">DEPARTURE</label>
 				<input type="text" name="departure" id="departure" class="search_input" placeholder="Enter departure city" required>
 			</div>
 
 			<!-- Destination Field -->
 			<div class="search_item">
-				<label for="destination">Destination</label>
+				<label for="destination">DESTINATION</label>
 				<input type="text" name="destination" id="destination" class="search_input" placeholder="Enter destination" required>
 			</div>
 
 			<!-- Departure Date Field -->
 			<div class="search_item">
-				<label for="departure_date">Departure Date</label>
-				<input type="date" name="departure_date" id="departure_date" class="search_input" required>
+				<label for="departure_date">TRAVEL DATE</label>
+				<input type="date" name="travel_date" id="travel_date" class="search_input" required>
 			</div>
 
-			<!-- Return Date Field -->
+			<!-- Passenger Dropdown -->
 			<div class="search_item">
-				<label for="return_date">Return Date</label>
-				<input type="date" name="return_date" id="return_date" class="search_input">
+				<label for="adults">PASSENGERS </label>
+				<input type="number" name="a" id="passenger" class="search_input" value="1" min="1" max="20">
 			</div>
 
-			<!-- Adults Dropdown -->
-			<div class="search_item">
-				<label for="adults">Adults</label>
-				<input type="number" name="adults" id="adults" class="search_input" value="1" min="1" max="20">
-			</div>
 
-			<!-- Children Dropdown -->
-			<div class="search_item">
-				<label for="children">Children</label>
-				<input type="number" name="children" id="children" class="search_input" value="0" min="0" max="20">
-			</div>
 
 			<!-- Submit Button -->
 			<button type="submit" class="button search_button">Search</button>
