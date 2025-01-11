@@ -19,31 +19,31 @@ class VehicleSeeder extends Seeder
                 'brand' => 'Toyota',
                 'model' => 'Corolla',
                 'price_per_day' => 130.00,
-                'image' => 'public/images/toyota_corolla.jpg',//
+                'image' => 'public/images/toyota_corolla.jpg',
             ],
             [
                 'brand' => 'Ford',
                 'model' => 'Mustang',
                 'price_per_day' => 160.00,
-                'image' => 'public/images/ford_mustang.jpeg',//
+                'image' => 'public/images/ford_mustang.jpeg',
             ],
             [
                 'brand' => 'BMW',
                 'model' => 'X5',
                 'price_per_day' => 100.00,
-                'image' => 'public/images/bmw_x5.jpeg', //
+                'image' => 'public/images/bmw_x5.jpeg',
             ],
             [
                 'brand' => 'Honda',
                 'model' => 'Civic',
                 'price_per_day' => 140.00,
-                'image' => 'public/images/honda_civic.jpg',//
+                'image' => 'public/images/honda_civic.jpg',
             ],
             [
                 'brand' => 'Audi',
                 'model' => 'A4',
                 'price_per_day' => 170.00,
-                'image' => 'public/images/audi_a4.jpg',//
+                'image' => 'public/images/audi_a4.jpg',
             ],
             [
                 'brand' => 'Nissan',
