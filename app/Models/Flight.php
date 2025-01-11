@@ -12,11 +12,12 @@ class Flight extends Model
     protected $fillable = [
         'departure',
         'arrival',
-        'departure_time',
-        'arrival_time',
+        'travel_date',
+        'return_date',
         'price',
         'airline',
         'image',
+        'passenger_count',
         
     ];
 }
