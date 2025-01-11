@@ -7,10 +7,13 @@ use App\Http\Controllers\TourController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RentalController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\MainPageController;
 
 Route::get('/', function () {
     return view('mainpage');
 });
+
+Route::get('/', [MainPageController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
