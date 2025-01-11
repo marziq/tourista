@@ -9,7 +9,7 @@ class AddPriceToFlightsTable extends Migration
     public function up()
     {
         Schema::table('flights', function (Blueprint $table) {
-            $table->decimal('price', 8, 2);  // Adds a price column with two decimal places
+           $table->decimal('price', 8, 2);  // Adds a price column with two decimal places
         });
     }
 

@@ -47,10 +47,8 @@ Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
 Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 Route::get('/attractions/search', [AttractionController::class, 'search'])->name('attractions.search');
 
-
 Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
 Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
-
 
 //Tour Controller
 Route::post('/search', [TourController::class, 'search'])->name('search');
