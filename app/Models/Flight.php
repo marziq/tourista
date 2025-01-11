@@ -13,7 +13,6 @@ class Flight extends Model
         'departure',
         'arrival',
         'travel_date',
-        'return_date',
         'price',
         'airline',
         'image',

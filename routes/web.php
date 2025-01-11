@@ -3,11 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
-use App\Http\Controllers\TourController;
-use App\Http\Controllers\HotelController;
-use App\Http\Controllers\RentalController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\MainPageController;
 
 Route::get('/', function () {
     return view('mainpage');
@@ -39,6 +34,7 @@ Route::middleware([
     Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
     Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
     Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search');
+    Route::get('/flight-booking', [FlightController::class, 'showFlightBooking'])->name('flight.booking');
 
 });
 
