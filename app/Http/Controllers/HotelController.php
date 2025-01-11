@@ -10,9 +10,35 @@ class HotelController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()  // to display available hotels
+    public function index(Request $request)  // to display available hotels
     {
-        $hotels = Hotel::with('rooms')->get();
+
+        /*$hotels = Hotel::with('rooms')->get();
+        return view('hotel', compact('hotels'));*/
+
+        // Fetch all hotels from the database
+        //$hotels = Hotel::all();
+
+        // Initialize the query builder for the Hotel model
+        $query = Hotel::query();
+
+        if ($request->has('destination') && $request->destination != '') {
+            $query->where('location', 'like', '%' . $request->destination . '%');
+        }
+
+        // Filter hotels based on availability of rooms
+        /*$query->whereHas('rooms', function ($query) use ($request) {
+            $query->where('available', true);
+        });*/
+
+        $hotels = $query->with('rooms')->get();
+
+        // To display the lowest room price for each hotel
+        foreach ($hotels as $hotel) {
+            $hotel->lowest_price = $hotel->rooms->min('price');
+        }
+
+        // Pass the hotels data to the view
         return view('hotel', compact('hotels'));
     }
 
@@ -46,8 +72,21 @@ class HotelController extends Controller
      */
     public function show(string $id)  //to show hotel details
     {
-        /*$hotel = Hotel::findOrFail($id); // Fetch the hotel by its ID or return a 404 error
-        return view('hotel.show', compact('hotel')); // Return the view with hotel details*/
+        $hotel = Hotel::findOrFail($id); // Fetch the hotel by its ID or return a 404 error
+        return view('hotelRoom', compact('hotelRoom')); // Return the view with hotel details*/
+    }
+
+    /**
+     * Handle room booking.
+     */
+    public function booking(Request $request, $id)
+    {
+        $room = HotelRoom::findOrFail($id);
+        $num_rooms = $request->input('num_rooms');
+
+        // Logic to handle booking (e.g., reduce available rooms, create booking record, etc.)
+
+        return redirect()->route('hotel.show', $room->hotel_id)->with('success', 'Room booked successfully!');
     }
 
     public function search(Request $request)

@@ -129,39 +129,41 @@
 
 					<!-- Hotel Search Panel -->
 
-					<div class="search_panel active">
-						<form action="#" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-							<div class="search_item">
-								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
-							</div>
-							<div class="search_item">
-								<div>check in</div>
-								<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>check out</div>
-								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>adults</div>
-								<select name="adults" id="adults_1" class="dropdown_item_select search_input">
-									<option>01</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<div class="search_item">
-								<div>children</div>
-								<select name="children" id="children_1" class="dropdown_item_select search_input">
-									<option>0</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<button class="button search_button">search<span></span><span></span><span></span></button>
-						</form>
-					</div>
+                    <div class="search_panel active">
+                        <form action="{{ route('hotel') }}" method="POST" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                            @csrf
+                            <div class="search_item">
+                                <div>Destination</div>
+                                <input type="text" name="destination" class="destination search_input" required="required" placeholder="Enter destination">
+                            </div>
+                            <div class="search_item">
+                                <div>Check In</div>
+                                <input type="date" name="check_in" class="check_in search_input" required="required" placeholder="YYYY-MM-DD">
+                            </div>
+                            <div class="search_item">
+                                <div>Check Out</div>
+                                <input type="date" name="check_out" class="check_out search_input" required="required" placeholder="YYYY-MM-DD">
+                            </div>
+                            <div class="search_item">
+                                <div>Adults</div>
+                                <select name="adults" id="adults_1" class="dropdown_item_select search_input" required="required">
+                                    <option value="1">01</option>
+                                    <option value="2">02</option>
+                                    <option value="3">03</option>
+                                </select>
+                            </div>
+                            <div class="search_item">
+                                <div>Children</div>
+                                <select name="children" id="children_1" class="dropdown_item_select search_input" required="required">
+                                    <option value="0">0</option>
+                                    <option value="1">01</option>
+                                    <option value="2">02</option>
+                                    <option value="3">03</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="button search_button">Search<span></span><span></span><span></span></button>
+                        </form>
+                    </div>
 
 					<!-- Car Rental Search Panel -->
 
@@ -191,41 +193,50 @@
 						</form>
 					</div>
 
-					<!-- Fligh Search Panel -->
+					<!-- Flight Search Panel -->
+	<div class="search_panel">
+		<form action="{{ route('flights.search') }}" method="GET" id="search_form_6" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+			<!-- Departure Field -->
+			<div class="search_item">
+				<label for="departure">Departure</label>
+				<input type="text" name="departure" id="departure" class="search_input" placeholder="Enter departure city" required>
+			</div>
 
-					<div class="search_panel">
-						<form action="#" id="search_form_3" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-							<div class="search_item">
-								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
-							</div>
-							<div class="search_item">
-								<div>check in</div>
-								<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>check out</div>
-								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>adults</div>
-								<select name="adults" id="adults_3" class="dropdown_item_select search_input">
-									<option>01</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<div class="search_item">
-								<div>children</div>
-								<select name="children" id="children_3" class="dropdown_item_select search_input">
-									<option>0</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<button class="button search_button">search<span></span><span></span><span></span></button>
-						</form>
-					</div>
+			<!-- Destination Field -->
+			<div class="search_item">
+				<label for="destination">Destination</label>
+				<input type="text" name="destination" id="destination" class="search_input" placeholder="Enter destination" required>
+			</div>
+
+			<!-- Departure Date Field -->
+			<div class="search_item">
+				<label for="departure_date">Departure Date</label>
+				<input type="date" name="departure_date" id="departure_date" class="search_input" required>
+			</div>
+
+			<!-- Return Date Field -->
+			<div class="search_item">
+				<label for="return_date">Return Date</label>
+				<input type="date" name="return_date" id="return_date" class="search_input">
+			</div>
+
+			<!-- Adults Dropdown -->
+			<div class="search_item">
+				<label for="adults">Adults</label>
+				<input type="number" name="adults" id="adults" class="search_input" value="1" min="1" max="20">
+			</div>
+
+			<!-- Children Dropdown -->
+			<div class="search_item">
+				<label for="children">Children</label>
+				<input type="number" name="children" id="children" class="search_input" value="0" min="0" max="20">
+			</div>
+
+			<!-- Submit Button -->
+			<button type="submit" class="button search_button">Search</button>
+		</form>
+	</div>
+
 
 					<!-- Search Panel Tour package-->
 
@@ -252,7 +263,7 @@
                     </div>
                     <!--------Attraction Search Panel----------------->
                     <div class="search_panel">
-                        <form action="{{ route('attractions.index') }}" method="GET" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                        <form action="{{ route('attractions.search') }}" method="GET" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                             <!-- Destination Field -->
                             <div class="search_item">
                                 <div>Destination</div>
@@ -268,7 +279,7 @@
                                 <div>Category</div>
                                 <select name="category" id="category_5" class="dropdown_item_select search_input" required="required">
                                     <option value="anything">Anything</option>
-                                    <option value="themes park">Themes park</option>
+                                    <option value="theme park">Theme park</option>
                                     <option value="museum">Museum</option>
                                     <option value="Indoor">Indoor games</option>
                                     <option value="zoo">Zoo and Aquariums</option>
@@ -278,6 +289,7 @@
                             <button type="submit" class="button search_button">Search<span></span><span></span><span></span></button>
                         </form>
                     </div>
+
 				</div>
 			</div>
 		</div>
@@ -380,108 +392,6 @@
 		</div>
 	</div>
 
-	<!-- CTA -->
-
-	<div class="cta">
-		<!-- Image by https://unsplash.com/@thanni -->
-		<div class="cta_background" style="background-image:url(images/cta.jpg)"></div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col">
-
-					<!-- CTA Slider -->
-
-					<div class="cta_slider_container">
-						<div class="owl-carousel owl-theme cta_slider">
-
-							<!-- CTA Slider Item -->
-							<div class="owl-item cta_item text-center">
-								<div class="cta_title">maldives deluxe package</div>
-								<div class="rating_r rating_r_4">
-									<i></i>
-									<i></i>
-									<i></i>
-									<i></i>
-									<i></i>
-								</div>
-								<p class="cta_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor augue gravida lectus, et efficitur enim justo vel ligula.</p>
-								<div class="button cta_button"><div class="button_bcg"></div><a href="#">book now<span></span><span></span><span></span></a></div>
-							</div>
-
-							<!-- CTA Slider Item -->
-							<div class="owl-item cta_item text-center">
-								<div class="cta_title">maldives deluxe package</div>
-								<div class="rating_r rating_r_4">
-									<i></i>
-									<i></i>
-									<i></i>
-									<i></i>
-									<i></i>
-								</div>
-								<p class="cta_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor augue gravida lectus, et efficitur enim justo vel ligula.</p>
-								<div class="button cta_button"><div class="button_bcg"></div><a href="#">book now<span></span><span></span><span></span></a></div>
-							</div>
-
-							<!-- CTA Slider Item -->
-							<div class="owl-item cta_item text-center">
-								<div class="cta_title">maldives deluxe package</div>
-								<div class="rating_r rating_r_4">
-									<i></i>
-									<i></i>
-									<i></i>
-									<i></i>
-									<i></i>
-								</div>
-								<p class="cta_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor augue gravida lectus, et efficitur enim justo vel ligula.</p>
-								<div class="button cta_button"><div class="button_bcg"></div><a href="#">book now<span></span><span></span><span></span></a></div>
-							</div>
-
-						</div>
-
-						<!-- CTA Slider Nav - Prev -->
-						<div class="cta_slider_nav cta_slider_prev">
-							<svg version="1.1" id="Layer_4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-								width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
-								<defs>
-									<linearGradient id='cta_grad_prev'>
-										<stop offset='0%' stop-color='#426253'/>
-										<stop offset='100%' stop-color='#cdff4f'/>
-									</linearGradient>
-								</defs>
-								<path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-								M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-								C22.545,2,26,5.541,26,9.909V23.091z"/>
-								<polygon class="nav_arrow" fill="#F3F6F9" points="15.044,22.222 16.377,20.888 12.374,16.885 16.377,12.882 15.044,11.55 9.708,16.885 11.04,18.219
-								11.042,18.219 "/>
-							</svg>
-						</div>
-
-						<!-- CTA Slider Nav - Next -->
-						<div class="cta_slider_nav cta_slider_next">
-							<svg version="1.1" id="Layer_5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
-								<defs>
-									<linearGradient id='cta_grad_next'>
-										<stop offset='0%' stop-color='#426253'/>
-										<stop offset='100%' stop-color='#cdff4f'/>
-									</linearGradient>
-								</defs>
-							<path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-							M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-							C22.545,2,26,5.541,26,9.909V23.091z"/>
-							<polygon class="nav_arrow" fill="#F3F6F9" points="13.044,11.551 11.71,12.885 15.714,16.888 11.71,20.891 13.044,22.224 18.379,16.888 17.048,15.554
-							17.046,15.554 "/>
-							</svg>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-
-	</div>
 
 	<!-- Offers -->
 
@@ -815,141 +725,6 @@
 				</div>
 			</div>
 
-		</div>
-	</div>
-
-	<div class="trending">
-		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-					<h2 class="section_title">trending now</h2>
-				</div>
-			</div>
-			<div class="row trending_container">
-
-				<!-- Trending Item -->
-				<div class="col-lg-3 col-sm-6">
-					<div class="trending_item clearfix">
-						<div class="trending_image"><img src="images/trend_1.png" alt="https://unsplash.com/@fransaraco"></div>
-						<div class="trending_content">
-							<div class="trending_title"><a href="#">grand hotel</a></div>
-							<div class="trending_price">From $182</div>
-							<div class="trending_location">madrid, spain</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Trending Item -->
-				<div class="col-lg-3 col-sm-6">
-					<div class="trending_item clearfix">
-						<div class="trending_image"><img src="images/trend_2.png" alt="https://unsplash.com/@grovemade"></div>
-						<div class="trending_content">
-							<div class="trending_title"><a href="#">mars hotel</a></div>
-							<div class="trending_price">From $182</div>
-							<div class="trending_location">madrid, spain</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Trending Item -->
-				<div class="col-lg-3 col-sm-6">
-					<div class="trending_item clearfix">
-						<div class="trending_image"><img src="images/trend_3.png" alt="https://unsplash.com/@jbriscoe"></div>
-						<div class="trending_content">
-							<div class="trending_title"><a href="#">queen hotel</a></div>
-							<div class="trending_price">From $182</div>
-							<div class="trending_location">madrid, spain</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Trending Item -->
-				<div class="col-lg-3 col-sm-6">
-					<div class="trending_item clearfix">
-						<div class="trending_image"><img src="images/trend_4.png" alt="https://unsplash.com/@oowgnuj"></div>
-						<div class="trending_content">
-							<div class="trending_title"><a href="#">mars hotel</a></div>
-							<div class="trending_price">From $182</div>
-							<div class="trending_location">madrid, spain</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Trending Item -->
-				<div class="col-lg-3 col-sm-6">
-					<div class="trending_item clearfix">
-						<div class="trending_image"><img src="images/trend_5.png" alt="https://unsplash.com/@mindaugas"></div>
-						<div class="trending_content">
-							<div class="trending_title"><a href="#">grand hotel</a></div>
-							<div class="trending_price">From $182</div>
-							<div class="trending_location">madrid, spain</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Trending Item -->
-				<div class="col-lg-3 col-sm-6">
-					<div class="trending_item clearfix">
-						<div class="trending_image"><img src="images/trend_6.png" alt="https://unsplash.com/@itsnwa"></div>
-						<div class="trending_content">
-							<div class="trending_title"><a href="#">mars hotel</a></div>
-							<div class="trending_price">From $182</div>
-							<div class="trending_location">madrid, spain</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Trending Item -->
-				<div class="col-lg-3 col-sm-6">
-					<div class="trending_item clearfix">
-						<div class="trending_image"><img src="images/trend_7.png" alt="https://unsplash.com/@rktkn"></div>
-						<div class="trending_content">
-							<div class="trending_title"><a href="#">queen hotel</a></div>
-							<div class="trending_price">From $182</div>
-							<div class="trending_location">madrid, spain</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Trending Item -->
-				<div class="col-lg-3 col-sm-6">
-					<div class="trending_item clearfix">
-						<div class="trending_image"><img src="images/trend_8.png" alt="https://unsplash.com/@thoughtcatalog"></div>
-						<div class="trending_content">
-							<div class="trending_title"><a href="#">mars hotel</a></div>
-							<div class="trending_price">From $182</div>
-							<div class="trending_location">madrid, spain</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<div class="contact">
-		<div class="contact_background" style="background-image:url(images/contact.png)"></div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-5">
-					<div class="contact_image">
-
-					</div>
-				</div>
-				<div class="col-lg-7">
-					<div class="contact_form_container">
-						<div class="contact_title">get in touch</div>
-						<form action="#" id="contact_form" class="contact_form">
-							<input type="text" id="contact_form_name" class="contact_form_name input_field" placeholder="Name" required="required" data-error="Name is required.">
-							<input type="text" id="contact_form_email" class="contact_form_email input_field" placeholder="E-mail" required="required" data-error="Email is required.">
-							<input type="text" id="contact_form_subject" class="contact_form_subject input_field" placeholder="Subject" required="required" data-error="Subject is required.">
-							<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-							<button type="submit" id="form_submit_button" class="form_submit_button button">send message<span></span><span></span><span></span></button>
-						</form>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 @endsection

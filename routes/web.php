@@ -6,10 +6,14 @@ use App\Http\Controllers\AttractionController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RentalController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\MainPageController;
 
 Route::get('/', function () {
     return view('mainpage');
 });
+
+Route::get('/', [MainPageController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
@@ -34,18 +38,25 @@ Route::middleware([
     Route::get('/flights/{id}/edit', [FlightController::class, 'edit'])->name('flights.edit'); // Edit booking
     Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
     Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
+    Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search');
+
 });
 
+//Attraction
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
 Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 Route::get('/attractions/search', [AttractionController::class, 'search'])->name('attractions.search');
 
+Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
+Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
 
 //Tour Controller
 Route::post('/search', [TourController::class, 'search'])->name('search');
 
 //Hotel Controller
 Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');
+Route::post('/hotelRoom', [HotelController::class, 'show'])->name('hotelRoom');
+//Route::post('/hotelBooking', [HotelController::class, 'booking'])->name('hotelBooking');
 
 //Rental
 Route::get('/rental', function () {
