@@ -3,11 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
-use App\Http\Controllers\TourController;
-use App\Http\Controllers\HotelController;
-use App\Http\Controllers\RentalController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\MainPageController;
 
 Route::get('/', function () {
     return view('mainpage');
@@ -47,35 +42,7 @@ Route::middleware([
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
 Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 Route::get('/attractions/search', [AttractionController::class, 'search'])->name('attractions.search');
-
-
-Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
-Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
-
-
-//Tour Controller
-Route::post('/search', [TourController::class, 'search'])->name('search');
-
-//Hotel Controller
-Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');
-Route::post('/hotelRoom', [HotelController::class, 'show'])->name('hotelRoom');
-//Route::post('/hotelBooking', [HotelController::class, 'booking'])->name('hotelBooking');
-
-//Rental
-Route::get('/rental', function () {
-    return view('rental');
-})->name('rental');
-
-Route::post('/rental', [RentalController::class, 'store'])->name('rental');
-// web.php
-
-// Route for navigating to the rental payment form
-Route::get('/rental-payment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');
-
-// Route to handle the payment form submission
-Route::post('/rental-payment', [RentalController::class, 'processPayment'])->name('rentalpayment.submit');
-Route::get('/rentalbooking-success', function () {
-    return view('rentalbooking-success');
-})->name('rentalbooking.success');
-
+// route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
+// Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
+// Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 
