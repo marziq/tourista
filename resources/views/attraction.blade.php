@@ -199,7 +199,7 @@
                             {{-- <a href="#" class="btn btn-primary mt-3">Buy Now</a> --}}
 
 
-<form action="{{ route('payment.show') }}" method="POST" class="mt-3">
+<form action="{{ route('payment.show') }}" method="GET" class="mt-3">
     @csrf
     <input type="hidden" name="attraction_id" value="{{ $attraction->id }}">
     <input type="hidden" name="attraction_name" value="{{ $attraction->name }}">
