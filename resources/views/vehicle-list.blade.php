@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    @foreach ($vehicles as $vehicle)  <!-- Check if $vehicles is passed correctly -->
+    @foreach ($vehicles as $vehicle)
         <div class="card">
             <img src="{{ asset($vehicle->image) }}" alt="{{ $vehicle->brand }} {{ $vehicle->model }}">
             <h3>{{ $vehicle->brand }} {{ $vehicle->model }}</h3>

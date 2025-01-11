@@ -1,18 +1,26 @@
 @extends('master.layout')
 @section('content')
+
 <style>
     .home {
         position: relative;
         height: 150px;
         background-color: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
+
 
     .home_title {
         font-size: 3rem;
         font-weight: 700;
         letter-spacing: 2px;
         text-transform: uppercase;
+        color: #333;
     }
+
 
     .attraction-card {
         border: 1px solid #ddd;
@@ -20,6 +28,7 @@
         margin-bottom: 20px;
         padding: 15px;
     }
+
 
     .attraction-image {
         width: 100%;
@@ -29,14 +38,14 @@
     }
 
     .price {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: bold;
         color: #28a745;
     }
 </style>
 
+
 <div class="home">
-    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/about_background.jpg"></div>
     <div class="home_content">
         <div class="home_title">Attractions</div>
     </div>
@@ -47,51 +56,50 @@
     <div>No attractions variable passed to view</div>
 @endif
 
-<!-- Rest of your code -->
-<div class="container mt-5">
-    <div class="row">
-        @forelse($attractions as $attraction)
-            <div class="col-md-4 mb-4">
-                <div class="attraction-card">
 
-                    <img src="{{ asset($attraction->image) }}" alt="{{ $attraction->name }}" class="attraction-image">
-                    <h4 class="mt-3">{{ $attraction->name }}</h4>
-                    <p class="text-muted">{{ $attraction->location }}</p>
-                    <p>{{ $attraction->description }}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="price">RM {{ number_format($attraction->price, 2) }}</span>
-                        <a href="#" class="btn btn-primary">Select >></a>
+    <div class="container mt-5">
+        <div class="row">
+            @forelse($attractions as $attraction)
+                <div class="col-md-4 mb-4">
+                    <div class="attraction-card">
+                        <img src="{{ asset($attraction->image) }}" alt="{{ $attraction->name }}" class="attraction-image">
+                        <div class="card-body">
+                            <h4 class="mt-3">{{ $attraction->name }}</h4>
+                            <p class="text-muted">{{ $attraction->location }}</p>
+                            <p>{{ $attraction->description }}</p>
+                            <div class="d-flex flex-column align-items-start mt-3">
+                                <span class="price">From RM {{ number_format($attraction->price, 2) }}</span>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <div class="quantity-container">
+                                        <span class="quantity-btn" onclick="updateQuantity('{{ $attraction->id }}', 'decrease')">-</span>
+                                        <input type="number" id="quantity-{{ $attraction->id }}" class="quantity-input" value="1" min="1" onchange="updatePrice('{{ $attraction->id }}')">
+                                        <span class="quantity-btn" onclick="updateQuantity('{{ $attraction->id }}', 'increase')">+</span>
+                                    </div>
+                                    <span id="price-{{ $attraction->id }}" class="quantity-info">RM {{ number_format($attraction->price, 2) }}</span>
+                                </div>
+                            </div>
+                            {{-- <a href="#" class="btn btn-primary mt-3">Buy Now</a> --}}
+
+
+<form action="{{ route('payment.show') }}" method="GET" class="mt-3">
+    @csrf
+    <input type="hidden" name="attraction_id" value="{{ $attraction->id }}">
+    <input type="hidden" name="attraction_name" value="{{ $attraction->name }}">
+    <input type="hidden" name="location" value="{{ $attraction->location }}">
+    <input type="hidden" name="price" value="{{ $attraction->price }}">
+    <input type="hidden" name="quantity" id="quantity-input-{{ $attraction->id }}" value="1">
+    <input type="hidden" name="total_price" id="total-price-{{ $attraction->id }}" value="{{ $attraction->price }}">
+    <button type="submit" class="btn btn-primary">Buy Now</button>
+</form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @empty
-            <div class="col-12">
-                <p>No attractions found.</p>
-            </div>
-        @endforelse
+            @empty
+                <div class="col-12">
+                    <div class="alert alert-danger">No attractions found.</div>
+                </div>
+            @endforelse
+        </div>
     </div>
 </div>
 @endsection
-{{--
-<div class="container mt-5">
-    <div class="row">
-        @foreach($attractions as $attraction)
-        <div class="col-md-4 mb-4">
-            <div class="attraction-card">
-                <img src="{{ asset($attraction->image) }}" alt="{{ $attraction->name }}" class="attraction-image">
-                {{-- <img src="{{ $attraction->image }}" alt="{{ $attraction->name }}" class="attraction-image"> --}}
-                {{-- <h4 class="mt-3">{{ $attraction->name }}</h4>
-                <p class="text-muted">{{ $attraction->location }}</p>
-                <p>{{ $attraction->description }}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="price">RM {{ number_format($attraction->price, 2) }}</span>
-                    <a href="#" class="btn btn-primary">Select >></a>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-</div> --}}
-
-
-

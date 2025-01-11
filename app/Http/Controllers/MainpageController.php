@@ -1,45 +1,31 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\Models\TourPackage;
 use Illuminate\Http\Request;
-use App\Models\Attraction;
 
-class AttractionController extends Controller
+class MainpageController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        // Add this line to debug
-        $attractions = Attraction::all();
-        return view('attraction', compact('attractions'));
+        // Fetch tour packages
+        $tourPackages = TourPackage::all();
+
+        // Pass tour packages to the view
+        return view('mainpage', compact('tourPackages'));
     }
 
-    public function mainPage()
-    {
-        return view('mainpage');
-    }
-
-    public function search(Request $request)
-    {
-        $query = Attraction::query();
-
-        if ($request->filled('destination')) {
-            $query->where('location', 'like', '%' . $request->destination . '%');
-        }
-
-        if ($request->filled('category') && $request->category !== 'anything') {
-            $query->where('description', 'like', '%' . $request->category . '%');
-        }
-
-        $attractions = $query->get();
-        return view('attraction', compact('attractions'));
-    }
-
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         //
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -49,7 +35,6 @@ class AttractionController extends Controller
         //
     }
 
-
     /**
      * Display the specified resource.
      */
@@ -57,7 +42,6 @@ class AttractionController extends Controller
     {
         //
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -67,7 +51,6 @@ class AttractionController extends Controller
         //
     }
 
-
     /**
      * Update the specified resource in storage.
      */
@@ -76,7 +59,6 @@ class AttractionController extends Controller
         //
     }
 
-
     /**
      * Remove the specified resource from storage.
      */
@@ -84,5 +66,4 @@ class AttractionController extends Controller
     {
         //
     }
-
 }

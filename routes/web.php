@@ -3,13 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
-use App\Http\Controllers\TourController;
-use App\Http\Controllers\HotelController;
-use App\Http\Controllers\RentalController;
 
 Route::get('/', function () {
     return view('mainpage');
 });
+
+Route::get('/', [MainPageController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
@@ -34,12 +33,19 @@ Route::middleware([
     Route::get('/flights/{id}/edit', [FlightController::class, 'edit'])->name('flights.edit'); // Edit booking
     Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
     Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
+    Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search');
+    Route::get('/flight-booking', [FlightController::class, 'showFlightBooking'])->name('flight.booking');
+
 });
 
+//Attraction
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
 Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 Route::get('/attractions/search', [AttractionController::class, 'search'])->name('attractions.search');
 
+//payment
+Route::get('/payment', [PaymentController::class, 'show'])->name('payment.show'); // Displays payment form
+Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process'); // Processes the paymentt
 
 //Tour Controller
 Route::post('/search', [TourController::class, 'search'])->name('search');
@@ -52,17 +58,19 @@ Route::post('/hotelBook', [HotelController::class, 'book'])->name('hotelBook'); 
 Route::get('/rental', function () {
     return view('rental');
 })->name('rental');
-
 Route::post('/rental', [RentalController::class, 'store'])->name('rental');
+Route::get('/rental', [RentalController::class, 'showVehicles'])->name('rental');
+Route::get('/vehicles', [RentalController::class, 'showVehicles'])->name('vehicles');
+
 // web.php
-
-// Route for navigating to the rental payment form
-Route::get('/rental-payment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');
-
-// Route to handle the payment form submission
-Route::post('/rental-payment', [RentalController::class, 'processPayment'])->name('rentalpayment.submit');
+Route::get('/rental-payment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');// Route for navigating to the rental payment form
+Route::post('/rental-payment', [RentalController::class, 'processPayment'])->name('rentalpayment.submit');// Route to handle the payment form submission
+// Route for success confirmation after booking
 Route::get('/rentalbooking-success', function () {
     return view('rentalbooking-success');
 })->name('rentalbooking.success');
+Route::get('/rentalpayment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');
+
+
 
 

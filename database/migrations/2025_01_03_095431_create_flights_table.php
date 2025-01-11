@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateFlightsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
-            $table->string('departure_airport');
-            $table->string('arrival_airport');
-            $table->string('departure_detail');
-            $table->string('arrival_detail');
-            $table->float('price', 2);
-            $table->string('image')->nullable();
+            $table->string('departure'); // Departure location
+            $table->string('arrival'); // Arrival location
+            $table->date('travel_date'); // Travel date
+            $table->integer('passenger_count'); // Number of passengers
+            $table->decimal('price', 8, 2);  // Define price column
+            $table->string('airline');
             $table->timestamps();
         });
     }

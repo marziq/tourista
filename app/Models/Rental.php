@@ -9,13 +9,23 @@ class Rental extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'pick_up_loc',
-        'brand',
-        'model',       // Brand of the vehicle
-        'price_per_day',
-        'pick_up_date',
+        'vehicle_id',
+        'pickup_date',
         'return_date',
-        'total',
-        'available',   // Availability status
+        'price_per_day',
+        'number_of_days',
+        'total_payment'
     ];
+
+    public static function isAvailable($vehicleId, $pickupDate, $returnDate)
+    {
+        return !self::where('vehicle_id', $vehicleId)
+            ->where(function ($query) use ($pickupDate, $returnDate) {
+                $query->whereBetween('pickup_date', [$pickupDate, $returnDate])
+                      ->orWhereBetween('return_date', [$pickupDate, $returnDate])
+                      ->orWhereRaw('? BETWEEN pickup_date AND return_date', [$pickupDate])
+                      ->orWhereRaw('? BETWEEN pickup_date AND return_date', [$returnDate]);
+            })
+            ->exists();
+    }
 }

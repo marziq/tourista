@@ -2,69 +2,51 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Flight;
 use Illuminate\Http\Request;
+use App\Models\Flight;
 
 class FlightController extends Controller
 {
-    // Show search form
-    public function index(Request $request)
+    // Method for handling the flight search
+    public function search(Request $request)
     {
-        if ($request->has(['departure', 'arrival', 'travel_date'])) {
-            $flights = Flight::where('departure', $request->departure)
-                ->where('arrival', $request->arrival)
-                ->where('travel_date', $request->travel_date)
-                ->get();
-            return view('flights.results', compact('flights'));
+        // Start with the base query
+        $query = Flight::query();
+
+        // Apply filters based on the request data
+        if ($request->filled('departure')) {
+            $query->where('departure', 'like', '%' . $request->departure . '%');
         }
-        return view('flights.search');
+
+        if ($request->filled('arrival')) {
+            $query->where('arrival', 'like', '%' . $request->arrival . '%');
+        }
+
+        if ($request->filled('travel_date')) {
+            $query->whereDate('travel_date', $request->travel_date);
+        }
+
+        if ($request->filled('passenger_count')) {
+            $query->where('passenger_count', '>=', $request->passenger_count);
+        }
+
+        // Execute the query and get the results
+        $flights = $query->get();
+
+        // Return the view with the flights data
+        return view('flightresults', compact('flights'));
     }
 
-    // Store a new flight booking
-    public function store(Request $request)
+    // Method for handling booking (optional)
+    public function book($id)
     {
-        $validated = $request->validate([
-            'departure' => 'required',
-            'arrival' => 'required',
-            'travel_date' => 'required|date',
-            'passenger_count' => 'required|integer|min:1',
-        ]);
+        $flight = Flight::find($id);
 
-        Flight::create($validated);
-
-        return redirect()->route('flights.index')->with('success', 'Flight booked successfully!');
-    }
-
-    // Edit booking form
-    public function edit($id)
-    {
-        $flight = Flight::findOrFail($id);
-        return view('flights.edit', compact('flight'));
-    }
-
-    // Update booking
-    public function update(Request $request, $id)
-    {
-        $flight = Flight::findOrFail($id);
-
-        $validated = $request->validate([
-            'travel_date' => 'required|date',
-            'passenger_count' => 'required|integer|min:1',
-        ]);
-
-        $flight->update($validated);
-
-        return redirect()->route('flights.index')->with('success', 'Booking updated successfully!');
-    }
-
-    // Delete booking
-    public function destroy($id)
-    {
-        $flight = Flight::findOrFail($id);
-        $flight->delete();
-
-        return redirect()->route('flights.index')->with('success', 'Booking canceled successfully!');
+        if ($flight) {
+            // Handle booking logic here (could be saving to a booking table or session)
+            return redirect()->route('flights.search')->with('success', 'Flight booked successfully!');
+        } else {
+            return redirect()->route('flights.search')->with('error', 'Flight not found!');
+        }
     }
 }
-
-
