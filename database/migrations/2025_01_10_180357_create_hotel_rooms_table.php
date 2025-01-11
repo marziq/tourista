@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('room');
             $table->decimal('price', 8, 2); // Add price column
             $table->boolean('available');
+            $table->date('checkin_date');
+            $table->date('checkout_date');
             $table->timestamps();
-
 
             // Define the foreign key constraint
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
