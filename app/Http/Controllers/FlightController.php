@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class FlightController extends Controller
 {
+    // Show search form
     public function index(Request $request)
     {
         // Start with all flights
@@ -51,6 +52,39 @@ class FlightController extends Controller
 
         Flight::create($validated);
 
-        return redirect()->route('flights.index')->with('success', 'Flight created successfully!');
+        return redirect()->route('flights.index')->with('success', 'Flight booked successfully!');
+    }
+
+    // Edit booking form
+    public function edit($id)
+    {
+        $flight = Flight::findOrFail($id);
+        return view('flights.edit', compact('flight'));
+    }
+
+    // Update booking
+    public function update(Request $request, $id)
+    {
+        $flight = Flight::findOrFail($id);
+
+        $validated = $request->validate([
+            'travel_date' => 'required|date',
+            'passenger_count' => 'required|integer|min:1',
+        ]);
+
+        $flight->update($validated);
+
+        return redirect()->route('flights.index')->with('success', 'Booking updated successfully!');
+    }
+
+    // Delete booking
+    public function destroy($id)
+    {
+        $flight = Flight::findOrFail($id);
+        $flight->delete();
+
+        return redirect()->route('flights.index')->with('success', 'Booking canceled successfully!');
     }
 }
+
+

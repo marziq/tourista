@@ -11,36 +11,43 @@ class AttractionController extends Controller
     {
         // Add this line to debug
         $attractions = Attraction::all();
-
-
         return view('attraction', compact('attractions'));
     }
 
-    public function mainPage()
-    {
-        return view('mainpage');
-    }
+
+
 
     public function search(Request $request)
     {
         $query = Attraction::query();
 
+
+        // Filter by destination (location)
         if ($request->filled('destination')) {
             $query->where('location', 'like', '%' . $request->destination . '%');
         }
 
-        if ($request->filled('category') && $request->category !== 'anything') {
-            $query->where('description', 'like', '%' . $request->category . '%');
-        }
+
+
 
         $attractions = $query->get();
+
+
         return view('attraction', compact('attractions'));
     }
+    public function mainPage()
+    {
+        return view('mainpage');
+    }
+
+
+
 
     public function create()
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -50,6 +57,7 @@ class AttractionController extends Controller
         //
     }
 
+
     /**
      * Display the specified resource.
      */
@@ -57,6 +65,7 @@ class AttractionController extends Controller
     {
         //
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -66,6 +75,7 @@ class AttractionController extends Controller
         //
     }
 
+
     /**
      * Update the specified resource in storage.
      */
@@ -73,6 +83,7 @@ class AttractionController extends Controller
     {
         //
     }
+
 
     /**
      * Remove the specified resource from storage.
