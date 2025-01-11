@@ -3,16 +3,21 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
-use App\Http\Controllers\PaymentController;
+
 Route::get('/', function () {
     return view('mainpage');
 });
+
+Route::get('/', [MainPageController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
 });
 
-// Flight booking routes
+Route::get('/offers', function () {
+    return view('offers');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -28,14 +33,15 @@ Route::middleware([
     Route::get('/flights/{id}/edit', [FlightController::class, 'edit'])->name('flights.edit'); // Edit booking
     Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
     Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
+    Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search');
+
 });
 
+//Attraction
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
 Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 Route::get('/attractions/search', [AttractionController::class, 'search'])->name('attractions.search');
-// This should display the payment form (GET request)
-Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
-
-// This should process the payment (POST request)
-Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
+// route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
+// Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
+// Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 

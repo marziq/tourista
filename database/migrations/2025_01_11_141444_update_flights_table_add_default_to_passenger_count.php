@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hotels', function (Blueprint $table) {
-            $table->id(); // Default primary key
-            $table->string('name');
-            $table->string('location');
-            $table->string('image')->nullable();
-            $table->string('description')->nullable();
-            $table->timestamps();
+        Schema::table('passenger_count', function (Blueprint $table) {
+            //
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hotels');
+        Schema::table('passenger_count', function (Blueprint $table) {
+            //
+        });
     }
 };
