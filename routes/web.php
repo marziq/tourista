@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
-
+use App\Http\Controllers\PaymentController;
 Route::get('/', function () {
     return view('mainpage');
 });
@@ -33,7 +33,9 @@ Route::middleware([
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
 Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 Route::get('/attractions/search', [AttractionController::class, 'search'])->name('attractions.search');
-// route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
-// Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
-// Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
+// This should display the payment form (GET request)
+Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
+
+// This should process the payment (POST request)
+Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
 

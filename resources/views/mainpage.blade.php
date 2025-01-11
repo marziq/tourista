@@ -262,9 +262,10 @@
 							<button class="button search_button">search<span></span><span></span><span></span></button>
 						</form>
 					</div>
-                    <div class="search_panel">
 
-                        <form action="{{ route('attractions.index') }}" method="GET" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+
+                    <div class="search_panel">
+                        <form action="{{ route('attractions.search') }}" method="GET" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                             <!-- Destination Field -->
                             <div class="search_item">
                                 <div>Destination</div>
@@ -280,7 +281,7 @@
                                 <div>Category</div>
                                 <select name="category" id="category_5" class="dropdown_item_select search_input" required="required">
                                     <option value="anything">Anything</option>
-                                    <option value="themes park">Themes park</option>
+                                    <option value="theme park">Theme park</option>
                                     <option value="museum">Museum</option>
                                     <option value="Indoor">Indoor games</option>
                                     <option value="zoo">Zoo and Aquariums</option>
@@ -289,112 +290,13 @@
                             <!-- Submit Button -->
                             <button type="submit" class="button search_button">Search<span></span><span></span><span></span></button>
                         </form>
+                    </div>
 
 
-                    {{-- <!-- Search Panel -->
-<div class="search_panel">
-    <form action="{{ route('attractions.search') }}" id="search_form_5" method="GET" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-        <!-- Destination Field -->
-        <div class="search_item">
-            <div>Destination</div>
-            <input type="text" name="destination" class="destination search_input" placeholder="Enter destination" required="required">
-        </div>
 
-        <!-- Date Field -->
-        <div class="search_item">
-            <div>Date</div>
-            <input type="text" name="date" class="date search_input" placeholder="YYYY-MM-DD " required="required">
-        </div>
 
-        <!-- Category Field -->
-        <div class="search_item">
-            <div>Category</div>
-            <select name="category" id="category_5" class="dropdown_item_select search_input" required="required">
-                <option value="anything">Anything</option>
-                <option value="adventure">Adventure</option>
-                <option value="culture">Culture</option>
-                <option value="nature">Nature</option>
-                <option value="beach">Beach</option>
-            </select>
-        </div>
 
-        <!-- Submit Button -->
-        <button class="button search_button">Search<span></span><span></span><span></span></button>
-    </form>
-</div> --}}
 
-{{--
-					<!-- Search Panel -->
-
-					<div class="search_panel">
-						<form action="#" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-							<div class="search_item">
-								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
-							</div>
-							<div class="search_item">
-								<div>check in</div>
-								<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>check out</div>
-								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>adults</div>
-								<select name="adults" id="adults_5" class="dropdown_item_select search_input">
-									<option>01</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<div class="search_item">
-								<div>children</div>
-								<select name="children" id="children_5" class="dropdown_item_select search_input">
-									<option>0</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<button class="button search_button">search<span></span><span></span><span></span></button>
-						</form>
-					</div> --}}
-
-					<!-- Search Panel -->
-
-					<div class="search_panel">
-						<form action="#" id="search_form_6" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-							<div class="search_item">
-								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
-							</div>
-							<div class="search_item">
-								<div>check in</div>
-								<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>check out</div>
-								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>adults</div>
-								<select name="adults" id="adults_6" class="dropdown_item_select search_input">
-									<option>01</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<div class="search_item">
-								<div>children</div>
-								<select name="children" id="children_6" class="dropdown_item_select search_input">
-									<option>0</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<button class="button search_button">search<span></span><span></span><span></span></button>
-						</form>
-					</div>
 				</div>
 			</div>
 		</div>
