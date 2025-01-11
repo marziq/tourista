@@ -28,6 +28,7 @@ Route::middleware([
     })->name('dashboard');
 
     // Add flight routes here
+    Route::get('/', [FlightController::class, 'mainPage'])->name('main.page');
     Route::get('/flights', [FlightController::class, 'index'])->name('flights.index'); // Search & display available flights
     Route::post('/flights', [FlightController::class, 'store'])->name('flights.store'); // Book a flight
     Route::get('/flights/{id}/edit', [FlightController::class, 'edit'])->name('flights.edit'); // Edit booking
