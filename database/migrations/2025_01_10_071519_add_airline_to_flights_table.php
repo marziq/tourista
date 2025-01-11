@@ -6,17 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 class AddAirlineToFlightsTable extends Migration
 {
-    public function up()
-    {
-        Schema::table('flights', function (Blueprint $table) {
-            $table->string('airline');  // Adds the airline column
-        });
-    }
+    // In the migration file:
+public function up()
+{
+    Schema::table('flights', function (Blueprint $table) {
+        $table->integer('passenger_count')->default(0)->change();
+    });
+}
 
-    public function down()
-    {
-        Schema::table('flights', function (Blueprint $table) {
-            $table->dropColumn('airline');  // Drops the airline column if this migration is rolled back
-        });
-    }
+public function down()
+{
+    Schema::table('flights', function (Blueprint $table) {
+        $table->integer('passenger_count')->change();
+    });
+}
 }
