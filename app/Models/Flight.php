@@ -17,6 +17,6 @@ class Flight extends Model
         'price',
         'airline',
         'image',
-        'travel_date', // Add this if it's part of the flight attributes
+        
     ];
 }

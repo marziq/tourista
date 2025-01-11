@@ -35,6 +35,8 @@ Route::middleware([
     Route::get('/flights/{id}/edit', [FlightController::class, 'edit'])->name('flights.edit'); // Edit booking
     Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
     Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
+    Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search');
+
 });
 
 //Attraction
