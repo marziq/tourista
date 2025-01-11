@@ -19,5 +19,5 @@ class PaymentHistory extends Model
         'total_price',
         'payment_method',
     ];
-}
 
+}

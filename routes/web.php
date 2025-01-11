@@ -43,7 +43,35 @@ Route::middleware([
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
 Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 Route::get('/attractions/search', [AttractionController::class, 'search'])->name('attractions.search');
-// route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
-// Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
-// Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
+
+//payment
+Route::get('/payment', [PaymentController::class, 'show'])->name('payment.show'); // Displays payment form
+Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process'); // Processes the paymentt
+
+//Tour Controller
+Route::post('/search', [TourController::class, 'search'])->name('search');
+
+//Hotel Controller
+Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');  //display available hotels
+Route::post('/hotelBook', [HotelController::class, 'book'])->name('hotelBook'); // Book a room
+
+//Rental
+Route::get('/rental', function () {
+    return view('rental');
+})->name('rental');
+Route::post('/rental', [RentalController::class, 'store'])->name('rental');
+Route::get('/rental', [RentalController::class, 'showVehicles'])->name('rental');
+Route::get('/vehicles', [RentalController::class, 'showVehicles'])->name('vehicles');
+
+// web.php
+Route::get('/rental-payment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');// Route for navigating to the rental payment form
+Route::post('/rental-payment', [RentalController::class, 'processPayment'])->name('rentalpayment.submit');// Route to handle the payment form submission
+// Route for success confirmation after booking
+Route::get('/rentalbooking-success', function () {
+    return view('rentalbooking-success');
+})->name('rentalbooking.success');
+Route::get('/rentalpayment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');
+
+
+
 
