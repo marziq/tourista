@@ -254,7 +254,7 @@
                     </div>
                     <!--------Attraction Search Panel----------------->
                     <div class="search_panel">
-                        <form action="{{ route('attractions.index') }}" method="GET" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                        <form action="{{ route('attractions.search') }}" method="GET" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                             <!-- Destination Field -->
                             <div class="search_item">
                                 <div>Destination</div>
@@ -270,7 +270,7 @@
                                 <div>Category</div>
                                 <select name="category" id="category_5" class="dropdown_item_select search_input" required="required">
                                     <option value="anything">Anything</option>
-                                    <option value="themes park">Themes park</option>
+                                    <option value="theme park">Theme park</option>
                                     <option value="museum">Museum</option>
                                     <option value="Indoor">Indoor games</option>
                                     <option value="zoo">Zoo and Aquariums</option>
@@ -280,6 +280,7 @@
                             <button type="submit" class="button search_button">Search<span></span><span></span><span></span></button>
                         </form>
                     </div>
+
 				</div>
 			</div>
 		</div>
