@@ -27,11 +27,13 @@ Route::middleware([
     })->name('dashboard');
 
     // Add flight routes here
-    Route::get('/flights', [FlightController::class, 'index'])->name('flights.index'); // Search & display available flights
-    Route::post('/flights', [FlightController::class, 'store'])->name('flights.store'); // Book a flight
-    Route::get('/flights/{id}/edit', [FlightController::class, 'edit'])->name('flights.edit'); // Edit booking
-    Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
-    Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
+Route::get('/flights', [FlightController::class, 'index'])->name('flights.index'); // Search & display available flights
+Route::post('/flights', [FlightController::class, 'store'])->name('flights.store'); // Book a flight
+Route::get('/flights/{flight}', [FlightController::class, 'show'])->name('flights.show'); // Show booking details
+Route::get('/flights/{id}/edit', [FlightController::class, 'edit'])->name('flights.edit'); // Edit booking
+Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
+Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
+
 });
 
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');

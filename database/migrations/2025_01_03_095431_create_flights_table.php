@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('arrival'); // Arrival location
             $table->date('travel_date'); // Travel date
             $table->integer('passenger_count'); // Number of passengers
+            $table->decimal('price', 8, 2);  // Define price column
+            $table->string('airline');
             $table->timestamps();
         });
     }
