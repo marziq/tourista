@@ -16,63 +16,51 @@
     @if($flights->isEmpty())
         <p>No flights found matching your search criteria.</p>
     @else
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Departure</th>
-                    <th>Arrival</th>
-                    <th>Travel Date</th>
-                    <th>Price (RM)</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="results_container">
+            <div class="flights_list">
                 @foreach($flights as $flight)
-                <tr>
-                    <td>{{ $flight->departure }}</td>
-                    <td>{{ $flight->arrival }}</td>
-                    <td>{{ $flight->travel_date }}</td>
-                    <td>{{ number_format($flight->price, 2) }}</td>
-                    <td>
+                <div class="flight_card">
+                    <!-- Ensure the image path is correct -->
+                    <img src="{{ asset('storage/flights/' . $flight->image) }}" alt="Flight Image" class="flight_image">
+                    <div class="flight_details">
+                        <h2>{{ $flight->departure }} to {{ $flight->arrival }}</h2>
+                        <p>Date: {{ $flight->travel_date }}</p>
+                        <p>Price: RM {{ number_format($flight->price, 2) }}</p>
+                        <p>Airline: {{ $flight->airline }}</p>
                         <a href="{{ route('flights.book', $flight->id) }}" class="btn btn-primary">Book Now</a>
-                    </td>
-                </tr>
+                    </div>
+                </div>
                 @endforeach
-            </tbody>
-        </table>
+            </div>
+        </div>
     @endif
 @endsection
 
-
 <style>
-
-.search_form_container {
+.results_container {
     padding: 20px;
-    background: #f4f4f4;
+}
+.flights_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.flight_card {
+    border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.search_form_container .form-group {
-    margin-bottom: 15px;
-}
-
-.search_form_container button {
-    background-color: #007bff;
-    color: white;
-}
-
-table {
+.flight_image {
     width: 100%;
-    margin-top: 20px;
+    height: 200px;
+    object-fit: cover;
 }
-
-table th, table td {
-    text-align: center;
+.flight_details {
+    padding: 15px;
 }
-
-table th {
-    background-color: #f8f9fa;
+.flight_details h2 {
+    margin: 0 0 10px;
 }
-
 </style>

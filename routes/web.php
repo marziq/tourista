@@ -28,13 +28,23 @@ Route::middleware([
     })->name('dashboard');
 
     // Add flight routes here
-    Route::get('/flights', [FlightController::class, 'index'])->name('flights.index'); // Search & display available flights
-    Route::post('/flights', [FlightController::class, 'store'])->name('flights.store'); // Book a flight
-    Route::get('/flights/{id}/edit', [FlightController::class, 'edit'])->name('flights.edit'); // Edit booking
-    Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
-    Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
-    Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search');
-    Route::get('/flight-booking', [FlightController::class, 'showFlightBooking'])->name('flight.booking');
+ // Flight Routes
+Route::get('/', [FlightController::class, 'mainPage'])->name('main.page');
+
+// Display all available flights
+Route::get('/flights', [FlightController::class, 'index'])->name('flights.index');
+
+// Search flights (no authentication needed)
+Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search')->withoutMiddleware('auth');
+
+
+// Book a flight (no authentication needed)
+Route::get('/flights/book/{id}', [FlightController::class, 'book'])->name('flights.book');
+
+// Create a new flight (authentication might be needed if you want to restrict access)
+Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
+
+
 
 });
 
@@ -51,9 +61,8 @@ Route::post('/payment/process', [PaymentController::class, 'process'])->name('pa
 Route::post('/search', [TourController::class, 'search'])->name('search');
 
 //Hotel Controller
-Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');
-Route::post('/hotelRoom', [HotelController::class, 'show'])->name('hotelRoom');
-//Route::post('/hotelBooking', [HotelController::class, 'booking'])->name('hotelBooking');
+Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');  //display available hotels
+Route::post('/hotelBook', [HotelController::class, 'book'])->name('hotelBook'); // Book a room
 
 //Rental
 Route::get('/rental', function () {

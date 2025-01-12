@@ -1,5 +1,4 @@
-@extends('master.layout')
-
+@extends('layouts.master')
 @section('content')
 
 <style>
@@ -36,12 +35,6 @@
     .flight-card:hover {
         transform: translateY(-10px);
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .flight-image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
     }
 
     .card-body {
@@ -84,15 +77,6 @@
     .btn-primary:hover {
         background-color: #0056b3;
         transform: scale(1.05);
-    }
-
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .col-md-4 {
-        display: flex;
     }
 
     .quantity-container {
@@ -141,46 +125,62 @@
     </div>
 </div>
 
-<div class="container mt-5">
-    <div class="row">
-        @foreach ($flights as $flight)
-            <div class="col-md-4 mb-4">
-                <div class="flight-card">
-                    <img src="{{ $flight['image'] }}" alt="{{ $flight['departure'] }} to {{ $flight['arrival'] }}" class="flight-image">
-                    <div class="card-body">
-                        <h4 class="mt-3">{{ $flight['departure'] }} to {{ $flight['arrival'] }}</h4>
-                        <p class="text-muted">Airline: {{ $flight['airline'] }}</p>
-                        <p>Travel Date: {{ $flight['travel_date'] }}</p>
-                        <div class="d-flex flex-column align-items-start mt-3">
-                            <span class="price">From RM {{ number_format($flight['price'], 2) }}</span>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <div class="quantity-container">
-                                    <span class="quantity-btn" onclick="updateQuantity('{{ $loop->index }}', 'decrease')">-</span>
-                                    <input type="number" id="quantity-{{ $loop->index }}" class="quantity-input" value="1" min="1" onchange="updatePrice('{{ $loop->index }}', {{ $flight['price'] }})">
-                                    <span class="quantity-btn" onclick="updateQuantity('{{ $loop->index }}', 'increase')">+</span>
+<div class="fullcontainer">
+    @if(isset($flights))
+        <div class="container mt-4">
+            <div class="alert alert-info">Number of flights: {{ $flights->count() }}</div>
+        </div>
+    @else
+        <div class="container mt-4">
+            <div class="alert alert-warning">No flights variable passed to view.</div>
+        </div>
+    @endif
+
+    <div class="container mt-5">
+        <div class="row">
+            @forelse($flights as $flight)
+                <div class="col-md-4 mb-4">
+                    <div class="flight-card">
+                        <div class="card-body">
+                            <h4 class="mt-3">{{ $flight->flight_name }}</h4>
+                            <p class="text-muted">{{ $flight->destination }}</p>
+                            <p>{{ $flight->description }}</p>
+                            <div class="d-flex flex-column align-items-start mt-3">
+                                <span class="price">From RM {{ number_format($flight->price, 2) }}</span>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <div class="quantity-container">
+                                        <span class="quantity-btn" onclick="updateQuantity('{{ $flight->id }}', 'decrease')">-</span>
+                                        <input type="number" id="quantity-{{ $flight->id }}" class="quantity-input" value="1" min="1" onchange="updatePrice('{{ $flight->id }}')">
+                                        <span class="quantity-btn" onclick="updateQuantity('{{ $flight->id }}', 'increase')">+</span>
+                                    </div>
+                                    <span id="price-{{ $flight->id }}" class="quantity-info">RM {{ number_format($flight->price, 2) }}</span>
                                 </div>
-                                <span id="price-{{ $loop->index }}" class="quantity-info">RM {{ number_format($flight['price'], 2) }}</span>
                             </div>
+                            <form action="{{ route('payment.show') }}" method="POST" class="mt-3">
+                                @csrf
+                                <input type="hidden" name="flight_id" value="{{ $flight->id }}">
+                                <input type="hidden" name="flight_name" value="{{ $flight->flight_name }}">
+                                <input type="hidden" name="destination" value="{{ $flight->destination }}">
+                                <input type="hidden" name="price" value="{{ $flight->price }}">
+                                <input type="hidden" name="quantity" id="quantity-input-{{ $flight->id }}" value="1">
+                                <input type="hidden" name="total_price" id="total-price-{{ $flight->id }}" value="{{ $flight->price }}">
+                                <button type="submit" class="btn btn-primary">Book Now</button>
+                            </form>
                         </div>
-                        <form action="{{ route('flightpayment') }}" method="POST" class="mt-3">
-                            @csrf
-                            <input type="hidden" name="departure" value="{{ $flight['departure'] }}">
-                            <input type="hidden" name="arrival" value="{{ $flight['arrival'] }}">
-                            <input type="hidden" name="price" value="{{ $flight['price'] }}">
-                            <input type="hidden" name="quantity" id="quantity-input-{{ $loop->index }}" value="1">
-                            <input type="hidden" name="total_price" id="total-price-{{ $loop->index }}" value="{{ $flight['price'] }}">
-                            <button type="submit" class="btn btn-primary">Book Now</button>
-                        </form>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @empty
+                <div class="col-12">
+                    <div class="alert alert-danger">No flights found.</div>
+                </div>
+            @endforelse
+        </div>
     </div>
 </div>
 
 <script>
-    function updateQuantity(index, action) {
-        let quantityInput = document.getElementById('quantity-' + index);
+    function updateQuantity(flightId, action) {
+        let quantityInput = document.getElementById('quantity-' + flightId);
         let quantity = parseInt(quantityInput.value);
 
         if (action === 'increase') {
@@ -190,18 +190,19 @@
         }
 
         quantityInput.value = quantity;
-        updatePrice(index, parseFloat('{{ json_encode(array_column($flights, "price")) }}'[index]));
+        updatePrice(flightId);
     }
 
-    function updatePrice(index, price) {
-        let quantity = document.getElementById('quantity-' + index).value;
+    function updatePrice(flightId) {
+        let quantity = document.getElementById('quantity-' + flightId).value;
+        let price = parseFloat(document.getElementById('price-' + flightId).dataset.price);
         let totalPrice = price * quantity;
 
-        document.getElementById('price-' + index).textContent = 'RM ' + totalPrice.toFixed(2);
+        document.getElementById('price-' + flightId).textContent = 'RM ' + totalPrice.toFixed(2);
 
         // Update hidden inputs for form submission
-        document.getElementById('quantity-input-' + index).value = quantity;
-        document.getElementById('total-price-' + index).value = totalPrice.toFixed(2);
+        document.getElementById('quantity-input-' + flightId).value = quantity;
+        document.getElementById('total-price-' + flightId).value = totalPrice.toFixed(2);
     }
 </script>
 

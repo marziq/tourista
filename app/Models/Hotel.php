@@ -13,7 +13,7 @@ class Hotel extends Model
     protected $table = 'hotels';
 
     // Add fillable fields
-    protected $fillable = ['name', 'location', 'image', 'description'];
+    protected $fillable = ['name', 'location', 'price', 'description', 'available_room', 'image'];
 
     public function rooms()
     {

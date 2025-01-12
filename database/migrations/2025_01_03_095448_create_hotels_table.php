@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id(); // Default primary key
             $table->string('name');
             $table->string('location');
-            $table->string('image')->nullable();
-            $table->string('description')->nullable();
+            $table->decimal('price', 8, 2);
+            $table->string('description');
+            $table->integer('available_rooms');
+            $table->string('image');
             $table->timestamps();
+
         });
     }
 
