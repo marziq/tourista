@@ -1,9 +1,15 @@
 <?php
+use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
-
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\RentalController;
+use App\Http\Controllers\TourController;
+use App\Http\Controllers\HotelController;
+use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\ProfileController;
 Route::get('/', function () {
     return view('mainpage');
 });
@@ -56,6 +62,10 @@ Route::get('/attractions/search', [AttractionController::class, 'search'])->name
 //payment
 Route::get('/payment', [PaymentController::class, 'show'])->name('payment.show'); // Displays payment form
 Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process'); // Processes the paymentt
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show'); // Displays the profile page
+Route::get('/profile', [PaymentController::class, 'profile'])->name('profile.show');
+Route::delete('/payments/{id}', [PaymentController::class, 'destroy'])->name('payments.destroy');
+Route::put('/payments/{id}', [PaymentController::class, 'update'])->name('payments.update');
 
 //Tour Controller
 Route::post('/search', [TourController::class, 'search'])->name('search');
