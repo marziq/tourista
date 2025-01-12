@@ -256,8 +256,7 @@
 						</form>
 					</div>
                     <div class="search_panel">
-
-                        <form action="{{ route('attractions.index') }}" method="GET" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                        <form action="{{ route('attractions.search') }}" method="GET" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                             <!-- Destination Field -->
                             <div class="search_item">
                                 <div>Destination</div>
@@ -284,65 +283,10 @@
                         </form>
                     </div>
 
-        <!-- Date Field -->
-        <div class="search_item">
-            <div>Date</div>
-            <input type="text" name="date" class="date search_input" placeholder="YYYY-MM-DD " required="required">
-        </div>
 
-        <!-- Category Field -->
-        <div class="search_item">
-            <div>Category</div>
-            <select name="category" id="category_5" class="dropdown_item_select search_input" required="required">
-                <option value="anything">Anything</option>
-                <option value="adventure">Adventure</option>
-                <option value="culture">Culture</option>
-                <option value="nature">Nature</option>
-                <option value="beach">Beach</option>
-            </select>
-        </div>
 
-        <!-- Submit Button -->
-        <button class="button search_button">Search<span></span><span></span><span></span></button>
-    </form>
-</div> --}}
 
-{{--
-					<!-- Search Panel -->
 
-					<div class="search_panel">
-						<form action="#" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-							<div class="search_item">
-								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
-							</div>
-							<div class="search_item">
-								<div>check in</div>
-								<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>check out</div>
-								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>adults</div>
-								<select name="adults" id="adults_5" class="dropdown_item_select search_input">
-									<option>01</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<div class="search_item">
-								<div>children</div>
-								<select name="children" id="children_5" class="dropdown_item_select search_input">
-									<option>0</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<button class="button search_button">search<span></span><span></span><span></span></button>
-						</form>
-					</div> --}}
 
 					<!-- Search Panel -->
 
@@ -396,7 +340,7 @@
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
 					<div class="intro_text text-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. </p>
+						<p>Your ultimate travel companion, unlocking unforgettable adventures, hidden gems, and experiences that turn every journey into a story worth sharing! </p>
 					</div>
 				</div>
 			</div>
@@ -488,7 +432,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<h2 class="section_title">the best offers with rooms</h2>
+					<h2 class="section_title">Our Services</h2>
 				</div>
 			</div>
 			<div class="row offers_items">
@@ -506,7 +450,7 @@
 							</div>
 							<div class="col-lg-6">
 								<div class="offers_content">
-									<div class="offers_price">$70<span>per night</span></div>
+									<div class="offers_price"> Hotel<span>booking</span></div>
 									<div class="rating_r rating_r_4 offers_rating">
 										<i></i>
 										<i></i>
@@ -514,7 +458,7 @@
 										<i></i>
 										<i></i>
 									</div>
-									<p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
+									<p class="offers_text">"Tourista made planning our family trip a breeze! From detailed itineraries to personalized recommendations, everything was so well-organized. We discovered places we wouldn’t have found on our own!"</p>
 									<div class="offers_icons">
 										<ul class="offers_icons_list">
 											<li class="offers_icons_item"><img src="images/post.png" alt=""></li>
@@ -543,7 +487,7 @@
 							</div>
 							<div class="col-lg-6">
 								<div class="offers_content">
-									<div class="offers_price">$50<span>per night</span></div>
+									<div class="offers_price">Flight<span>booking</span></div>
 									<div class="rating_r rating_r_4 offers_rating">
 										<i></i>
 										<i></i>
@@ -580,7 +524,7 @@
 							</div>
 							<div class="col-lg-6">
 								<div class="offers_content">
-									<div class="offers_price">$90<span>per night</span></div>
+									<div class="offers_price">Car <span>rental</span></div>
 									<div class="rating_r rating_r_4 offers_rating">
 										<i></i>
 										<i></i>
@@ -617,7 +561,7 @@
 							</div>
 							<div class="col-lg-6">
 								<div class="offers_content">
-									<div class="offers_price">$30<span>per night</span></div>
+									<div class="offers_price">Attraction<span>booking</span></div>
 									<div class="rating_r rating_r_4 offers_rating">
 										<i></i>
 										<i></i>
@@ -652,7 +596,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<h2 class="section_title">what our clients say about us</h2>
+					<h2 class="section_title">what our customers say about us</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -666,16 +610,16 @@
 							<!-- Testimonial Item -->
 							<div class="owl-item">
 								<div class="test_item">
-									<div class="test_image"><img src="images/test_1.jpg" alt="https://unsplash.com/@anniegray"></div>
+									<div class="test_image"><img src="images/gambar6.jpg" alt="https://unsplash.com/@anniegray"></div>
 									<div class="test_icon"><img src="images/backpack.png" alt=""></div>
 									<div class="test_content_container">
 										<div class="test_content">
 											<div class="test_item_info">
 												<div class="test_name">carla smith</div>
-												<div class="test_date">May 24, 2017</div>
+												<div class="test_date">May 24, 2023</div>
 											</div>
 											<div class="test_quote_title">" Best holliday ever "</div>
-											<p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+											<p class="test_quote_text">"Tourista made planning our family trip a breeze! From detailed itineraries to personalized recommendations, everything was so well-organized !"</p>
 										</div>
 									</div>
 								</div>
@@ -684,16 +628,16 @@
 							<!-- Testimonial Item -->
 							<div class="owl-item">
 								<div class="test_item">
-									<div class="test_image"><img src="images/test_2.jpg" alt="https://unsplash.com/@tschax"></div>
+									<div class="test_image"><img src="images/gambar5.jpg" alt="https://unsplash.com/@tschax"></div>
 									<div class="test_icon"><img src="images/island_t.png" alt=""></div>
 									<div class="test_content_container">
 										<div class="test_content">
 											<div class="test_item_info">
-												<div class="test_name">carla smith</div>
-												<div class="test_date">May 24, 2017</div>
+												<div class="test_name">Maria Andrew</div>
+												<div class="test_date">Jun 20, 2022</div>
 											</div>
-											<div class="test_quote_title">" Best holliday ever "</div>
-											<p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+											<div class="test_quote_title">"User-Friendly Interface "</div>
+											<p class="test_quote_text">The platform is incredibly easy to use. Within minutes, I had access to tons of information about local attractions, restaurants, and unique activities. Highly recommend for first-time travelers!</p>
 										</div>
 									</div>
 								</div>
@@ -702,16 +646,16 @@
 							<!-- Testimonial Item -->
 							<div class="owl-item">
 								<div class="test_item">
-									<div class="test_image"><img src="images/test_3.jpg" alt="https://unsplash.com/@seefromthesky"></div>
+									<div class="test_image"><img src="images/gambar4.jpg" alt="https://unsplash.com/@seefromthesky"></div>
 									<div class="test_icon"><img src="images/kayak.png" alt=""></div>
 									<div class="test_content_container">
 										<div class="test_content">
 											<div class="test_item_info">
-												<div class="test_name">carla smith</div>
-												<div class="test_date">May 24, 2017</div>
+												<div class="test_name">Ally Merry</div>
+												<div class="test_date">July 12, 2012</div>
 											</div>
-											<div class="test_quote_title">" Best holliday ever "</div>
-											<p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+											<div class="test_quote_title">" Hidden Gems Explorer "</div>
+											<p class="test_quote_text">What I love most about Tourista is the focus on hidden gems. It’s not just the usual tourist spots but also lesser-known treasures that made my vacation truly unique!</p>
 										</div>
 									</div>
 								</div>
@@ -720,16 +664,16 @@
 							<!-- Testimonial Item -->
 							<div class="owl-item">
 								<div class="test_item">
-									<div class="test_image"><img src="images/test_2.jpg" alt=""></div>
+									<div class="test_image"><img src="images/gambar3.jpg" alt=""></div>
 									<div class="test_icon"><img src="images/island_t.png" alt=""></div>
 									<div class="test_content_container">
 										<div class="test_content">
 											<div class="test_item_info">
-												<div class="test_name">carla smith</div>
-												<div class="test_date">May 24, 2017</div>
+												<div class="test_name">Jane Joth</div>
+												<div class="test_date">Jan 09, 2024</div>
 											</div>
-											<div class="test_quote_title">" Best holliday ever "</div>
-											<p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+											<div class="test_quote_title">" Reliable Customer Support "</div>
+											<p class="test_quote_text">Their support team is fantastic! I had a last-minute change in my itinerary, and they responded quickly and helped me sort everything out without any hassle.</p>
 										</div>
 									</div>
 								</div>
@@ -738,16 +682,16 @@
 							<!-- Testimonial Item -->
 							<div class="owl-item">
 								<div class="test_item">
-									<div class="test_image"><img src="images/test_1.jpg" alt=""></div>
+									<div class="test_image"><img src="images/gambar2.jpg" alt=""></div>
 									<div class="test_icon"><img src="images/backpack.png" alt=""></div>
 									<div class="test_content_container">
 										<div class="test_content">
 											<div class="test_item_info">
-												<div class="test_name">carla smith</div>
-												<div class="test_date">May 24, 2017</div>
+												<div class="test_name">Brich Mei</div>
+												<div class="test_date">May 18, 2020</div>
 											</div>
-											<div class="test_quote_title">" Best holliday ever "</div>
-											<p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+											<div class="test_quote_title">" Affordable and Comprehensive "</div>
+											<p class="test_quote_text">Tourista offers incredible value for money. From budget-friendly accommodation options to detailed travel guides, everything you need for a perfect trip is right here!</p>
 										</div>
 									</div>
 								</div>
@@ -756,16 +700,16 @@
 							<!-- Testimonial Item -->
 							<div class="owl-item">
 								<div class="test_item">
-									<div class="test_image"><img src="images/test_3.jpg" alt=""></div>
+									<div class="test_image"><img src="images/gambar1.jpg" alt=""></div>
 									<div class="test_icon"><img src="images/kayak.png" alt=""></div>
 									<div class="test_content_container">
 										<div class="test_content">
 											<div class="test_item_info">
-												<div class="test_name">carla smith</div>
-												<div class="test_date">May 24, 2017</div>
+												<div class="test_name">Sally Mith</div>
+												<div class="test_date">Jul 17, 2019</div>
 											</div>
-											<div class="test_quote_title">" Best holliday ever "</div>
-											<p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+											<div class="test_quote_title">"Seamless Experience from Start to Finish "</div>
+											<p class="test_quote_text">Tourista truly delivers on its promise of making travel easy and enjoyable. From booking tickets to exploring local hotspots, every step was smooth and stress-free</p>
 										</div>
 									</div>
 								</div>
