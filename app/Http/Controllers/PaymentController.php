@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\PaymentHistory;
 use Illuminate\Http\Request;
 
-use Illuminate\Http\Request;
 
 
 class PaymentController extends Controller
@@ -184,30 +183,4 @@ public function update(Request $request, $id)
 }
 
 }
-public function update(Request $request, $id)
-{
-    $payment = PaymentHistory::find($id);
-
-
-
-
-    if ($payment) {
-        $payment->username = $request->username;
-        $payment->quantity = $request->quantity;
-        $payment->total_price = $request->total_price;
-        $payment->payment_method = $request->payment_method;
-        $payment->save();
-
-
-        return response()->json(['success' => true]);
-    }
-
-
-    return response()->json(['success' => false], 404);
-}
-
-
-}
-
-
 
