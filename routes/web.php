@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
-
+use App\Http\Controllers\PaymentController;
 Route::get('/', function () {
     return view('mainpage');
 });
