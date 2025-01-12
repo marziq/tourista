@@ -9,7 +9,7 @@ class AddImageToFlightsTable extends Migration
     public function up()
     {
         Schema::table('flights', function (Blueprint $table) {
-            $table->string('image')->nullable();
+           // $table->string('image')->nullable();
         });
     }
 }

@@ -145,8 +145,6 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 </style>
-
-
 <div class="payment-container">
     <div class="payment-content">
         <!-- Payment Summary -->
@@ -184,45 +182,55 @@
                 </div>
             </div>
         </div>
-<!-- Payment Form -->
-<div class="payment-form-container">
-    <h4 style="color: #34495e;">Payment Method</h4>
-    <div class="payment-methods">
-        <div class="payment-method selected">
-            <img src="{{ asset('images/visa.png') }}" alt="Visa">
-        </div>
 
 
-    </div>
-    <form action="{{ route('payment.process') }}" method="POST" class="payment-form">
-        @csrf
-        <div class="form-group">
-            <label for="card_number" style="color: #34495e;">Card Number</label>
-            <input type="text" class="form-control" id="card_number" name="card_number"
-                   placeholder="XXXX XXXX XXXX XXXX" required>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="expiration_date" style="color: #34495e;">Expiration Date</label>
-                    <input type="text" class="form-control" id="expiration_date" name="expiration_date"
-                           placeholder="MM/YY" required>
+        <!-- Payment Form -->
+        <div class="payment-form-container">
+            <h4 style="color: #34495e;">Payment Method</h4>
+            <div class="payment-methods">
+                <div class="payment-method selected">
+                    <img src="{{ asset('images/visa.png') }}" alt="Visa">
                 </div>
             </div>
-            <div class="col-md-6">
+            <form action="{{ route('payment.process') }}" method="POST" class="payment-form">
+                @csrf
+                <input type="hidden" name="quantity" value="{{ $purchaseData['quantity'] }}">
+                <input type="hidden" name="total_price" value="{{ $purchaseData['total_price'] }}">
+
+
                 <div class="form-group">
-                    <label for="cvv" style="color: #34495e;">CVV</label>
-                    <input type="text" class="form-control" id="cvv" name="cvv"
-                           placeholder="XXX" required>
+                    <label for="username" style="color: #34495e;">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
                 </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="card_holder_name" style="color: #34495e;">Card Holder Name</label>
-            <input type="text" class="form-control" id="card_holder_name" name="card_holder_name"
-                   placeholder="John Doe" required>
-        </div>
-                <button type="button" id="confirmPayment" class="btn btn-primary btn-block">Confirm Payment</button>
+                <div class="form-group">
+                    <label for="card_number" style="color: #34495e;">Card Number</label>
+                    <input type="text" class="form-control" id="card_number" name="card_number"
+                           placeholder="XXXX XXXX XXXX XXXX" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="expiration_date" style="color: #34495e;">Expiration Date</label>
+                            <input type="text" class="form-control" id="expiration_date" name="expiration_date"
+                                   placeholder="MM/YY" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cvv" style="color: #34495e;">CVV</label>
+                            <input type="text" class="form-control" id="cvv" name="cvv"
+                                   placeholder="XXX" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="card_holder_name" style="color: #34495e;">Card Holder Name</label>
+                    <input type="text" class="form-control" id="card_holder_name" name="card_holder_name"
+                           placeholder="John Doe" required>
+                </div>
+
+
+                <button type="submit" id="confirmPayment" class="btn btn-primary btn-block">Confirm Payment</button>
             </form>
         </div>
     </div>
@@ -241,25 +249,14 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const confirmButton = document.getElementById('confirmPayment');
     const modal = document.getElementById('paymentSuccessModal');
     const closeModal = document.getElementById('closeModal');
-
-
-    confirmButton.addEventListener('click', function () {
-        // Simulate form submission and show modal
-        modal.style.display = 'flex';
-    });
 
 
     closeModal.addEventListener('click', function () {
         modal.style.display = 'none';
     });
+
 });
 </script>
-
-
-</script>
 @endsection
-
-

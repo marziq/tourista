@@ -134,15 +134,15 @@
                             @csrf
                             <div class="search_item">
                                 <div>Destination</div>
-                                <input type="text" name="destination" class="destination search_input" required="required" placeholder="Enter destination">
+                                <input type="text" name="destination" class="destination search_input" required="required" value="{{ request('destination') }}" placeholder="Enter destination">
                             </div>
                             <div class="search_item">
                                 <div>Check In</div>
-                                <input type="date" name="check_in" class="check_in search_input" required="required" placeholder="YYYY-MM-DD">
+                                <input type="date" name="check_in" class="check_in search_input" required="required" value="{{ request('check_in') }}" placeholder="YYYY-MM-DD">
                             </div>
                             <div class="search_item">
                                 <div>Check Out</div>
-                                <input type="date" name="check_out" class="check_out search_input" required="required" placeholder="YYYY-MM-DD">
+                                <input type="date" name="check_out" class="check_out search_input" required="required" value="{{ request('check_out') }}" placeholder="YYYY-MM-DD">
                             </div>
                             <div class="search_item">
                                 <div>Adults</div>
@@ -198,39 +198,29 @@
 		<form action="{{ route('flights.search') }}" method="GET" id="search_form_6" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 			<!-- Departure Field -->
 			<div class="search_item">
-				<label for="departure">Departure</label>
+				<label for="departure">DEPARTURE</label>
 				<input type="text" name="departure" id="departure" class="search_input" placeholder="Enter departure city" required>
 			</div>
 
 			<!-- Destination Field -->
 			<div class="search_item">
-				<label for="destination">Destination</label>
+				<label for="destination">DESTINATION</label>
 				<input type="text" name="destination" id="destination" class="search_input" placeholder="Enter destination" required>
 			</div>
 
 			<!-- Departure Date Field -->
 			<div class="search_item">
-				<label for="departure_date">Departure Date</label>
-				<input type="date" name="departure_date" id="departure_date" class="search_input" required>
+				<label for="departure_date">TRAVEL DATE</label>
+				<input type="date" name="travel_date" id="travel_date" class="search_input" required>
 			</div>
 
-			<!-- Return Date Field -->
+			<!-- Passenger Dropdown -->
 			<div class="search_item">
-				<label for="return_date">Return Date</label>
-				<input type="date" name="return_date" id="return_date" class="search_input">
+				<label for="adults">PASSENGERS </label>
+				<input type="number" name="passenger" id="passenger" class="search_input" value="1" min="1" max="20">
 			</div>
 
-			<!-- Adults Dropdown -->
-			<div class="search_item">
-				<label for="adults">Adults</label>
-				<input type="number" name="adults" id="adults" class="search_input" value="1" min="1" max="20">
-			</div>
 
-			<!-- Children Dropdown -->
-			<div class="search_item">
-				<label for="children">Children</label>
-				<input type="number" name="children" id="children" class="search_input" value="0" min="0" max="20">
-			</div>
 
 			<!-- Submit Button -->
 			<button type="submit" class="button search_button">Search</button>
@@ -254,16 +244,14 @@
                                     <input type="number" name="max_price" class="price search_input" placeholder="Max Price" min="0" step="0.01">
                                 </div>
                             </div>
-                            <div class="search_item">
-                                <div>Pax</div>
-                                <input type="number" name="Pax" id="Pax" class="search_input" min="1" max="99" value="1">
-                            </div>
-                            <button class="button search_button">Search<span></span><span></span><span></span></button>
+                            <button class="button search_button">search<span></span><span></span><span></span></button>
                         </form>
                     </div>
-                    <!--------Attraction Search Panel----------------->
+
+                    <!-- Search Panel Attractions-->
                     <div class="search_panel">
-                        <form action="{{ route('attractions.search') }}" method="GET" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+
+                        <form action="{{ route('attractions.index') }}" method="GET" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                             <!-- Destination Field -->
                             <div class="search_item">
                                 <div>Destination</div>
@@ -290,6 +278,101 @@
                         </form>
                     </div>
 
+        <!-- Date Field -->
+        <div class="search_item">
+            <div>Date</div>
+            <input type="text" name="date" class="date search_input" placeholder="YYYY-MM-DD " required="required">
+        </div>
+
+        <!-- Category Field -->
+        <div class="search_item">
+            <div>Category</div>
+            <select name="category" id="category_5" class="dropdown_item_select search_input" required="required">
+                <option value="anything">Anything</option>
+                <option value="adventure">Adventure</option>
+                <option value="culture">Culture</option>
+                <option value="nature">Nature</option>
+                <option value="beach">Beach</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="button search_button">Search<span></span><span></span><span></span></button>
+    </form>
+</div>
+
+{{--
+					<!-- Search Panel -->
+
+					<div class="search_panel">
+						<form action="#" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+							<div class="search_item">
+								<div>destination</div>
+								<input type="text" class="destination search_input" required="required">
+							</div>
+							<div class="search_item">
+								<div>check in</div>
+								<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
+							</div>
+							<div class="search_item">
+								<div>check out</div>
+								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
+							</div>
+							<div class="search_item">
+								<div>adults</div>
+								<select name="adults" id="adults_5" class="dropdown_item_select search_input">
+									<option>01</option>
+									<option>02</option>
+									<option>03</option>
+								</select>
+							</div>
+							<div class="search_item">
+								<div>children</div>
+								<select name="children" id="children_5" class="dropdown_item_select search_input">
+									<option>0</option>
+									<option>02</option>
+									<option>03</option>
+								</select>
+							</div>
+							<button class="button search_button">search<span></span><span></span><span></span></button>
+						</form>
+					</div> --}}
+
+					<!-- Search Panel -->
+
+					<div class="search_panel">
+						<form action="#" id="search_form_6" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+							<div class="search_item">
+								<div>destination</div>
+								<input type="text" class="destination search_input" required="required">
+							</div>
+							<div class="search_item">
+								<div>check in</div>
+								<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
+							</div>
+							<div class="search_item">
+								<div>check out</div>
+								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
+							</div>
+							<div class="search_item">
+								<div>adults</div>
+								<select name="adults" id="adults_6" class="dropdown_item_select search_input">
+									<option>01</option>
+									<option>02</option>
+									<option>03</option>
+								</select>
+							</div>
+							<div class="search_item">
+								<div>children</div>
+								<select name="children" id="children_6" class="dropdown_item_select search_input">
+									<option>0</option>
+									<option>02</option>
+									<option>03</option>
+								</select>
+							</div>
+							<button class="button search_button">search<span></span><span></span><span></span></button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

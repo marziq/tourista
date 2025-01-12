@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -6,75 +7,46 @@ use App\Models\Flight;
 
 class FlightController extends Controller
 {
+    // Display a listing of all flights
     public function index()
     {
+        // Fetch all flights
         $flights = Flight::all();
-        return view('flights.index', compact('flights'));
+        // Return the view with flights
+        return view('flightresults', compact('flights'));
     }
 
+    // Handle flight search
     public function search(Request $request)
-    {
-        $query = Flight::query();
+{
+    // Retrieve form data
+    $departure = $request->input('departure');
+    $destination = $request->input('destination');
+    $travel_date = $request->input('travel_date');
+    $passengers = (int) $request->input('passenger');
 
-        // Filter by departure
-        if ($request->filled('departure')) {
-            $query->where('departure', 'like', '%' . $request->departure . '%');
-        }
+    // Perform search query
+    $query = Flight::query();
 
-        // Filter by arrival
-        if ($request->filled('arrival')) {
-            $query->where('arrival', 'like', '%' . $request->arrival . '%');
-        }
-
-        // Filter by travel date
-        if ($request->filled('travel_date')) {
-            $query->whereDate('travel_date', $request->travel_date);
-        }
-
-        // Filter by passenger count
-        if ($request->filled('passenger_count')) {
-            $query->where('passenger_count', '>=', $request->passenger_count);
-        }
-
-        $flights = $query->get();
-
-        return view('flights.index', compact('flights'));
+    if ($departure) {
+        $query->where('departure', 'like', '%' . $departure . '%');
+    }
+    if ($destination) {
+        $query->where('arrival', 'like', '%' . $destination . '%');
+    }
+    if ($travel_date) {
+        $query->whereDate('travel_date', '=', $travel_date);
+    }
+    if ($passengers) {
+        $query->where('passenger_count', '>=', $passengers);
     }
 
-    public function mainPage()
-    {
-        return view('mainpage');
-    }
+    // Get the filtered results
+    $flights = $query->get();
 
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(string $id)
-    {
-        //
-    }
-
-    public function edit(string $id)
-    {
-        //
-    }
-
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    public function destroy(string $id)
-    {
-        //
-    }
+    // Return the results view with relevant data
+    return view('flightresults', compact('flights', 'passengers'));
 }
 
 
+}

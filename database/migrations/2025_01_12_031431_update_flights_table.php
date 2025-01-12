@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFlightsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -19,6 +19,7 @@ class CreateFlightsTable extends Migration
             $table->integer('passenger_count'); // Number of passengers
             $table->decimal('price', 8, 2);  // Define price column
             $table->string('airline');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

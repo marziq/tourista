@@ -13,11 +13,9 @@ class Flight extends Model
         'departure',
         'arrival',
         'travel_date',
-        'return_date',
+        'passenger_count',
         'price',
         'airline',
         'image',
-        'passenger_count',
-        
     ];
 }

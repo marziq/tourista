@@ -1,6 +1,93 @@
 @extends('master.layout')
 
 @section('content')
+
+<style>
+    /* Container for offers */
+    .offers_item {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Image container with price overlay */
+    .offers_image_container {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .offers_image_background {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .offers_price_overlay {
+        font-size: 24px;
+        color: #34495e;
+        font-weight: bold;
+    }
+
+    /* Content section */
+    .offers_content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .hotel_details {
+        margin-bottom: 10px;
+    }
+
+    .hotel_name {
+        font-size: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .offers_text {
+        font-size: 16px;
+        color: #34495e;
+    }
+
+    /* Quantity selector and Book Now */
+    .right_container {
+        text-align: right;
+    }
+
+    .search_button {
+        background-color: #1E90FF;
+        color: white;
+        padding: 8px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .offers_items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .offers_col {
+        width: 48%;
+        margin-bottom: 20px;
+    }
+</style>
+
 <div class="offers">
     <div class="container">
         <div class="row">
@@ -10,35 +97,32 @@
         </div>
         <div class="row offers_items">
             @forelse ($hotels as $hotel)
-                <div class="col-lg-6 offers_col">
+                <div class="col-lg-6 col-md-6 col-sm-12 offers_col">
                     <div class="offers_item">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="offers_image_container">
-                                    <div class="offers_image_background" style="background-image:url({{ asset('images/' . $hotel->image) }})"></div>
-                                    <div class="offer_name"><a href="#">{{ $hotel->name }}</a></div>
+                        <!-- Image with Price Overlay -->
+                        <div class="offers_image_container">
+                            @if($hotel->image)
+                                <div class="offers_image_background" style="background-image: url({{ asset('images/' . $hotel->image) }});"></div>
+                            @else
+                                <div class="offers_image_background" style="background-color: #f0f0f0;">
+                                    <p style="text-align: center; line-height: 200px; color: #999;">No Image</p>
                                 </div>
+                            @endif
+                        </div>
+
+                        <!-- Content -->
+                        <div class="offers_content">
+                            <div class="hotel_details">
+                                <div class="hotel_name">{{ $hotel->name }}</div>
+                                <p class="offers_text"><strong>Location:</strong> {{ $hotel->location }}</p>
+                                <p class="offers_text"><strong>Description:</strong> {{ $hotel->description }}</p>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="offers_content">
-                                    <div class="offers_price">RM{{ number_format($hotel->lowest_price, 2) }}</div>
-                                    <div class="rating_r rating_r_4 offers_rating" data-rating="4">
-                                        <i></i><i></i><i></i><i></i><i></i> 4 stars
-                                    </div>
-                                    <p class="offers_text">{{ $hotel->location }}</p>
-                                    <p class="offers_description">{{ $hotel->description }}</p>
-                                    <div class="offers_icons">
-                                        <ul class="offers_icons_list">
-                                            <li class="offers_icons_item"><img src="{{ asset('images/post.png') }}" alt=""></li>
-                                            <li class="offers_icons_item"><img src="{{ asset('images/compass.png') }}" alt=""></li>
-                                            <li class="offers_icons_item"><img src="{{ asset('images/bicycle.png') }}" alt=""></li>
-                                            <li class="offers_icons_item"><img src="{{ asset('images/sailboat.png') }}" alt=""></li>
-                                        </ul>
-                                    </div>
-                                    <div class="offers_link">
-                                        <a href="{{ route('hotelRoom')}}" class="button search_button" style="background-color: #426253; color: white;">See Availability<span></span><span></span><span></span></a>
-                                    </div>
+
+                            <div class="right_container">
+                                <div class="offers_price_overlay">
+                                    RM{{ number_format($hotel->price, 2) }}
                                 </div>
+                                <a href="{{ route('hotelBook') }}" class="search_button">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -51,4 +135,5 @@
         </div>
     </div>
 </div>
+
 @endsection
