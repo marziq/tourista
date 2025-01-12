@@ -75,9 +75,7 @@ class PaymentController extends Controller
         $paymentHistory->save();
 
         // Return success response (can redirect to a success page or return a success message)
-        return response()->json([
-            'message' => 'Payment Successful! Your transaction has been processed.',
-    ]);
+        return redirect()->route('profile.show')->with('success', 'Payment Successful! Your transaction has been processed.');
     }
 
     public function processTour(Request $request)
@@ -133,4 +131,49 @@ class PaymentController extends Controller
             'message' => 'Payment Successful! Your transaction has been processed.',
     ]);
     }
+
+    //crud
+    public function profile()
+    {
+        $payments = PaymentHistory::all(); // Fetch all payment history records
+        return view('profile', compact('payments')); // Pass $payments to the profile view
+    }
+
+
+
+
+    public function destroy($id)
+{
+    $payment = PaymentHistory::find($id); // Use PaymentHistory instead of Payment
+
+
+
+
+    if ($payment) {
+        $payment->delete();
+        return response()->json(['success' => true]);
+    } else {
+        return response()->json(['success' => false, 'message' => 'Payment not found']);
+    }
+}
+public function update(Request $request, $id)
+{
+    $payment = PaymentHistory::find($id);
+    if ($payment) {
+        $payment->username = $request->username;
+        $payment->quantity = $request->quantity;
+        $payment->total_price = $request->total_price;
+        $payment->payment_method = $request->payment_method;
+        $payment->save();
+
+
+
+
+        return response()->json(['success' => true]);
+    }
+
+
+    return response()->json(['success' => false], 404);
+}
+
 }
