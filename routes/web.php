@@ -43,7 +43,8 @@ Route::get('/flights/search', [FlightController::class, 'search'])->name('flight
 
 
 // Book a flight (no authentication needed)
-Route::get('/flights/book/{id}', [FlightController::class, 'book'])->name('flights.book');
+Route::get('/flights/payment', [PaymentController::class, 'showFlight'])->name('flights.show');
+Route::post('/payment/processFlight', [PaymentController::class, 'processFlight'])->name('payment.processFlight'); // Processes the payment
 
 // Create a new flight (authentication might be needed if you want to restrict access)
 Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
@@ -53,7 +54,7 @@ Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
 Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 Route::get('/attractions/search', [AttractionController::class, 'search'])->name('attractions.search');
 
-//payment
+//payment for attraction
 Route::get('/payment', [PaymentController::class, 'show'])->name('payment.show'); // Displays payment form
 Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process'); // Processes the paymentt
 
@@ -81,7 +82,6 @@ Route::get('/rentalbooking-success', function () {
     return view('rentalbooking-success');
 })->name('rentalbooking.success');
 Route::get('/rentalpayment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');
-
 
 
 

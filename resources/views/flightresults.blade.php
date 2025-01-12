@@ -83,7 +83,17 @@
     </div>
 </div>
 
-<div class="container mt-4">
+@if(isset($flights))
+    <div class="container mt-4">
+        <div class="alert alert-info">Number of flights: {{ $flights->count() }}</div>
+    </div>
+@else
+    <div class="container mt-4">
+        <div class="alert alert-warning">No flights variable passed to view.</div>
+    </div>
+@endif
+
+<div class="container mt-5">
     <div class="row">
         @forelse($flights as $flight)
             <div class="col-md-4 mb-4">
@@ -93,9 +103,16 @@
                         <h4>{{ $flight->departure }} to {{ $flight->arrival }}</h4>
                         <p class="text-muted">Date: {{ $flight->travel_date }}</p>
                         <p>Airline: {{ $flight->airline }}</p>
-                        <span class="price">RM {{ number_format($flight->price, 2) }}</span>
-                        <form action="{{ route('flights.book', $flight->id) }}" method="GET" class="mt-3">
+                        <span class="price">RM {{ number_format($flight->price, 2) }} per pax</span>
+                        <form action="{{ route('flights.show') }}" method="GET" class="mt-3">
                             @csrf
+                            <input type="hidden" name="airline" value="{{ $flight->airline }}">
+                            <input type="hidden" name="departure" value="{{ $flight->departure }}">
+                            <input type="hidden" name="arrival" value="{{ $flight->arrival }}">
+                            <input type="hidden" name="travel_date" value="{{ $flight->travel_date }}">
+                            <input type="hidden" name="price" value="{{ $flight->price }}">
+                            <input type="hidden" name="passengers" value="{{ $passengers }}"> <!-- Passed from the main page -->
+                            <input type="hidden" name="total_price" value="{{ $flight->price * $passengers }}">
                             <button type="submit" class="btn btn-primary">Book Now</button>
                         </form>
                     </div>
