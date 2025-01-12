@@ -222,12 +222,11 @@
 
 
 
-			<!-- Submit Button -->
-			<button type="submit" class="button search_button">Search</button>
-		</form>
-	</div>
-
-
+			  <!-- Submit Button -->
+			  <button type="submit" class="button search_button">Search<span></span><span></span><span></span></button>
+                        </form>
+                    </div>
+					
 					<!-- Search Panel Tour package-->
 
                     <div class="search_panel">

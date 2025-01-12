@@ -21,7 +21,7 @@
                 @foreach($flights as $flight)
                 <div class="flight_card">
                     <!-- Ensure the image path is correct -->
-                    <img src="{{ asset('storage/flights/' . $flight->image) }}" alt="Flight Image" class="flight_image">
+                    <img src="{{ asset('images/MasAL.PNG/' . $flight->image) }}" alt="Flight Image" class="flight_image">
                     <div class="flight_details">
                         <h2>{{ $flight->departure }} to {{ $flight->arrival }}</h2>
                         <p>Date: {{ $flight->travel_date }}</p>
