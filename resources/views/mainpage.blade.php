@@ -305,7 +305,7 @@
         <!-- Submit Button -->
         <button class="button search_button">Search<span></span><span></span><span></span></button>
     </form>
-</div> --}}
+</div>
 
 {{--
 					<!-- Search Panel -->

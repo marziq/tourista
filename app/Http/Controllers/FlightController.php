@@ -20,7 +20,7 @@ class FlightController extends Controller
     public function search(Request $request)
 
     {
-        
+
         $query = Flight::query(); // Start with the base query
 
         // Apply filters based on the request data
