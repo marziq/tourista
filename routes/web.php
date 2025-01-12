@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\TourController;
+use App\Http\Controllers\HotelController;
+use App\Http\Controllers\RentalController;
 
 Route::get('/', function () {
     return view('mainpage');
@@ -26,16 +30,16 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
+});
     // Add flight routes here
  // Flight Routes
-Route::get('/', [FlightController::class, 'mainPage'])->name('main.page');
+//Route::get('/', [FlightController::class, 'mainPage'])->name('main.page');
 
 // Display all available flights
 Route::get('/flights', [FlightController::class, 'index'])->name('flights.index');
 
 // Search flights (no authentication needed)
-Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search')->withoutMiddleware('auth');
+Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search');
 
 
 // Book a flight (no authentication needed)
@@ -43,10 +47,6 @@ Route::get('/flights/book/{id}', [FlightController::class, 'book'])->name('fligh
 
 // Create a new flight (authentication might be needed if you want to restrict access)
 Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
-
-
-
-});
 
 //Attraction
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
