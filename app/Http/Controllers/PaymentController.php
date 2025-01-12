@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\PaymentHistory;
 use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
+
+
 class PaymentController extends Controller
 {
     public function show(Request $request)
@@ -15,6 +18,7 @@ class PaymentController extends Controller
             'price' => $request->price,
             'total_price' => $request->total_price,
         ];
+
 
         return view('payment', compact('purchaseData'));
     }
@@ -63,8 +67,10 @@ class PaymentController extends Controller
             'card_holder_name' => 'required|string|max:255',
         ]);
 
+
         // Assuming the payment method is always 'Visa'
         $paymentMethod = 'Visa';
+
 
         // Create a new payment history record
         $paymentHistory = new PaymentHistory();
@@ -73,6 +79,7 @@ class PaymentController extends Controller
         $paymentHistory->total_price = $request->input('total_price'); // Assuming total_price is passed in the request
         $paymentHistory->payment_method = $paymentMethod;
         $paymentHistory->save();
+
 
         // Return success response (can redirect to a success page or return a success message)
         return redirect()->route('profile.show')->with('success', 'Payment Successful! Your transaction has been processed.');
@@ -177,3 +184,30 @@ public function update(Request $request, $id)
 }
 
 }
+public function update(Request $request, $id)
+{
+    $payment = PaymentHistory::find($id);
+
+
+
+
+    if ($payment) {
+        $payment->username = $request->username;
+        $payment->quantity = $request->quantity;
+        $payment->total_price = $request->total_price;
+        $payment->payment_method = $request->payment_method;
+        $payment->save();
+
+
+        return response()->json(['success' => true]);
+    }
+
+
+    return response()->json(['success' => false], 404);
+}
+
+
+}
+
+
+

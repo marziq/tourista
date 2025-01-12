@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
@@ -8,7 +9,7 @@ use App\Http\Controllers\TourController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RentalController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\MainPageController;
 Route::get('/', function () {
     return view('mainpage');
 });

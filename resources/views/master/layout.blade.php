@@ -14,7 +14,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/responsive.css') }}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<meta name="csrf-token" content="{{ csrf_token() }}"> 
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 
 <style>
     body {

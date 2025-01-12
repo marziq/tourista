@@ -1,6 +1,5 @@
 @extends('master.layout')
 
-
 @section('content')
 <style>
     /* Container style */
@@ -16,7 +15,6 @@
         margin-bottom: 50px; /* Add extra space at the bottom of the table */
     }
 
-
     /* Heading style */
     .table-container h2 {
         font-size: 2rem;
@@ -27,14 +25,12 @@
         margin-bottom: 30px;
     }
 
-
     /* Table style */
     .table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
     }
-
 
     /* Table cells padding and styling */
     .table th, .table td {
@@ -44,7 +40,6 @@
         font-size: 1rem;
         color: #495057;
     }
-
 
     /* Table header styling */
     .table th {
@@ -56,18 +51,15 @@
         padding-bottom: 15px; /* Add space at the bottom of the headers */
     }
 
-
     /* Table row hover effect */
     .table tr:hover {
         background-color: #f1f1f1;
     }
 
-
     /* Zebra striping for table rows */
     .table tr:nth-child(even) {
         background-color: #f9f9f9;
     }
-
 
     /* No records message */
     .no-records {
@@ -75,7 +67,6 @@
         font-style: italic;
         color: #6c757d;
     }
-
 
     /* Button styles */
     .btn {
@@ -86,25 +77,21 @@
         text-decoration: none;
     }
 
-
     .btn-edit {
         background-color: #28a745;
         color: white;
         margin-right: 5px;
     }
 
-
     .btn-delete {
         background-color: #dc3545;
         color: white;
     }
 
-
     .btn:hover {
         opacity: 0.8;
     }
 </style>
-
 
 <div class="table-container">
     <h2>Payment History</h2>
@@ -133,11 +120,9 @@
                         <!-- Edit button -->
                         <button class="btn btn-edit" onclick="editPayment({{ $payment->id }})">Edit</button>
 
-
                         <!-- Delete button -->
                         <button class="btn btn-delete" onclick="confirmDelete({{ $payment->id }})">Delete</button>
                     </td>
-
 
                </tr>
            @empty
@@ -180,16 +165,12 @@
 </div>
 
 
-
-
 <script>
   let currentPaymentId = null;
-
 
 function editPayment(paymentId) {
     const paymentRow = document.getElementById('payment-' + paymentId);
     currentPaymentId = paymentId;
-
 
     // Populate the modal with current values
     document.getElementById('editUsername').value = paymentRow.cells[1].textContent;
@@ -198,23 +179,18 @@ function editPayment(paymentId) {
     const quantity = parseInt(this.value) || 0; // Default to 0 if input is empty or invalid
     const totalPrice = pricePerItem * quantity;
 
-
     document.getElementById('editTotalPrice').value = totalPrice.toFixed(2);
 });
 document.getElementById('editTotalPrice').dataset.pricePerItem = parseFloat(paymentRow.cells[3].textContent.replace('RM ', '')) / parseInt(paymentRow.cells[2].textContent); // Calculate price per item
     document.getElementById('editPaymentMethod').value = paymentRow.cells[4].textContent;
 
-
     // Display the modal
     document.getElementById('editModal').style.display = 'flex';
 }
 
-
 function closeModal() {
     document.getElementById('editModal').style.display = 'none';
 }
-
-
 
 
    function confirmDelete(paymentId) {
@@ -244,7 +220,6 @@ function closeModal() {
     }
 }
 
-
 function updatePayment() {
     const updatedData = {
         username: document.getElementById('editUsername').value,
@@ -253,13 +228,11 @@ function updatePayment() {
         payment_method: document.getElementById('editPaymentMethod').value
     };
 
-
     fetch(`/payments/${currentPaymentId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-
 
         },
         body: JSON.stringify(updatedData)
@@ -274,7 +247,6 @@ function updatePayment() {
             paymentRow.cells[3].textContent = `RM ${parseFloat(updatedData.total_price).toFixed(2)}`;
             paymentRow.cells[4].textContent = updatedData.payment_method;
 
-
             alert('Payment updated successfully');
             closeModal();
         } else {
@@ -286,7 +258,6 @@ function updatePayment() {
         alert('An error occurred while updating the payment');
     });
 }
-
 
 </script>
 @endsection
