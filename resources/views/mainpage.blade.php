@@ -217,7 +217,7 @@
 			<!-- Passenger Dropdown -->
 			<div class="search_item">
 				<label for="adults">PASSENGERS </label>
-				<input type="number" name="a" id="passenger" class="search_input" value="1" min="1" max="20">
+				<input type="number" name="passenger" id="passenger" class="search_input" value="1" min="1" max="20">
 			</div>
 
 
@@ -244,17 +244,11 @@
                                     <input type="number" name="max_price" class="price search_input" placeholder="Max Price" min="0" step="0.01">
                                 </div>
                             </div>
-                            <div class="search_item">
-                                <div>Pax</div>
-                                <input type="number" name="Pax" id="Pax" class="search_input" min="1" max="99" value="1">
-                            </div>
-							<div class="search_item">
-                                <div>children</div>
-                                <input type="number" name="children" id="children" class="search_input" min="1" max="99" value="1">
-                            </div>>
-							<button class="button search_button">search<span></span><span></span><span></span></button>
-						</form>
-					</div>
+                            <button class="button search_button">search<span></span><span></span><span></span></button>
+                        </form>
+                    </div>
+
+                    <!-- Search Panel Attractions-->
                     <div class="search_panel">
 
                         <form action="{{ route('attractions.index') }}" method="GET" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">

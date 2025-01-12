@@ -1,78 +1,112 @@
-@extends('layouts.app')
-
+@extends('master.layout')
 @section('content')
-    <h1>Flight Search Results</h1>
-
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @elseif(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-
-    @if($flights->isEmpty())
-        <p>No flights found matching your search criteria.</p>
-    @else
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Departure</th>
-                    <th>Arrival</th>
-                    <th>Travel Date</th>
-                    <th>Price (RM)</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($flights as $flight)
-                <tr>
-                    <td>{{ $flight->departure }}</td>
-                    <td>{{ $flight->arrival }}</td>
-                    <td>{{ $flight->travel_date }}</td>
-                    <td>{{ number_format($flight->price, 2) }}</td>
-                    <td>
-                        <a href="{{ route('flights.book', $flight->id) }}" class="btn btn-primary">Book Now</a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @endif
-@endsection
-
 
 <style>
+    .home {
+        position: relative;
+        height: 150px;
+        background-color: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 
-.search_form_container {
-    padding: 20px;
-    background: #f4f4f4;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+    .home_title {
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #333;
+    }
 
-.search_form_container .form-group {
-    margin-bottom: 15px;
-}
+    .flight-card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-.search_form_container button {
-    background-color: #007bff;
-    color: white;
-}
+    .flight-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
 
-table {
-    width: 100%;
-    margin-top: 20px;
-}
+    .flight-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
 
-table th, table td {
-    text-align: center;
-}
+    .card-body {
+        padding: 15px;
+        background-color: #fff;
+    }
 
-table th {
-    background-color: #f8f9fa;
-}
+    .card-body h4 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #343a40;
+    }
 
+    .card-body p {
+        color: #6c757d;
+        margin: 5px 0;
+    }
+
+    .price {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #28a745;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        border-radius: 20px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
 </style>
+
+<div class="home">
+    <div class="home_content">
+        <div class="home_title">Flight Results</div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        @forelse($flights as $flight)
+            <div class="col-md-4 mb-4">
+                <div class="flight-card">
+                    <img src="{{ asset('storage/flights/' . $flight->image) }}" alt="Flight Image" class="flight-image">
+                    <div class="card-body">
+                        <h4>{{ $flight->departure }} to {{ $flight->arrival }}</h4>
+                        <p class="text-muted">Date: {{ $flight->travel_date }}</p>
+                        <p>Airline: {{ $flight->airline }}</p>
+                        <span class="price">RM {{ number_format($flight->price, 2) }}</span>
+                        <form action="{{ route('flights.book', $flight->id) }}" method="GET" class="mt-3">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Book Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @empty
+            <div class="col-12">
+                <div class="alert alert-danger">No flights found matching your criteria.</div>
+            </div>
+        @endforelse
+    </div>
+</div>
+
+@endsection

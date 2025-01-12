@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\TourController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RentalController;
 
@@ -28,17 +30,23 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
-    // Add flight routes here
-    Route::get('/flights', [FlightController::class, 'index'])->name('flights.index'); // Search & display available flights
-    Route::post('/flights', [FlightController::class, 'store'])->name('flights.store'); // Book a flight
-    Route::get('/flights/{id}/edit', [FlightController::class, 'edit'])->name('flights.edit'); // Edit booking
-    Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
-    Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
-    Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search');
-    Route::get('/flight-booking', [FlightController::class, 'showFlightBooking'])->name('flight.booking');
-
 });
+    // Add flight routes here
+ // Flight Routes
+Route::get('/', [FlightController::class, 'mainPage'])->name('main.page');
+
+// Display all available flights
+Route::get('/flights', [FlightController::class, 'index'])->name('flights.index');
+
+// Search flights (no authentication needed)
+Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search');
+
+
+// Book a flight (no authentication needed)
+Route::get('/flights/book/{id}', [FlightController::class, 'book'])->name('flights.book');
+
+// Create a new flight (authentication might be needed if you want to restrict access)
+Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
 
 //Attraction
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
@@ -51,7 +59,8 @@ Route::post('/payment/process', [PaymentController::class, 'process'])->name('pa
 
 //Tour Controller
 Route::post('/search', [TourController::class, 'search'])->name('search');
-
+Route::get('/payment_tour', [PaymentController::class, 'showTour'])->name('payment_tour');
+Route::post('/paymentTour/process', [PaymentController::class, 'processTour'])->name('payment.processTour');
 //Hotel Controller
 Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');  // Display available hotels
 Route::post('/hotelBook', [HotelController::class, 'book'])->name('hotelBook'); // Book a room
