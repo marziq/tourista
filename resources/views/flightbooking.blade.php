@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('master.layout')
 
 @section('content')
     <div class="search_form_container">

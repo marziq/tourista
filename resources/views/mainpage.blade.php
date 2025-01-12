@@ -217,7 +217,7 @@
 			<!-- Passenger Dropdown -->
 			<div class="search_item">
 				<label for="adults">PASSENGERS </label>
-				<input type="number" name="a" id="passenger" class="search_input" value="1" min="1" max="20">
+				<input type="number" name="passenger" id="passenger" class="search_input" value="1" min="1" max="20">
 			</div>
 
 

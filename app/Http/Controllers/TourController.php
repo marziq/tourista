@@ -15,34 +15,37 @@ class TourController extends Controller
         $package = TourPackage::all();
         return view('tourpackage_result', compact('package'));
     }
-    public function search(Request $request)
-    {
-        // Retrieve form data
-        $package = $request->input('package');
-        $minPrice = $request->input('min_price');
-        $maxPrice = $request->input('max_price');
-        $pax = $request->input('Pax');
+   public function search(Request $request)
+{
+    // Retrieve form data
+    $departure = $request->input('departure');
+    $destination = $request->input('destination');
+    $travel_date = $request->input('travel_date');
+    $passengers = $request->input('passenger');
 
+    // Perform search query
+    $query = Flight::query();
 
-        // Perform search query
-        $query = TourPackage::query();
-
-        if ($package) {
-            $query->where('package_name', 'like', '%' . $package . '%');
-        }
-        if ($minPrice) {
-            $query->where('price', '>=', $minPrice);
-        }
-        if ($maxPrice) {
-            $query->where('price', '<=', $maxPrice);
-        }
-
-
-        $tourPackages = $query->get();
-
-        // Return a view with the search results
-        return view('tourpackage_result', compact('tourPackages','pax'));
+    if ($departure) {
+        $query->where('departure', 'like', '%' . $departure . '%');
     }
+    if ($destination) {
+        $query->where('arrival', 'like', '%' . $destination . '%');
+    }
+    if ($travel_date) {
+        $query->whereDate('travel_date', '=', $travel_date);
+    }
+    if ($passengers) {
+        $query->where('passenger_count', '>=', $passengers);
+    }
+
+    // Get the filtered results
+    $flights = $query->get();
+
+    // Return the results view with relevant data
+    return view('flightresults', compact('flights', 'departure', 'destination', 'travel_date', 'passengers'));
+}
+
     /**
      * Show the form for creating a new resource.
      */

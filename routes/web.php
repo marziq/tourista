@@ -33,7 +33,7 @@ Route::middleware([
 });
     // Add flight routes here
  // Flight Routes
-//Route::get('/', [FlightController::class, 'mainPage'])->name('main.page');
+Route::get('/', [FlightController::class, 'mainPage'])->name('main.page');
 
 // Display all available flights
 Route::get('/flights', [FlightController::class, 'index'])->name('flights.index');
