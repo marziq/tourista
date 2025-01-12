@@ -7,11 +7,21 @@ use App\Models\Flight;
 
 class FlightController extends Controller
 {
-    // Method for handling the flight search
-    public function search(Request $request)
+    // Display a listing of all flights
+    public function index()
     {
-        // Start with the base query
-        $query = Flight::query();
+        // Fetch all flights
+        $flights = Flight::all();
+        // Return the view with flights
+        return view('flight', compact('flights'));
+    }
+
+    // Handle flight search
+    public function search(Request $request)
+
+    {
+        
+        $query = Flight::query(); // Start with the base query
 
         // Apply filters based on the request data
         if ($request->filled('departure')) {
@@ -30,20 +40,18 @@ class FlightController extends Controller
             $query->where('passenger_count', '>=', $request->passenger_count);
         }
 
-        // Execute the query and get the results
-        $flights = $query->get();
+        $flights = $query->get(); // Execute the query and get the results
 
-        // Return the view with the flights data
-        return view('flightresults', compact('flights'));
+        return view('flightresults', compact('flights')); // Return the results view
     }
 
-    // Method for handling booking (optional)
+    // Optional booking method
     public function book($id)
     {
         $flight = Flight::find($id);
 
         if ($flight) {
-            // Handle booking logic here (could be saving to a booking table or session)
+            // Add booking logic here
             return redirect()->route('flights.search')->with('success', 'Flight booked successfully!');
         } else {
             return redirect()->route('flights.search')->with('error', 'Flight not found!');

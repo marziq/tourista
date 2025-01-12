@@ -28,14 +28,23 @@ Route::middleware([
     })->name('dashboard');
 
     // Add flight routes here
-    Route::get('/', [FlightController::class, 'mainPage'])->name('main.page');
-    Route::get('/flights', [FlightController::class, 'index'])->name('flights.index'); // Search & display available flights
-    Route::post('/flights', [FlightController::class, 'store'])->name('flights.store'); // Book a flight
-    Route::get('/flights/{id}/edit', [FlightController::class, 'edit'])->name('flights.edit'); // Edit booking
-    Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flights.update'); // Update booking
-    Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flights.destroy'); // Cancel booking
-    Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search');
-    Route::get('/flight-booking', [FlightController::class, 'showFlightBooking'])->name('flight.booking');
+ // Flight Routes
+Route::get('/', [FlightController::class, 'mainPage'])->name('main.page');
+
+// Display all available flights
+Route::get('/flights', [FlightController::class, 'index'])->name('flights.index');
+
+// Search flights (no authentication needed)
+Route::get('/flights/search', [FlightController::class, 'search'])->name('flights.search')->withoutMiddleware('auth');
+
+
+// Book a flight (no authentication needed)
+Route::get('/flights/book/{id}', [FlightController::class, 'book'])->name('flights.book');
+
+// Create a new flight (authentication might be needed if you want to restrict access)
+Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
+
+
 
 });
 
