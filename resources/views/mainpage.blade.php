@@ -134,15 +134,15 @@
                             @csrf
                             <div class="search_item">
                                 <div>Destination</div>
-                                <input type="text" name="destination" class="destination search_input" required="required" placeholder="Enter destination">
+                                <input type="text" name="destination" class="destination search_input" required="required" value="{{ request('destination') }}" placeholder="Enter destination">
                             </div>
                             <div class="search_item">
                                 <div>Check In</div>
-                                <input type="date" name="check_in" class="check_in search_input" required="required" placeholder="YYYY-MM-DD">
+                                <input type="date" name="check_in" class="check_in search_input" required="required" value="{{ request('check_in') }}" placeholder="YYYY-MM-DD">
                             </div>
                             <div class="search_item">
                                 <div>Check Out</div>
-                                <input type="date" name="check_out" class="check_out search_input" required="required" placeholder="YYYY-MM-DD">
+                                <input type="date" name="check_out" class="check_out search_input" required="required" value="{{ request('check_out') }}" placeholder="YYYY-MM-DD">
                             </div>
                             <div class="search_item">
                                 <div>Adults</div>
@@ -305,7 +305,7 @@
         <!-- Submit Button -->
         <button class="button search_button">Search<span></span><span></span><span></span></button>
     </form>
-</div> --}}
+</div>
 
 {{--
 					<!-- Search Panel -->

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AttractionController;
+use App\Http\Controllers\HotelController;
+use App\Http\Controllers\RentalController;
 
 Route::get('/', function () {
     return view('mainpage');
@@ -51,7 +53,7 @@ Route::post('/payment/process', [PaymentController::class, 'process'])->name('pa
 Route::post('/search', [TourController::class, 'search'])->name('search');
 
 //Hotel Controller
-Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');  //display available hotels
+Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');  // Display available hotels
 Route::post('/hotelBook', [HotelController::class, 'book'])->name('hotelBook'); // Book a room
 
 //Rental

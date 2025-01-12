@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Hotel;       // Hotel model
-use App\Models\HotelRoom;  //HotelRoom model
 
 class HotelController extends Controller
 {
@@ -22,28 +21,23 @@ class HotelController extends Controller
             $query->where('location', 'like', '%' . $request->destination . '%');
         }
 
-        /*// Check if check-in and check-out dates are provided
+        // Check if check-in and check-out dates are provided
         if ($request->has('check_in') && $request->has('check_out')) {
-            // Ensure that check-in and check-out dates are in correct format (optional)
-            $check_in = $request->check_in;
-            $check_out = $request->check_out;
+            $checkinDate = $request->input('check_in');
+            $checkoutDate = $request->input('check_out');
 
-            // Filter hotels based on available dates (assumes checkin_date and checkout_date are in the database)
-            $query->where(function($query) use ($check_in, $check_out) {
-                $query->where('checkin_date', '<=', $check_out)
-                      ->where('checkout_date', '>=', $check_in);
+            $query->where(function($query) use ($checkinDate, $checkoutDate) {
+                // Filter hotels based on available dates
+                $query->whereNull('check_in') // No booking exists
+                  ->orWhere(function ($subQuery) use ($checkinDate, $checkoutDate) {
+                      $subQuery->where('check_in', '>', $checkoutDate)
+                               ->orWhere('check_out', '<', $checkinDate);
+                  });
             });
         }
 
-        // Execute the query and apply pagination
-        $hotels = $query->with('rooms')->paginate(10);
-
-        // Optionally, filter out hotels without rooms
-        $hotels = $hotels->filter(function ($hotel) {
-            return $hotel->rooms->isNotEmpty();
-        });*/
-
-        $hotels = $query->paginate(10);
+        // Fetch hotels with rooms
+        $hotels = $query->with('rooms');
 
         // Pass the hotels data to the view
         return view('hotel', compact('hotels'));
@@ -98,25 +92,16 @@ class HotelController extends Controller
 
         // Logic to handle booking (e.g., reduce available rooms, create booking record, etc.)
         // For simplicity, let's assume we just mark the room as unavailable
-        $room->available = false;
+        /*$room->available = false;
         $room->save();
 
-        return redirect()->route('hotelRoom', $room->hotel_id)->with('success', 'Room booked successfully!');
+        return redirect()->route('hotelRoom', $room->hotel_id)->with('success', 'Room booked successfully!');*/
+
+        //
     }
 
     public function search(Request $request)
     {
-        //Retrieve form data
-        /*$destination = $request->input('destination');
-        $check_in = $request->input('check_in');
-        $check_out = $request->input('check_out');
-        $adults = $request->input('adults');
-        $children = $request->input('children');
-
-
-        $hotels = Hotel::where('destination', 'like', '%' . $destination . '%')->paginate(10);
-        return view('hotel', ['hotel' => $hotels]);*/
-
         // Initialize the query builder for the Hotel model
         $query = Hotel::query();
 
@@ -137,7 +122,7 @@ class HotelController extends Controller
         }
 
         // Execute the query to fetch hotels
-        $hotels = $query->with('rooms')->paginate(10);
+        $hotels = $query->with('rooms');
 
         /*// Optionally, filter out hotels without rooms
         $hotels = $hotels->filter(function ($hotel) {
