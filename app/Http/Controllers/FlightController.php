@@ -13,48 +13,40 @@ class FlightController extends Controller
         // Fetch all flights
         $flights = Flight::all();
         // Return the view with flights
-        return view('flight', compact('flights'));
+        return view('flightresults', compact('flights'));
     }
 
     // Handle flight search
     public function search(Request $request)
+{
+    // Retrieve form data
+    $departure = $request->input('departure');
+    $destination = $request->input('destination');
+    $travel_date = $request->input('travel_date');
+    $passengers = (int) $request->input('passenger');
 
-    {
+    // Perform search query
+    $query = Flight::query();
 
-        $query = Flight::query(); // Start with the base query
-
-        // Apply filters based on the request data
-        if ($request->filled('departure')) {
-            $query->where('departure', 'like', '%' . $request->departure . '%');
-        }
-
-        if ($request->filled('arrival')) {
-            $query->where('arrival', 'like', '%' . $request->arrival . '%');
-        }
-
-        if ($request->filled('travel_date')) {
-            $query->whereDate('travel_date', $request->travel_date);
-        }
-
-        if ($request->filled('passenger_count')) {
-            $query->where('passenger_count', '>=', $request->passenger_count);
-        }
-
-        $flights = $query->get(); // Execute the query and get the results
-
-        return view('flightresults', compact('flights')); // Return the results view
+    if ($departure) {
+        $query->where('departure', 'like', '%' . $departure . '%');
+    }
+    if ($destination) {
+        $query->where('arrival', 'like', '%' . $destination . '%');
+    }
+    if ($travel_date) {
+        $query->whereDate('travel_date', '=', $travel_date);
+    }
+    if ($passengers) {
+        $query->where('passenger_count', '>=', $passengers);
     }
 
-    // Optional booking method
-    public function book($id)
-    {
-        $flight = Flight::find($id);
+    // Get the filtered results
+    $flights = $query->get();
 
-        if ($flight) {
-            // Add booking logic here
-            return redirect()->route('flights.search')->with('success', 'Flight booked successfully!');
-        } else {
-            return redirect()->route('flights.search')->with('error', 'Flight not found!');
-        }
-    }
+    // Return the results view with relevant data
+    return view('flightresults', compact('flights', 'passengers'));
+}
+
+
 }

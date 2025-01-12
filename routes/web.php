@@ -33,7 +33,7 @@ Route::middleware([
 });
     // Add flight routes here
  // Flight Routes
-//Route::get('/', [FlightController::class, 'mainPage'])->name('main.page');
+Route::get('/', [FlightController::class, 'mainPage'])->name('main.page');
 
 // Display all available flights
 Route::get('/flights', [FlightController::class, 'index'])->name('flights.index');
@@ -43,7 +43,8 @@ Route::get('/flights/search', [FlightController::class, 'search'])->name('flight
 
 
 // Book a flight (no authentication needed)
-Route::get('/flights/book/{id}', [FlightController::class, 'book'])->name('flights.book');
+Route::get('/flights/payment', [PaymentController::class, 'showFlight'])->name('flights.show');
+Route::post('/payment/processFlight', [PaymentController::class, 'processFlight'])->name('payment.processFlight'); // Processes the payment
 
 // Create a new flight (authentication might be needed if you want to restrict access)
 Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
@@ -53,15 +54,16 @@ Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
 Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');
 Route::get('/attractions/search', [AttractionController::class, 'search'])->name('attractions.search');
 
-//payment
+//payment for attraction
 Route::get('/payment', [PaymentController::class, 'show'])->name('payment.show'); // Displays payment form
 Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process'); // Processes the paymentt
 
 //Tour Controller
 Route::post('/search', [TourController::class, 'search'])->name('search');
-
+Route::get('/payment_tour', [PaymentController::class, 'showTour'])->name('payment_tour');
+Route::post('/paymentTour/process', [PaymentController::class, 'processTour'])->name('payment.processTour');
 //Hotel Controller
-Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');  //display available hotels
+Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');  // Display available hotels
 Route::post('/hotelBook', [HotelController::class, 'book'])->name('hotelBook'); // Book a room
 
 //Rental
@@ -80,7 +82,6 @@ Route::get('/rentalbooking-success', function () {
     return view('rentalbooking-success');
 })->name('rentalbooking.success');
 Route::get('/rentalpayment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');
-
 
 
 

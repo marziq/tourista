@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('location');
             $table->decimal('price', 8, 2);
             $table->string('description');
-            $table->integer('available_rooms');
             $table->string('image');
+            $table->date('check_in');
+            $table->date('check_out');
             $table->timestamps();
 
         });
