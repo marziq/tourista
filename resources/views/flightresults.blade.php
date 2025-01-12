@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('master.layout')
 
 @section('content')
     <h1>Flight Search Results</h1>
