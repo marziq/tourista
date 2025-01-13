@@ -68,4 +68,28 @@
     </div>
 </div>
 
+<!-- Payment Success Modal -->
+<div id="paymentSuccessModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+    <div style="background: #fff; padding: 20px; border-radius: 10px; text-align: center; max-width: 400px;">
+        <h2 style="color: #28a745;">Payment Successful!</h2>
+        <p>Thank you for your payment. Your transaction has been processed successfully.</p>
+        <button id="closeModal" class="btn btn-primary">Close</button>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('paymentSuccessModal');
+    const closeModal = document.getElementById('closeModal');
+
+
+    closeModal.addEventListener('click', function () {
+        modal.style.display = 'none';
+    });
+
+
+});
+</script>
+
 @endsection
