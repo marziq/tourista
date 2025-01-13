@@ -177,7 +177,7 @@
                             <div class="search_item me-3 mb-3">
                                 <div>Pick-up Location</div>
                                 <label for="location" class="form-label"></label>
-                                <select name="location" id="location" class="form-select search_input">
+                                <select name="location" id="location" class="form-select search_input" required="required">
                                     <option placeholder="Enter Pick-up Location">Choose</option>
                                     <option value="kuala_lumpur">{{ request('location') }}Kuala Lumpur</option>
                                     <option value="ipoh">{{ request('location') }}Ipoh</option>
@@ -195,7 +195,7 @@
 
                             <!-- Return Date -->
                             <div class="search_item">
-                                <div>Return-up Date</div>
+                                <div>Return Date</div>
                                 <input type="date" name="return_date" class="return_date search_input" required="required" value="{{ request('return_date') }}" placeholder="YYYY-MM-DD">
                             </div>
 
