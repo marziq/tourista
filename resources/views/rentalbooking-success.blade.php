@@ -18,8 +18,8 @@
     <div class="vehicle-details">
         <h3>Vehicle Details:</h3>
         <img src="{{ session('vehicle_image') }}" alt="{{ session('vehicle_brand') }} {{ session('vehicle_model') }}" style="width: 200px;">
-        <p>Brand: {{ session('vehicle_brand') }}</p>
-        <p>Model: {{ session('vehicle_model') }}</p>
+        <p>Brand: {{ session('brand') }}</p>
+        <p>Model: {{ session('model') }}</p>
     </div>
 </div>
 

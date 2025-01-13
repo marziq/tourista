@@ -17,14 +17,14 @@ class RentalController extends Controller
 public function showPaymentForm(Request $request)
 {
     // Retrieve the vehicle details using the ID passed in the request
-    $vehicle = Vehicle::findOrFail($request->vehicle_id);
+    $vehicles = Vehicle::findOrFail($request->vehicle_id);
 
     // Store pickup and return dates into the session
     session(['pickup_date' => $request->pickup_date]);
     session(['return_date' => $request->return_date]);
 
     // Pass the vehicle details to the view
-    return view('rentalpayment', compact('vehicle'));
+    return view('rentalpayment', compact('vehicles'));
 }
 
 
@@ -43,8 +43,8 @@ public function processPayment(Request $request)
     $vehicleId = $request->vehicle_id;
 
     // Retrieve the vehicle details using the ID passed in the request
-    $vehicle = Vehicle::findOrFail($vehicleId);
-    $pricePerDay = $vehicle->price_per_day;
+    $vehicles = Vehicle::findOrFail($vehicleId);
+    $pricePerDay = $vehicles->price_per_day;
 
     // Calculate the number of rental days
     $diffDays = (strtotime($returnDate) - strtotime($pickupDate)) / (60 * 60 * 24); // Number of days
@@ -71,7 +71,7 @@ public function processPayment(Request $request)
     ]);
 
     // Redirect to the payment form with total payment
-    return view('rentalpayment', ['vehicle' => $vehicle, 'totalPayment' => $totalPayment]);
+    return view('rentalpayment', ['vehicles' => $vehicles, 'totalPayment' => $totalPayment]);
 }
 
 
