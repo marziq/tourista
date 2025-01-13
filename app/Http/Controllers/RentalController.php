@@ -26,47 +26,42 @@ class RentalController extends Controller
 
 
     public function processPayment(Request $request)
-    {
-        // Validate the form input
-        $request->validate([
-            'pickup_date' => 'required|date|after:today',
-            'return_date' => 'required|date|after:pickup_date',
-            'vehicle_id' => 'required|string',
-        ]);
+{
+    // Validate the input
+    $request->validate([
+        'pickup_date' => 'required|date|after:today',
+        'return_date' => 'required|date|after:pickup_date',
+        'vehicle_id' => 'required|exists:vehicles,id',
+    ]);
 
-        // Calculate the number of days between pick-up and return dates
-        $pickupDate = $request->pickup_date;
-        $returnDate = $request->return_date;
-        $vehicleId = $request->vehicle_id;
+    $pickupDate = $request->pickup_date;
+    $returnDate = $request->return_date;
+    $vehicleId = $request->vehicle_id;
 
-         // Check if the vehicle is available
-         if (!Booking::isAvailable($vehicleId, $pickupDate, $returnDate)) {
-            return redirect()->back()->withErrors(['error' => 'The selected vehicle is not available for the chosen dates.']);
-        }
-
-        $diffTime = abs(strtotime($return_date) - strtotime($pickup_date));
-        $diffDays = ceil($diffTime / (60 * 60 * 24)); // Calculate number of days
-
-
-        $vehicle = \App\Models\Vehicle::find($vehicleId);
-        $pricePerDay = $vehicle->price_per_day;
-
-        // Calculate the total payment
-        $total_payment = $diffDays * $price_per_day;
-
-        Rental::create([
-            'vehicle_id' => $vehicle_id,
-            'pickup_date' => $pickup_date,
-            'return_date' => $return_date,
-            'price_per_day' => $price_per_day,
-            'number_of_days' => $diffDays,
-            'total_payment' => $total_payment,
-        ]);
-         // Optionally, save the booking details into your database
-
-        // Redirect to a confirmation or payment success page
-        return redirect()->route('booking.success')->with('total_payment', $total_payment);
+    // Check if the vehicle is available
+    if (!Rental::isAvailable($vehicleId, $pickupDate, $returnDate)) {
+        return redirect()->back()->withErrors(['error' => 'The selected vehicle is not available for the chosen dates.']);
     }
+
+    $diffDays = (strtotime($returnDate) - strtotime($pickupDate)) / (60 * 60 * 24); // Number of days
+    $vehicle = \App\Models\Vehicle::findOrFail($vehicleId);
+    $pricePerDay = $vehicle->price_per_day;
+    $totalPayment = $diffDays * $pricePerDay;
+
+    // Save rental details to the database
+    Rental::create([
+        'vehicle_id' => $vehicleId,
+        'pickup_date' => $pickupDate,
+        'return_date' => $returnDate,
+        'price_per_day' => $pricePerDay,
+        'number_of_days' => $diffDays,
+        'total_payment' => $totalPayment,
+    ]);
+
+    // Redirect to a confirmation page with the total payment
+    return redirect()->route('rentalbooking.success')->with('total_payment', $totalPayment);
+}
+
     /**
      * Display a listing of the resource.
      */
