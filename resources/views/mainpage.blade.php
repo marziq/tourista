@@ -145,22 +145,14 @@
                                 <input type="date" name="check_out" class="check_out search_input" required="required" value="{{ request('check_out') }}" placeholder="YYYY-MM-DD">
                             </div>
                             <div class="search_item">
-                                <div>Adults</div>
-                                <select name="adults" id="adults_1" class="dropdown_item_select search_input" required="required">
+                                <div>Pax</div>
+                                <select name="pax" id="pax" class="dropdown_item_select search_input" required="required">
                                     <option value="1">01</option>
                                     <option value="2">02</option>
                                     <option value="3">03</option>
                                 </select>
                             </div>
-                            <div class="search_item">
-                                <div>Children</div>
-                                <select name="children" id="children_1" class="dropdown_item_select search_input" required="required">
-                                    <option value="0">0</option>
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                </select>
-                            </div>
+
                             <button type="submit" class="button search_button">Search<span></span><span></span><span></span></button>
                         </form>
                     </div>
@@ -194,7 +186,7 @@
 					</div>
 
 					<!-- Flight Search Panel -->
-	<div class="search_panel">
+	    <div class="search_panel">
 		<form action="{{ route('flights.search') }}" method="GET" id="search_form_6" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 			<!-- Departure Field -->
 			<div class="search_item">

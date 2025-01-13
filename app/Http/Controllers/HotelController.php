@@ -13,35 +13,9 @@ class HotelController extends Controller
     public function index(Request $request)  // to display hotels
     {
 
-        // Initialize the query builder for the Hotel model
-        $query = Hotel::query();
-
-        // Check if destination filter is applied
-        if ($request->has('destination') && $request->destination != '') {
-            $query->where('location', 'like', '%' . $request->destination . '%');
+        $hotel = Hotel::all();
+        return view('hotel', compact('hotel'));
         }
-
-        // Check if check-in and check-out dates are provided
-        if ($request->has('check_in') && $request->has('check_out')) {
-            $checkinDate = $request->input('check_in');
-            $checkoutDate = $request->input('check_out');
-
-            $query->where(function($query) use ($checkinDate, $checkoutDate) {
-                // Filter hotels based on available dates
-                $query->whereNull('check_in') // No booking exists
-                  ->orWhere(function ($subQuery) use ($checkinDate, $checkoutDate) {
-                      $subQuery->where('check_in', '>', $checkoutDate)
-                               ->orWhere('check_out', '<', $checkinDate);
-                  });
-            });
-        }
-
-        // Fetch hotels with rooms
-        $hotels = $query->with('rooms');
-
-        // Pass the hotels data to the view
-        return view('hotel', compact('hotels'));
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -88,16 +62,15 @@ class HotelController extends Controller
      */
     public function book(Request $request, $id)
     {
-        $room = HotelRoom::findOrFail($id);
+       $hotelData = [
+            'hotel_id' => $request->hotel_id,
+            'check_in' => $request->check_in,
+            'check_out' => $request->check_out,
+            'guests' => $request->guests,
+        ];
 
-        // Logic to handle booking (e.g., reduce available rooms, create booking record, etc.)
-        // For simplicity, let's assume we just mark the room as unavailable
-        /*$room->available = false;
-        $room->save();
+        return view('HotelBook', compact('hotelData'));
 
-        return redirect()->route('hotelRoom', $room->hotel_id)->with('success', 'Room booked successfully!');*/
-
-        //
     }
 
     public function search(Request $request)
@@ -113,21 +86,9 @@ class HotelController extends Controller
         if ($request->has('check_in') && $request->has('check_out')) {
             $checkinDate = $request->input('check_in');
             $checkoutDate = $request->input('check_out');
+        };
 
-            $query->whereHas('rooms', function ($roomQuery) use ($checkinDate, $checkoutDate) {
-                // Filter rooms based on the checkin_date and checkout_date
-                $roomQuery->where('checkin_date', '<=', $checkoutDate)
-                          ->where('checkout_date', '>=', $checkinDate);
-            });
-        }
-
-        // Execute the query to fetch hotels
-        $hotels = $query->with('rooms');
-
-        /*// Optionally, filter out hotels without rooms
-        $hotels = $hotels->filter(function ($hotel) {
-            return $hotel->rooms->isNotEmpty();
-        });*/
+        $hotel = $query->get();
 
         // Return the filtered results to the view
         return view('hotel', compact('hotel'));
