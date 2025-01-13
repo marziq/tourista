@@ -22,6 +22,7 @@
         <p>Pickup Date: {{ session('pickup_date') }}</p>
         <p>Return Date: {{ session('return_date') }}</p>
 
+        <div class="customer-detail">
         <div class="form-group">
             <label for="customer_name">Customer Name</label>
             <input type="text" id="customer_name" name="customer_name" required>
@@ -31,6 +32,8 @@
             <label for="bank_details">Bank Card Details</label>
             <input type="text" id="bank_details" name="bank_details" required>
         </div>
+        </div>
+
 
         <button type="submit" class="btn">Proceed to Payment</button>
     </form>

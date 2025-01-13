@@ -179,40 +179,24 @@
                                 <label for="location" class="form-label"></label>
                                 <select name="location" id="location" class="form-select search_input">
                                     <option placeholder="Enter Pick-up Location">Choose</option>
-                                    <option value="kuala_lumpur">Kuala Lumpur</option>
-                                    <option value="ipoh">Ipoh</option>
-                                    <option value="langkawi">Langkawi</option>
-                                    <option value="pulau_pangkor">Pulau Pangkor</option>
-                                    <option value="penang">Penang</option>
+                                    <option value="kuala_lumpur">{{ request('location') }}Kuala Lumpur</option>
+                                    <option value="ipoh">{{ request('location') }}Ipoh</option>
+                                    <option value="langkawi">{{ request('location') }}Langkawi</option>
+                                    <option value="pulau_pangkor">{{ request('location') }}Pulau Pangkor</option>
+                                    <option value="penang">{{ request('location') }}Penang</option>
                                 </select>
                             </div>
 
                             <!-- Pick-up Date -->
-                            <div class="form-group me-3 mb-3">
+                            <div class="search_item">
                                 <div>Pick-up Date</div>
-                                <label for="pickup_date" class="form-label"></label>
-                                <input
-                                    type="date"
-                                    id="pickup_date"
-                                    name="pickup_date"
-                                    class="form-control"
-                                    required
-                                    value="{{ request('pickup_date') }}"
-                                    placeholder="DD/MM/YYYY">
+                                <input type="date" name="pickup_date" class="pickup_date search_input" required="required" value="{{ request('pickup_date') }}" placeholder="YYYY-MM-DD">
                             </div>
 
                             <!-- Return Date -->
-                            <div class="form-group me-3 mb-3">
-                                <div>Return Date</div>
-                                <label for="return_date" class="form-label"></label>
-                                <input
-                                    type="date"
-                                    id="return_date"
-                                    name="return_date"
-                                    class="form-control"
-                                    required
-                                    value="{{ request('return_date') }}"
-                                    placeholder="DD/MM/YYYY">
+                            <div class="search_item">
+                                <div>Return-up Date</div>
+                                <input type="date" name="return_date" class="return_date search_input" required="required" value="{{ request('return_date') }}" placeholder="YYYY-MM-DD">
                             </div>
 
                             <!-- Search Button -->
@@ -259,7 +243,7 @@
 			  <button type="submit" class="button search_button">Search<span></span><span></span><span></span></button>
                         </form>
                     </div>
-					
+
 					<!-- Search Panel Tour package-->
 
                     <div class="search_panel">
