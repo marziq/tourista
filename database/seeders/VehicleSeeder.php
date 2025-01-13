@@ -14,7 +14,7 @@ class VehicleSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('vehicle')->insert([
+        DB::table('vehicles')->insert([
             [
                 'brand' => 'Toyota',
                 'model' => 'Corolla',

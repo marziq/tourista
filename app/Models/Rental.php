@@ -10,12 +10,22 @@ class Rental extends Model
     use HasFactory;
     protected $fillable = [
         'vehicle_id',
+        'brand',
+        'model',
         'pickup_date',
         'return_date',
         'price_per_day',
         'number_of_days',
-        'total_payment'
+        'total_payment',
+        'location',
+        'customer_name',
+        'bank_details',
     ];
+
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class, 'vehicle_id');
+    }
 
     public static function isAvailable($vehicleId, $pickupDate, $returnDate)
     {

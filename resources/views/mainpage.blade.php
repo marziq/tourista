@@ -145,56 +145,65 @@
                                 <input type="date" name="check_out" class="check_out search_input" required="required" value="{{ request('check_out') }}" placeholder="YYYY-MM-DD">
                             </div>
                             <div class="search_item">
-                                <div>Adults</div>
-                                <select name="adults" id="adults_1" class="dropdown_item_select search_input" required="required">
+                                <div>Pax</div>
+                                <select name="pax" id="pax" class="dropdown_item_select search_input" required="required">
                                     <option value="1">01</option>
                                     <option value="2">02</option>
                                     <option value="3">03</option>
                                 </select>
                             </div>
-                            <div class="search_item">
-                                <div>Children</div>
-                                <select name="children" id="children_1" class="dropdown_item_select search_input" required="required">
-                                    <option value="0">0</option>
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                </select>
-                            </div>
+
                             <button type="submit" class="button search_button">Search<span></span><span></span><span></span></button>
                         </form>
                     </div>
 
-					<!-- Car Rental Search Panel -->
+                    <!-- Car Rental Search Panel -->
+                    <div class="search_panel p-4">
+                        <form
+                            action="{{ route('rental') }}"
+                            method="GET"
+                            id="search_form_2"
+                            class="search_panel_content d-flex flex-wrap align-items-center justify-content-between">
 
-					<div class="search_panel">
-                        <form action="{{ route('rental') }}" method="GET" id="search_form_2" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                            <!-- Pick-up Location -->
+                            <div class="search_item me-3 mb-3">
+                                <div>Pick-up Location</div>
+                                <label for="location" class="form-label"></label>
+                                <select name="location" id="location" class="form-select search_input" required="required">
+                                    <option placeholder="Enter Pick-up Location">Choose</option>
+                                    <option value="kuala_lumpur">{{ request('location') }}Kuala Lumpur</option>
+                                    <option value="ipoh">{{ request('location') }}Ipoh</option>
+                                    <option value="langkawi">{{ request('location') }}Langkawi</option>
+                                    <option value="pulau_pangkor">{{ request('location') }}Pulau Pangkor</option>
+                                    <option value="penang">{{ request('location') }}Penang</option>
+                                </select>
+                            </div>
+
+                            <!-- Pick-up Date -->
                             <div class="search_item">
-								<div>Pick-up Location</div>
-								<select name="location" id="location" class="dropdown_item_select search_input">
-									<option value="kuala_lumpur">Kuala Lumpur</option>
-                                    <option value="ipoh">Ipoh</option>
-                                    <option value="langkawi">Langkawi</option>
-                                    <option value="pulau_pangkor">Pulau Pangkor</option>
-                                    <option value="penang">Penang</option>
-								</select>
-							</div>
-							<div class="search_item">
-								<div>Pick-up Date</div>
-								<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>Return Date</div>
-								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-							</div>
+                                <div>Pick-up Date</div>
+                                <input type="date" name="pickup_date" class="pickup_date search_input" required="required" value="{{ request('pickup_date') }}" placeholder="YYYY-MM-DD">
+                            </div>
+
+                            <!-- Return Date -->
+                            <div class="search_item">
+                                <div>Return Date</div>
+                                <input type="date" name="return_date" class="return_date search_input" required="required" value="{{ request('return_date') }}" placeholder="YYYY-MM-DD">
+                            </div>
+
+                            <!-- Search Button -->
+                            <div class="mb-3">
+                                <button class="button search_button">Search<span></span><span></span><span></span></button>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
 
 
-							<button class="button search_button">search<span></span><span></span><span></span></button>
-						</form>
-					</div>
+
 
 					<!-- Flight Search Panel -->
-	<div class="search_panel">
+	    <div class="search_panel">
 		<form action="{{ route('flights.search') }}" method="GET" id="search_form_6" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 			<!-- Departure Field -->
 			<div class="search_item">
@@ -226,7 +235,7 @@
 			  <button type="submit" class="button search_button">Search<span></span><span></span><span></span></button>
                         </form>
                     </div>
-					
+
 					<!-- Search Panel Tour package-->
 
                     <div class="search_panel">
