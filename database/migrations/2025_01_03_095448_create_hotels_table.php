@@ -16,10 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('location');
             $table->decimal('price', 8, 2);
+            $table->integer('available_rooms');
             $table->string('description');
             $table->string('image');
-            $table->date('check_in');
-            $table->date('check_out');
             $table->timestamps();
 
         });

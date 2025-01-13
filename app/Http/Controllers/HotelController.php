@@ -36,8 +36,8 @@ class HotelController extends Controller
             });
         }
 
-        // Fetch hotels with rooms
-        $hotels = $query->with('rooms');
+        // Fetch hotels with rooms and paginate results
+        $hotels = $query->with('rooms')->paginate(5);
 
         // Pass the hotels data to the view
         return view('hotel', compact('hotels'));
@@ -56,16 +56,7 @@ class HotelController extends Controller
      */
     public function store(Request $request)  //to create a new booking
     {
-        /*$validated = $request->validate([
-            'hotel_id' => 'required|exists:hotels,id',
-            'room_id' => 'required|exists:rooms,id',
-            'check_in' => 'required|date|after:today',
-            'check_out' => 'required|date|after:check_in',
-            'guests' => 'required|integer|min:1'
-        ]);
-
-        Booking::create($validated);
-        return redirect()->route('hotels.index')->with('success', 'Booking successfully created!');*/
+        //
     }
 
     /**
@@ -73,14 +64,7 @@ class HotelController extends Controller
      */
     public function show($id, Request $request)
     {
-        /*$hotel = Hotel::findOrFail($id); // Fetch the hotel by its ID or return a 404 error
-        return view('hotelRoom', compact('hotelRoom')); // Return the view with hotel details*/
-
-        // Retrieve the hotel and its associated rooms by ID
-        $hotel = Hotel::with('rooms')->findOrFail($id);
-
-        // Pass the hotel data to the view
-        return view('hotelRoom', compact('hotel'));
+        //
     }
 
     /**
@@ -88,15 +72,6 @@ class HotelController extends Controller
      */
     public function book(Request $request, $id)
     {
-        $room = HotelRoom::findOrFail($id);
-
-        // Logic to handle booking (e.g., reduce available rooms, create booking record, etc.)
-        // For simplicity, let's assume we just mark the room as unavailable
-        /*$room->available = false;
-        $room->save();
-
-        return redirect()->route('hotelRoom', $room->hotel_id)->with('success', 'Room booked successfully!');*/
-
         //
     }
 
@@ -122,12 +97,7 @@ class HotelController extends Controller
         }
 
         // Execute the query to fetch hotels
-        $hotels = $query->with('rooms');
-
-        /*// Optionally, filter out hotels without rooms
-        $hotels = $hotels->filter(function ($hotel) {
-            return $hotel->rooms->isNotEmpty();
-        });*/
+        $hotels = $query->with('rooms')->paginate(5);
 
         // Return the filtered results to the view
         return view('hotel', compact('hotel'));
@@ -138,9 +108,7 @@ class HotelController extends Controller
      */
     public function edit(string $id)  //to edit a booking
     {
-        /*$booking = Booking::findOrFail($id);
-        $rooms = Room::where('hotel_id', $booking->hotel_id)->get();
-        return view('bookings.edit', compact('booking', 'rooms'));*/
+        //
     }
 
     /**
@@ -148,16 +116,7 @@ class HotelController extends Controller
      */
     public function update(Request $request, string $id)  //to update a booking
     {
-        /*$booking = Booking::findOrFail($id);
-        $validated = $request->validate([
-            'check_in' => 'required|date|after:today',
-            'check_out' => 'required|date|after:check_in',
-            'room_id' => 'required|exists:rooms,id',
-            'guests' => 'required|integer|min:1'
-        ]);
-
-        $booking->update($validated);
-        return redirect()->route('hotels.index')->with('success', 'Booking successfully updated!');*/
+        //
     }
 
     /**
@@ -165,9 +124,7 @@ class HotelController extends Controller
      */
     public function destroy(string $id)  //to delete a booking
     {
-        /*$booking = Booking::findOrFail($id);
-        $booking->delete();
-        return redirect()->route('hotels.index')->with('success', 'Booking successfully cancelled!');*/
+        //
     }
 }
 
