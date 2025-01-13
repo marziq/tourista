@@ -17,4 +17,3 @@ class ClearFlightsTable extends Migration
         // But for this case, the `down()` method might not be necessary
     }
 }
-
