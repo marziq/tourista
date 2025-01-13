@@ -70,6 +70,11 @@
         max-width: calc(33.333% - 20px);
     }
 
+    .image{
+        flex: 1 1 calc(50% - 20px);
+            max-width: calc(50% - 20px);
+    }
+
     @media (max-width: 768px) {
         .vehicle-col {
             flex: 1 1 calc(50% - 20px);
