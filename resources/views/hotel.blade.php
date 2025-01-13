@@ -115,7 +115,7 @@
                             <div class="hotel_details">
                                 <div class="hotel_name">{{ $hotel->name }}</div>
                                 <p class="offers_text"><strong>Location:</strong> {{ $hotel->location }}</p>
-                                <p class="offers_text"><strong>Description:</strong> {{ $hotel->description }}</p>
+                                <p class="offers_text"><strong>Available Room:</strong> {{ $hotel->description }}</p>
                             </div>
 
                             <div class="right_container">
