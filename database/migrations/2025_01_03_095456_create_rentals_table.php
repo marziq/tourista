@@ -13,13 +13,18 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->string('vehicle_id');
+            $table->unsignedBigInteger('vehicle_id');
             $table->date('pickup_date');
             $table->date('return_date');
             $table->decimal('price_per_day', 8, 2);
             $table->integer('number_of_days');
             $table->decimal('total_payment', 10, 2);
+            $table->string('location');
+            $table->string('customer_name');
+            $table->string('bank_details');
             $table->timestamps();
+
+            $table->foreign('vehicle_id')->references('id')->on('vehicle');
         });
     }
 

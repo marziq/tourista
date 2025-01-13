@@ -23,7 +23,7 @@ class FlightController extends Controller
     $departure = $request->input('departure');
     $destination = $request->input('destination');
     $travel_date = $request->input('travel_date');
-    $passengers = $request->input('passenger');
+    $passengers = (int) $request->input('passenger');
 
     // Perform search query
     $query = Flight::query();
@@ -45,21 +45,8 @@ class FlightController extends Controller
     $flights = $query->get();
 
     // Return the results view with relevant data
-    return view('flightresults', compact('flights'));
+    return view('flightresults', compact('flights', 'passengers'));
 }
 
 
-
-    // Optional booking method
-    public function book($id)
-    {
-        $flight = Flight::find($id);
-
-        if ($flight) {
-            // Add booking logic here
-            return redirect()->route('flights.search')->with('success', 'Flight booked successfully!');
-        } else {
-            return redirect()->route('flights.search')->with('error', 'Flight not found!');
-        }
-    }
 }

@@ -96,7 +96,7 @@
             </div>
         </div>
         <div class="row offers_items">
-            @forelse ($hotels as $hotel)
+            @forelse ($hotel as $hotel)
                 <div class="col-lg-6 col-md-6 col-sm-12 offers_col">
                     <div class="offers_item">
                         <!-- Image with Price Overlay -->
@@ -122,7 +122,10 @@
                                 <div class="offers_price_overlay">
                                     RM{{ number_format($hotel->price, 2) }}
                                 </div>
-                                <a href="{{ route('hotelBook') }}" class="search_button">Book Now</a>
+                                <form action="{{ route('hotelBook') }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="search_button">Book Now</button>
+                                </form>
                             </div>
                         </div>
                     </div>

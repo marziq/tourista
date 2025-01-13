@@ -10,7 +10,7 @@ class Vehicle extends Model
     use HasFactory;
 
     // The table associated with the model
-    protected $table = 'vehicles';  // Default table name is plural 'vehicles' unless specified
+    protected $table = 'vehicle';  // Default table name is plural 'vehicles' unless specified
 
     // The primary key associated with the table
     protected $primaryKey = 'id';
