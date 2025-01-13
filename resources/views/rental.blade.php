@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="container">
     @foreach ($vehicles as $vehicle)  <!-- Check if $vehicles is passed correctly -->
         <div class="card">

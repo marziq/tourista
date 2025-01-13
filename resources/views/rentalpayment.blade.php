@@ -19,6 +19,11 @@
             <input type="date" id="return_date" name="return_date" required>
         </div>
 
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" required>
+        </div>
+
         <button type="submit" class="btn">Proceed to Payment</button>
     </form>
 </div>

@@ -1,6 +1,7 @@
 @extends('master.layout')
 @section('content')
 
+
 <style>
     .home {
         position: relative;
@@ -12,6 +13,7 @@
         text-align: center;
     }
 
+
     .home_title {
         font-size: 3rem;
         font-weight: 700;
@@ -19,6 +21,7 @@
         text-transform: uppercase;
         color: #333;
     }
+
 
     .attraction-card {
         border: none;
@@ -28,10 +31,12 @@
         transition: transform 0.3s, box-shadow 0.3s;
     }
 
+
     .attraction-card:hover {
         transform: translateY(-10px);
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
+
 
     .attraction-image {
         width: 100%;
@@ -39,10 +44,12 @@
         object-fit: cover;
     }
 
+
     .card-body {
         padding: 15px;
         background-color: #fff;
     }
+
 
     .card-body h4 {
         font-size: 1.5rem;
@@ -50,16 +57,19 @@
         color: #343a40;
     }
 
+
     .card-body p {
         color: #6c757d;
         margin: 5px 0;
     }
+
 
     .price {
         font-size: 1.4rem;
         font-weight: bold;
         color: #28a745;
     }
+
 
     .btn-primary {
         background-color: #007bff;
@@ -71,10 +81,12 @@
         transition: background-color 0.3s, transform 0.3s;
     }
 
+
     .btn-primary:hover {
         background-color: #0056b3;
         transform: scale(1.05);
     }
+
 
     .quantity-container {
         display: flex;
@@ -84,6 +96,7 @@
         padding: 5px;
         margin-top: 10px;
     }
+
 
     .quantity-btn {
         font-size: 1.5rem;
@@ -96,10 +109,12 @@
         transition: background-color 0.2s;
     }
 
+
     .quantity-btn:hover {
         background-color: #007bff;
         color: white;
     }
+
 
     .quantity-input {
         width: 50px;
@@ -108,6 +123,7 @@
         border: none;
     }
 
+
     .quantity-info {
         font-size: 1.1rem;
         margin-left: 10px;
@@ -115,11 +131,13 @@
     }
 </style>
 
+
 <div class="home">
     <div class="home_content">
         <div class="home_title">Attractions</div>
     </div>
 </div>
+
 
 @if(isset($attractions))
     <div class="container mt-4">
@@ -130,6 +148,7 @@
         <div class="alert alert-warning">No attractions variable passed to view.</div>
     </div>
 @endif
+
 
 <div class="container mt-5">
     <div class="row">
@@ -170,10 +189,12 @@
     </div>
 </div>
 
+
 <script>
     function updateQuantity(attractionId, action) {
         let quantityInput = document.getElementById('quantity-' + attractionId);
         let quantity = parseInt(quantityInput.value);
+
 
         if (action === 'increase') {
             quantity++;
@@ -181,9 +202,11 @@
             quantity--;
         }
 
+
         quantityInput.value = quantity;
         updateTotalPrice(attractionId);
     }
+
 
     function updateTotalPrice(attractionId) {
         let quantityElement = document.querySelector('#quantity-' + attractionId);
@@ -191,7 +214,9 @@
         let pricePerUnit = parseFloat(priceElement.dataset.price);
         let quantity = parseInt(quantityElement.value);
 
+
         let totalPrice = pricePerUnit * quantity;
+
 
         // Update display and form inputs
         document.getElementById('price-' + attractionId).textContent = 'RM ' + totalPrice.toFixed(2);
@@ -199,5 +224,6 @@
         document.getElementById('total-price-' + attractionId).value = totalPrice.toFixed(2);
     }
 </script>
+
 
 @endsection

@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
@@ -7,7 +8,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RentalController;
-
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MainPageController;
 Route::get('/', function () {
     return view('mainpage');
 });
@@ -57,11 +59,17 @@ Route::get('/attractions/search', [AttractionController::class, 'search'])->name
 //payment for attraction
 Route::get('/payment', [PaymentController::class, 'show'])->name('payment.show'); // Displays payment form
 Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process'); // Processes the paymentt
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show'); // Displays the profile page
+Route::get('/profile', [PaymentController::class, 'profile'])->name('profile.show');
+Route::delete('/payments/{id}', [PaymentController::class, 'destroy'])->name('payments.destroy');
+Route::put('/payments/{id}', [PaymentController::class, 'update'])->name('payments.update');
 
 //Tour Controller
 Route::post('/search', [TourController::class, 'search'])->name('search');
 Route::get('/payment_tour', [PaymentController::class, 'showTour'])->name('payment_tour');
 Route::post('/paymentTour/process', [PaymentController::class, 'processTour'])->name('payment.processTour');
+
+
 //Hotel Controller
 Route::post('/hotel', [HotelController::class, 'index'])->name('hotel');  // Display available hotels
 Route::post('/hotelBook', [HotelController::class, 'book'])->name('hotelBook'); // Book a room
@@ -82,6 +90,3 @@ Route::get('/rentalbooking-success', function () {
     return view('rentalbooking-success');
 })->name('rentalbooking.success');
 Route::get('/rentalpayment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');
-
-
-
