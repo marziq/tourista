@@ -126,4 +126,7 @@
     </div>
 </div>
 
+<!-- End of content -->
+ 
 @endsection
+
