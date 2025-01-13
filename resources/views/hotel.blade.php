@@ -32,14 +32,8 @@
     }
 
     .offers_price_overlay {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        padding: 5px 15px;
-        border-radius: 4px;
         font-size: 24px;
+        color: #34495e;
         font-weight: bold;
     }
 
@@ -47,13 +41,13 @@
     .offers_content {
         padding: 20px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
     }
 
     .hotel_details {
-        flex: 1;
+        margin-bottom: 10px;
     }
 
     .hotel_name {
@@ -73,38 +67,24 @@
         text-align: right;
     }
 
-    .room_selector {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        margin-bottom: 10px;
-    }
-
-    .room_selector button {
-        background-color: #426253;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 14px;
-    }
-
-    .room_selector input {
-        width: 50px;
-        text-align: center;
-        margin: 0 5px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-    }
     .search_button {
-        background-color: #426253;
+        background-color: #1E90FF;
         color: white;
         padding: 8px 15px;
         text-decoration: none;
         border-radius: 5px;
         font-size: 14px;
+    }
+
+    .offers_items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .offers_col {
+        width: 48%;
+        margin-bottom: 20px;
     }
 </style>
 
@@ -128,9 +108,6 @@
                                     <p style="text-align: center; line-height: 200px; color: #999;">No Image</p>
                                 </div>
                             @endif
-                            <div class="offers_price_overlay" id="dynamic_price_{{ $hotel->id }}">
-                                RM{{ number_format($hotel->price, 2) }}
-                            </div>
                         </div>
 
                         <!-- Content -->
@@ -138,54 +115,25 @@
                             <div class="hotel_details">
                                 <div class="hotel_name">{{ $hotel->name }}</div>
                                 <p class="offers_text"><strong>Location:</strong> {{ $hotel->location }}</p>
-                                <p class="offers_text"><strong>Available Rooms:</strong> {{ $hotel->description}}</p>
+                                <p class="offers_text"><strong>Description:</strong> {{ $hotel->description }}</p>
                             </div>
 
                             <div class="right_container">
-                                <div class="room_selector">
-                                    <button onclick="updateRoomCount({{ $hotel->id }}, -1, {{ $hotel->available_rooms }}, {{ $hotel->price }})">-</button>
-                                    <input type="text" id="room_count_{{ $hotel->id }}" value="1" readonly>
-                                    <button onclick="updateRoomCount({{ $hotel->id }}, 1, {{ $hotel->available_rooms }}, {{ $hotel->price }})">+</button>
+                                <div class="offers_price_overlay">
+                                    RM{{ number_format($hotel->price, 2) }}
                                 </div>
                                 <a href="{{ route('hotelBook') }}" class="search_button">Book Now</a>
-                                <p class="offers_text"><span style="color: red;">{{ $hotel->available_rooms }} rooms available</span></p>                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             @empty
                 <div class="col-12">
-                    <p>No hotels available for the selected destination.</p>
+                    <p>No hotels available.</p>
                 </div>
             @endforelse
         </div>
-        <div class="pagination_container">
-            {{ $hotels->links() }}
-        </div>
     </div>
 </div>
-
-<script>
-    function updateRoomCount(hotelId, increment, maxRooms, price) {
-    const roomCountInput = document.getElementById(`room_count_${hotelId}`);
-    const priceDisplay = document.querySelector(`#dynamic_price_${hotelId}`);
-    let currentCount = parseInt(roomCountInput.value);
-
-    if (isNaN(currentCount)) currentCount = 1;
-
-    // Calculate the new room count
-    let newCount = currentCount + increment;
-
-    // Prevent exceeding the maximum number of rooms or going below 1
-    if (newCount < 1) newCount = 1;
-    if (newCount > maxRooms) newCount = maxRooms;
-
-    // Update the input field value
-    roomCountInput.value = newCount;
-
-    // Recalculate the price and update the display
-    const newPrice = (newCount * price).toFixed(2);
-    priceDisplay.textContent = `RM${newPrice}`;
-}
-</script>
 
 @endsection

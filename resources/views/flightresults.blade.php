@@ -93,19 +93,15 @@
     </div>
 @endif
 
-    @if($flights->isEmpty())
-        <p>No flights found matching your search criteria.</p>
-    @else
-        <div class="results_container">
-            <div class="flights_list">
-                @foreach($flights as $flight)
-                <div class="flight_card">
-                    <!-- Ensure the image path is correct -->
-                    <img src="{{ asset('storage/flights/' . $flight->image) }}" alt="Flight Image" class="flight_image">
-                    <div class="flight_details">
-                        <h2>{{ $flight->departure }} to {{ $flight->arrival }}</h2>
-                        <p>Date: {{ $flight->travel_date }}</p>
-                        <p>Price: RM {{ number_format($flight->price, 2) }}</p>
+<div class="container mt-5">
+    <div class="row">
+        @forelse($flights as $flight)
+            <div class="col-md-4 mb-4">
+                <div class="flight-card">
+                    <img src="{{ asset('storage/flights/' . $flight->image) }}" alt="Flight Image" class="flight-image">
+                    <div class="card-body">
+                        <h4>{{ $flight->departure }} to {{ $flight->arrival }}</h4>
+                        <p class="text-muted">Date: {{ $flight->travel_date }}</p>
                         <p>Airline: {{ $flight->airline }}</p>
                         <span class="price">RM {{ number_format($flight->price, 2) }} per pax</span>
                         <form action="{{ route('flights.show') }}" method="GET" class="mt-3">
@@ -130,4 +126,7 @@
     </div>
 </div>
 
+<!-- End of content -->
+ 
 @endsection
+
