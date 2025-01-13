@@ -14,15 +14,17 @@ class RentalController extends Controller
     return view('vehicle-list', compact('vehicles'));
 }
 
-    // Show the payment form
-    public function showPaymentForm(Request $request)
+public function showPaymentForm(Request $request)
 {
     // Retrieve the vehicle details using the ID passed in the request
     $vehicle = Vehicle::findOrFail($request->vehicle_id);
-    $location = $request->location; // Retrieve the location from the main page
 
-    // Pass the vehicle details and location to the view
-    return view('rentalpayment', compact('vehicle', 'location'));
+    // Store pickup and return dates into the session
+    session(['pickup_date' => $request->pickup_date]);
+    session(['return_date' => $request->return_date]);
+
+    // Pass the vehicle details to the view
+    return view('rentalpayment', compact('vehicle'));
 }
 
 
@@ -34,23 +36,29 @@ public function processPayment(Request $request)
         'pickup_date' => 'required|date|after:today',
         'return_date' => 'required|date|after:pickup_date',
         'vehicle_id' => 'required|exists:vehicles,id',
-        'location' => 'required|string|max:255',  // Add validation for location
     ]);
 
     $pickupDate = $request->pickup_date;
     $returnDate = $request->return_date;
     $vehicleId = $request->vehicle_id;
-    $location = $request->location;
+
+    // Retrieve the vehicle details using the ID passed in the request
+    $vehicle = Vehicle::findOrFail($vehicleId);
+    $pricePerDay = $vehicle->price_per_day;
+
+    // Calculate the number of rental days
+    $diffDays = (strtotime($returnDate) - strtotime($pickupDate)) / (60 * 60 * 24); // Number of days
+
+    // Calculate the total payment
+    $totalPayment = $diffDays * $pricePerDay;
+
+    // Store the total payment in session
+    session(['total_payment' => $totalPayment]);
 
     // Check if the vehicle is available
     if (!Rental::isAvailable($vehicleId, $pickupDate, $returnDate)) {
         return redirect()->back()->withErrors(['error' => 'The selected vehicle is not available for the chosen dates.']);
     }
-
-    $diffDays = (strtotime($returnDate) - strtotime($pickupDate)) / (60 * 60 * 24); // Number of days
-    $vehicle = Vehicle::findOrFail($vehicleId);
-    $pricePerDay = $vehicle->price_per_day;
-    $totalPayment = $diffDays * $pricePerDay;
 
     // Save rental details to the database
     Rental::create([
@@ -60,12 +68,16 @@ public function processPayment(Request $request)
         'price_per_day' => $pricePerDay,
         'number_of_days' => $diffDays,
         'total_payment' => $totalPayment,
-        'location' => $location,  // Save the location to the database
     ]);
 
-    // Redirect to a confirmation page with the total payment
-    return redirect()->route('rentalbooking.success')->with('total_payment', $totalPayment);
+    // Redirect to the payment form with total payment
+    return view('rentalpayment', ['vehicle' => $vehicle, 'totalPayment' => $totalPayment]);
 }
+
+
+
+
+
 
     /**
      * Display a listing of the resource.
