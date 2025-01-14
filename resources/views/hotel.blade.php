@@ -125,8 +125,8 @@
                                     @csrf
                                     <input type="hidden" name="hotel_id" value="{{ $hotel->id }}">
                                     <input type="hidden" name="hotel_name" value="{{ $hotel->name }}">
-                                    <input type="hidden" name="check_in" id="check_in_{{ $hotel->id }}" value="{{ 'check_in' }}">
-                                    <input type="hidden" name="check_out" id="check_out_{{ $hotel->id }}" value="{{ 'check_out' }}">
+                                    <input type="hidden" name="check_in" id="check_in_{{ $hotel->id }}" value="{{ request('check_in') }}">
+                                    <input type="hidden" name="check_out" id="check_out_{{ $hotel->id }}" value="{{ request('check_out') }}">
                                     <input type="hidden" name="pax" id="quantity-input-{{ $hotel->id }}" value="1">
                                     <input type="hidden" name="price" value="{{ $hotel->price }}">
                                     <input type="hidden" name="total_price" id="total-price-{{ $hotel->id }}" value="{{ $hotel->price }}">
