@@ -17,6 +17,8 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
+
+
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -38,17 +40,24 @@
     }
 </style>
 
+
 </head>
+
 
 <body>
 
+
 <div class="super_container">
+
 
     <!-- Header -->
 
+
     <header class="header">
 
+
         <!-- Top Bar -->
+
 
         <div class="top_bar">
             <div class="container">
@@ -67,10 +76,12 @@
                         </div>
                         @if (Auth::check())
 
+
                             <form method="POST" action="{{ route('logout') }}" class="user_box">
                                 @csrf
                                 <button type="submit" id="logoutbtn">Logout</button>
                             </form>
+
 
                         @else
                         <div class="user_box ml-auto">
@@ -83,7 +94,9 @@
             </div>
         </div>
 
+
         <!-- Main Navigation -->
+
 
         <nav class="main_nav">
             <div class="container">
@@ -96,8 +109,9 @@
                             <ul class="main_nav_list">
                                 <li class="main_nav_item"><a href="{{ url('/') }}">home</a></li>
                                 <li class="main_nav_item"><a href="{{ url('/about') }}">about us</a></li>
-                                <li class="main_nav_item"><a href="{{ url('/blog') }}">news</a></li>
-                                <li class="main_nav_item"><a href="{{ url('/contact') }}">contact</a></li>
+
+
+                                <li class="main_nav_item"><a href="{{ url('/contact') }}">teams</a></li>
                             </ul>
                         </div>
                         <div class="content_search ml-lg-0 ml-auto">
@@ -134,6 +148,7 @@
                             <input type="search" class="search_content_input bez_1">
                         </form>
 
+
                         <div class="hamburger">
                             <i class="fa fa-bars trans_200"></i>
                         </div>
@@ -142,7 +157,9 @@
             </div>
         </nav>
 
+
     </header>
+
 
     <div class="menu trans_500">
         <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
@@ -151,19 +168,22 @@
             <ul>
                 <li class="menu_item"><a href="{{ url('/') }}">home</a></li>
                 <li class="menu_item"><a href="{{ url('/about') }}">about us</a></li>
-                <li class="menu_item"><a href="{{ url('/blog') }}">news</a></li>
                 <li class="menu_item"><a href="{{ url('/contact') }}">contact</a></li>
             </ul>
         </div>
     </div>
 
+
     @yield('content')
 
+
     <!-- Footer -->
+
 
     <footer class="footer">
         <div class="container">
             <div class="row">
+
 
                 <!-- Footer Column -->
                 <div class="col-lg-3 footer_column">
@@ -184,11 +204,13 @@
                     </div>
                 </div>
 
+
                 <!-- Footer Column -->
                 <div class="col-lg-3 footer_column">
                     <div class="footer_col">
                         <div class="footer_title">blog posts</div>
                         <div class="footer_content footer_blog">
+
 
                             <!-- Footer blog item -->
                             <div class="footer_blog_item clearfix">
@@ -199,6 +221,7 @@
                                 </div>
                             </div>
 
+
                             <!-- Footer blog item -->
                             <div class="footer_blog_item clearfix">
                                 <div class="footer_blog_image"><img src="{{ asset('images/footer_blog_2.jpg') }}" alt="https://unsplash.com/@deannaritchie"></div>
@@ -207,6 +230,7 @@
                                     <div class="footer_blog_date">Nov 29, 2017</div>
                                 </div>
                             </div>
+
 
                             <!-- Footer blog item -->
                             <div class="footer_blog_item clearfix">
@@ -217,9 +241,11 @@
                                 </div>
                             </div>
 
+
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Footer Column -->
                 <div class="col-lg-3 footer_column">
@@ -239,6 +265,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Footer Column -->
                 <div class="col-lg-3 footer_column">
@@ -267,11 +294,14 @@
                     </div>
                 </div>
 
+
             </div>
         </div>
     </footer>
 
+
     <!-- Copyright -->
+
 
     <div class="copyright">
         <div class="container">
@@ -289,7 +319,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             <ul class="footer_nav_list">
                                 <li class="footer_nav_item"><a href="{{ url('/') }}">home</a></li>
                                 <li class="footer_nav_item"><a href="{{ url('/about') }}">about us</a></li>
-                                <li class="footer_nav_item"><a href="{{ url('/blog') }}">news</a></li>
+
+
                                 <li class="footer_nav_item"><a href="{{ url('/contact') }}">contact</a></li>
                             </ul>
                         </div>
@@ -299,7 +330,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 
+
 </div>
+
 
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('styles/bootstrap4/popper.js') }}"></script>
@@ -315,6 +348,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{ asset('plugins/parallax-js-master/parallax.min.js') }}"></script>
 <script src="{{ asset('js/about_custom.js') }}"></script>
 
+
 </body>
+
 
 </html>

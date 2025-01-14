@@ -27,6 +27,10 @@ Route::get('/offers', function () {
     return view('offers');
 });
 
+Route::get('/contact', function () {
+    return view('contact');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -76,7 +80,7 @@ Route::post('/paymentTour/process', [PaymentController::class, 'processTour'])->
 
 
 //Hotel Controller
-Route::post('/hotel', [HotelController::class, 'search'])->name('hotel');  // Display available hotels
+Route::post('/hotel', [HotelController::class, 'search'])->name('search_hotel');  // Display available hotels
 Route::get('/payment_hotel', [PaymentController::class, 'showHotel'])->name('payment_hotel'); // Book a hotel
 Route::post('/payment_hotel/process', [PaymentController::class, 'processHotel'])->name('payment.processHotel');
 

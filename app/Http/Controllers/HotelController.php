@@ -22,7 +22,7 @@ class HotelController extends Controller
      */
     public function create()
     {
-        //
+        return view('hotels.create');
     }
 
     /**
@@ -59,24 +59,7 @@ class HotelController extends Controller
 
     public function search(Request $request)
     {
-        /*// Initialize the query builder for the Hotel model
-        $query = Hotel::query();
-
-        // Apply the search filters for destination, check-in, and check-out dates
-        if ($request->has('destination') && $request->destination != '') {
-            $query->where('location', 'like', '%' . $request->destination . '%');
-        }
-
-        if ($request->has('check_in') && $request->has('check_out')) {
-            $checkinDate = $request->input('check_in');
-            $checkoutDate = $request->input('check_out');
-        };
-
-        $hotel = $query->get();
-
-        // Return the filtered results to the view
-        return view('hotel', compact('hotel', 'checkinDate', 'checkoutDate'));*/
-
+        /*
         $request->validate([
             'destination' => 'required|string',
             'check_in' => 'required|date|after:today',
@@ -99,7 +82,24 @@ class HotelController extends Controller
             })
             ->get();
 
-        return view('hotel', compact('hotel'));
+        return view('hotel', compact('hotel'));*/
+       //Initialize the query builder for the Hotel model
+        $query = Hotel::query();
+
+        // Apply the search filters for destination, check-in, and check-out dates
+        if ($request->has('destination') && $request->destination != '') {
+            $query->where('location', 'like', '%' . $request->destination . '%');
+        }
+
+        if ($request->has('check_in') && $request->has('check_out')) {
+            $checkinDate = $request->input('check_in');
+            $checkoutDate = $request->input('check_out');
+        };
+
+        $hotel = $query->get();
+
+        // Return the filtered results to the view
+        return view('hotel', compact('hotel', 'checkinDate', 'checkoutDate'));
     }
 
     /**
