@@ -2,26 +2,27 @@
 
 @section('content')
 
-<div class="container" style="display: flex; justify-content: center; align-items: center;  margin-top: 200px; min-height: 100vh; padding: 5px;">
-    <div class="rental-payment-container" style="width: 100%; max-width: 600px; background: #f9fafb; border-radius: 10px; padding: 10px;">
+<div class="container" style="display: flex; justify-content: center; align-items: center; margin-top: 200px; min-height: 100vh; padding: 5px;">
+    <div class="rental-payment-container" style="width: 100%; max-width: 800px; background: #f9fafb; border-radius: 10px; padding: 10px;">
 
         <div class="d-flex flex-wrap gap-4">
             <!-- Rental Details Section -->
             <div class="rental-details" style="flex: 1; padding: 15px; background: #ffffff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
                 <h3 style="margin-bottom: 20px; color: #34495e;">Rental Details</h3>
                 <div class="vehicle-details text-center">
-                    <img src="{{ asset($vehicles->image) }}" alt="{{ $vehicles->brand }} {{ $vehicles->model }}" style="width: 100%; max-width: 200px; border-radius: 10px; margin-bottom: 20px;">
-                    <h4>{{ $vehicles->brand }} {{ $vehicles->model }}</h4>
-                    <p><strong>Price per Day:</strong> RM {{ number_format($vehicles->price_per_day, 2) }}</p>
-                    <p><strong>Total Payment:</strong> RM {{ number_format(session('total_payment'), 2) }}</p>
+                    <img src="{{ asset($vehicle->image) }}" alt="{{ $vehicle->brand }} {{ $vehicle->model }}" style="width: 100%; max-width: 300px; border-radius: 10px; margin-bottom: 20px;">
+                    <h4>{{ $vehicle->brand }} {{ $vehicle->model }}</h4>
+                    <p><strong>Price per Day:</strong> RM {{ number_format($vehicle->price_per_day, 2) }}</p>
+                    <p><strong>Pickup Location:</strong> {{ session('location') }}</p>
                     <p><strong>Pickup Date:</strong> {{ session('pickup_date') }}</p>
                     <p><strong>Return Date:</strong> {{ session('return_date') }}</p>
+                    <p><strong>Total Payment:</strong> RM {{ number_format(session('total_payment'), 2) }}</p>
                 </div>
             </div>
 
             <!-- Payment Form Section -->
             <div class="payment-form-section" style="flex: 1; padding: 15px; background: #ffffff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
-                <h5 style="margin-bottom: 20px; color: #34495e;">Payment Method</h>
+                <h5 style="margin-bottom: 20px; color: #34495e;">Payment Method</h5>
                 <div class="text-center mb-4">
                     <img src="{{ asset('images/visa.png') }}" alt="Visa" style="width: 70px;">
                 </div>
@@ -29,10 +30,14 @@
                 <form action="{{ route('rentalpayment.submit') }}" method="POST" style="display: flex; flex-direction: column; gap: 5px;">
                     @csrf
                     <!-- Hidden Fields -->
-                    <input type="hidden" name="vehicle_id" value="{{ $vehicles->id }}">
-                    <input type="hidden" name="brand" value="{{ $vehicles->brand }}">
-                    <input type="hidden" name="model" value="{{ $vehicles->model }}">
-                    <input type="hidden" name="price_per_day" value="{{ $vehicles->price_per_day }}">
+                    <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+                    <input type="hidden" name="brand" value="{{ $vehicle->brand }}">
+                    <input type="hidden" name="model" value="{{ $vehicle->model }}">
+                    <input type="hidden" name="price_per_day" value="{{ $vehicle->price_per_day }}">
+                    <input type="hidden" name="location" value="{{ session('location') }}">
+                    <input type="hidden" name="pickup_date" value="{{ session('pickup_date') }}">
+                    <input type="hidden" name="return_date" value="{{ session('return_date') }}">
+                    <input type="hidden" name="total_payment" value="{{ session('total_payment') }}">
 
                     <div class="form-group">
                         <label for="username" style="color: #34495e;">Username</label>
@@ -77,18 +82,14 @@
     </div>
 </div>
 
-
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('paymentSuccessModal');
     const closeModal = document.getElementById('closeModal');
 
-
     closeModal.addEventListener('click', function () {
         modal.style.display = 'none';
     });
-
-
 });
 </script>
 

@@ -27,7 +27,9 @@ class Vehicle extends Model
     ];
 
     // One-to-Many Relationship: Vehicle has many bookings
-    public function bookings() {
-        return $this->hasMany(Booking::class, 'vehicle_id', 'id');
-    }
+    public function rentals()
+{
+    return $this->hasMany(Rental::class, 'vehicle_id', 'id');
+}
+
 }
