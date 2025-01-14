@@ -113,7 +113,7 @@ Route::post('/', function () {
 /*=============================================================================================================*/
 
 
-//admin dashboard
+//admin dashboard and CRUD
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/admin', function () {
         if (Auth::check() && Auth::user()->email === 'admin@admin.com') {
@@ -121,16 +121,21 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         }
         return redirect('/');
     })->name('admin');
-});
 
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::group(['middleware' => function ($request, $next) {
+        if (Auth::check() && Auth::user()->email === 'admin@admin.com') {
+            return $next($request);
+        }
+        return redirect('/');
+    }], function () {
+        Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
-    Route::resource('/admin/hotels', HotelController::class);
-    Route::resource('/admin/vehicles', VehicleController::class);
-    Route::resource('/admin/flights', FlightController::class);
-    Route::resource('/admin/tours', TourController::class);
-    Route::resource('/admin/attractions', AttractionController::class);
+        Route::resource('/admin/hotels', HotelController::class);
+        Route::resource('/admin/vehicles', VehicleController::class);
+        Route::resource('/admin/flights', FlightController::class);
+        Route::resource('/admin/tours', TourController::class);
+        Route::resource('/admin/attractions', AttractionController::class);
+    });
 });
 
 //admin CRUD

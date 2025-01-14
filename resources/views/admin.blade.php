@@ -3,6 +3,7 @@
 <style>
 body {
     font-family: Arial, sans-serif;
+    color: #000000;
 }
 
 .container {
@@ -14,7 +15,7 @@ body {
     margin-bottom: 20px;
 }
 h1, h2 {
-    color: #333;
+    color: #000000;
 }
 
 .table {
