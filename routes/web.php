@@ -91,14 +91,12 @@ Route::get('/rental', [RentalController::class, 'showVehicles'])->name('rental')
 Route::get('/vehicles', [RentalController::class, 'showVehicles'])->name('vehicles');
 
 Route::post('/process-rental-search', [RentalController::class, 'processRentalSearch'])->name('processRentalSearch');
-Route::get('/rental', [RentalController::class, 'rental'])->name('rental');
 Route::post('/process-rental-payment', [RentalController::class, 'processRentalPayment'])->name('processRentalPayment');
 Route::post('/process-rental-search', [RentalController::class, 'processRentalSearch'])->name('processRentalSearch');
 Route::get('/rental', [RentalController::class, 'rental'])->name('rental');
 Route::get('/rentalpayment', [RentalController::class, 'rentalPayment'])->name('rentalpayment');
 Route::post('/rentalpayment/submit', [RentalController::class, 'processRentalPayment'])->name('rentalpayment.submit');
 Route::post('/book-vehicle/{vehicleId}', [RentalController::class, 'bookVehicle'])->name('bookVehicle');
-// web.php or routes file
 Route::post('/rentalpayment/submit', [RentalController::class, 'storeRental'])->name('rentalpayment.submit');
 
 Route::get('/rental-success', function () {
