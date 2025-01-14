@@ -56,10 +56,6 @@ Route::get('/flights/search', [FlightController::class, 'search'])->name('flight
 Route::get('/flights/payment', [PaymentController::class, 'showFlight'])->name('flights.showFlight');
 Route::post('/payment/processFlight', [PaymentController::class, 'processFlight'])->name('payment.processFlight'); // Processes the payment
 
-// Create a new flight (authentication might be needed if you want to restrict access)
-//Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
-
-
 
 //Attraction
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
@@ -114,7 +110,7 @@ Route::post('/', function () {
 })->name('homepage');
 
 
-
+/*=============================================================================================================*/
 
 
 //admin dashboard
@@ -145,7 +141,12 @@ Route::get('/hotels/{hotel}/edit', [HotelController::class, 'edit'])->name('hote
 Route::put('/hotels/{hotel}', [HotelController::class, 'update'])->name('hotels.update');
 Route::delete('/hotels/{hotel}', [HotelController::class, 'destroy'])->name('hotels.destroy');
 
-//rental
+//vehicle
+Route::get('/vehicles/create', [VehicleController::class, 'create'])->name('vehicles.create');
+Route::post('/vehicles', [VehicleController::class, 'store'])->name('vehicles.store');
+Route::get('/vehicles/{vehicle}/edit', [VehicleController::class, 'edit'])->name('vehicles.edit');
+Route::put('/vehicles/{vehicle}', [VehicleController::class, 'update'])->name('vehicles.update');
+Route::delete('/vehicles/{vehicle}', [VehicleController::class, 'destroy'])->name('vehicles.destroy');
 
 //flight
 Route::get('/flights/create', [FlightController::class, 'create'])->name('flights.create');

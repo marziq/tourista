@@ -173,8 +173,9 @@ class PaymentController extends Controller
         $paymentHistory->payment_method = $paymentMethod;
         $paymentHistory->save();
 
+        session()->flash('payment_success', true);
         // Set the session variable for payment success
-        return redirect()->route('payment_tour')->with('payment_success', true);
+        return redirect()->route('payment_hotel')->with('payment_success', true);
     }
 
     //crud
