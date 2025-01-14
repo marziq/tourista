@@ -89,14 +89,25 @@ Route::post('/rental', [RentalController::class, 'store'])->name('rental');
 Route::get('/rental', [RentalController::class, 'showVehicles'])->name('rental');
 Route::get('/vehicles', [RentalController::class, 'showVehicles'])->name('vehicles');
 
-// web.php
-Route::get('/rental-payment', [RentalController::class, 'showPaymentForm'])->name('rentalpayment');  // Route for navigating to the rental payment form
-Route::post('/rental-payment', [RentalController::class, 'processPayment'])->name('rentalpayment.submit');  // Route to handle the payment form submission
+Route::post('/process-rental-search', [RentalController::class, 'processRentalSearch'])->name('processRentalSearch');
+Route::get('/rental', [RentalController::class, 'rental'])->name('rental');
+Route::post('/process-rental-payment', [RentalController::class, 'processRentalPayment'])->name('processRentalPayment');
+Route::post('/process-rental-search', [RentalController::class, 'processRentalSearch'])->name('processRentalSearch');
+Route::get('/rental', [RentalController::class, 'rental'])->name('rental');
+Route::get('/rentalpayment', [RentalController::class, 'rentalPayment'])->name('rentalpayment');
+Route::post('/rentalpayment/submit', [RentalController::class, 'processRentalPayment'])->name('rentalpayment.submit');
+Route::post('/book-vehicle/{vehicleId}', [RentalController::class, 'bookVehicle'])->name('bookVehicle');
+// web.php or routes file
+Route::post('/rentalpayment/submit', [RentalController::class, 'storeRental'])->name('rentalpayment.submit');
 
-// Route for success confirmation after booking
-Route::get('/rentalbooking-success', function () {
-    return view('rentalbooking-success');
-})->name('rentalbooking.success');
+Route::get('/rental-success', function () {
+    return view('rental_success');
+})->name('rental.success');
+Route::get('/homepage', function () {
+    return view('homepage');  // Alias to make it cleaner
+})->name('homepage');
+
+
 
 
 

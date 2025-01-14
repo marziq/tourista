@@ -4,7 +4,7 @@
 
 <style>
     .vehicle-container {
-        margin-top: 200px;
+        margin-top: 20px;
         padding: 20px;
     }
 
@@ -108,24 +108,34 @@
 
 </style>
 
-<div class="vehicle-container">
-    <div class="vehicle-row">
-        @foreach ($vehicles as $vehicle)
-            <div class="vehicle-col">
-                <div class="vehicle-card">
-                    <img src="{{ asset($vehicle->image) }}" alt="{{ $vehicle->brand }} {{ $vehicle->model }}">
-                    <div class="card-content">
-                        <h3>{{ $vehicle->brand }} {{ $vehicle->model }}</h3>
-                        <p>From RM {{ number_format($vehicle->price_per_day, 2) }}</p>
-                        <form action="{{ route('rentalpayment') }}" method="GET" style="margin-top: 10px;">
-                            <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-                            <button type="submit" class="btn">Book Now</button>
-                        </form>
+<div class="rental-summary">
+    <h3>Rental Details</h3>
+    <p><strong>Pick-up Location:</strong> {{ session('location') }}</p>
+    <p><strong>Pick-up Date:</strong> {{ session('pickup_date') }}</p>
+    <p><strong>Return Date:</strong> {{ session('return_date') }}</p>
+    </div>
+
+    <div class="vehicle-container">
+        <div class="vehicle-row">
+            @foreach ($vehicles as $vehicle)
+                <div class="vehicle-col">
+                    <div class="vehicle-card">
+                        <img src="{{ asset($vehicle->image) }}" alt="{{ $vehicle->brand }} {{ $vehicle->model }}" style="width: 100%; max-width: 200px; border-radius: 10px; margin-bottom: 20px;">
+                        <div class="card-content">
+                            <h4>{{ $vehicle->brand }} {{ $vehicle->model }}</h4>
+                            <p><strong>Price per Day:</strong> RM {{ number_format($vehicle->price_per_day, 2) }}</p>
+                            <!-- Book Now Button -->
+                            <form action="{{ route('bookVehicle', $vehicle->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Book Now</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+
+        </div>
     </div>
-</div>
+
 
 @endsection

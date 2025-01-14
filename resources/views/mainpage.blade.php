@@ -157,47 +157,44 @@
                         </form>
                     </div>
 
-                    <!-- Car Rental Search Panel -->
-                    <div class="search_panel p-4">
-                        <form
-                            action="{{ route('rental') }}"
-                            method="GET"
-                            id="search_form_2"
-                            class="search_panel_content d-flex flex-wrap align-items-center justify-content-between">
-
+                    <!-- Rental Search Panel -->
+                    <div class="search_panel active">
+                        <form action="{{ route('processRentalSearch') }}" method="POST" id="search_form_2" class="search_panel_content d-flex flex-wrap align-items-center justify-content-between">
+                            @csrf
                             <!-- Pick-up Location -->
                             <div class="search_item me-3 mb-3">
                                 <div>Pick-up Location</div>
-                                <label for="location" class="form-label"></label>
-                                <select name="location" id="location" class="form-select search_input" required="required">
-                                    <option placeholder="Enter Pick-up Location">Choose</option>
-                                    <option value="kuala_lumpur">{{ request('location') }}Kuala Lumpur</option>
-                                    <option value="ipoh">{{ request('location') }}Ipoh</option>
-                                    <option value="langkawi">{{ request('location') }}Langkawi</option>
-                                    <option value="pulau_pangkor">{{ request('location') }}Pulau Pangkor</option>
-                                    <option value="penang">{{ request('location') }}Penang</option>
+                                <select name="location" id="location" class="form-select search_input" required>
+                                    <option value="">Choose</option>
+                                    <option value="Kuala Lumpur">Kuala Lumpur</option>
+                                    <option value="Ipoh">Ipoh</option>
+                                    <option value="Langkawi">Langkawi</option>
+                                    <option value="Pulau Pangkor">Pulau Pangkor</option>
+                                    <option value="Penang">Penang</option>
                                 </select>
                             </div>
 
                             <!-- Pick-up Date -->
                             <div class="search_item">
                                 <div>Pick-up Date</div>
-                                <input type="date" name="pickup_date" class="pickup_date search_input" required="required" value="{{ request('pickup_date') }}" placeholder="YYYY-MM-DD">
+                                <input type="date" name="pickup_date" class="pickup_date search_input" required placeholder="YYYY-MM-DD">
                             </div>
 
                             <!-- Return Date -->
                             <div class="search_item">
                                 <div>Return Date</div>
-                                <input type="date" name="return_date" class="return_date search_input" required="required" value="{{ request('return_date') }}" placeholder="YYYY-MM-DD">
+                                <input type="date" name="return_date" class="return_date search_input" required placeholder="YYYY-MM-DD">
                             </div>
 
                             <!-- Search Button -->
                             <div class="mb-3">
-                                <button class="button search_button">Search<span></span><span></span><span></span></button>
-                                </button>
+                                <button type="submit" class="button search_button">Search<span></span><span></span><span></span></button>
                             </div>
                         </form>
-                    </div>
+
+                </div>
+
+
 
 
 
