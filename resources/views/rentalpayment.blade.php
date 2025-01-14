@@ -2,41 +2,94 @@
 
 @section('content')
 
-<div class="container">
-    <h2>Rental Payment</h2>
+<div class="container" style="display: flex; justify-content: center; align-items: center;  margin-top: 200px; min-height: 100vh; padding: 5px;">
+    <div class="rental-payment-container" style="width: 100%; max-width: 600px; background: #f9fafb; border-radius: 10px; padding: 10px;">
 
-    <div class="vehicle-details">
-        <img src="{{ asset($vehicle->image) }}" alt="{{ $vehicle->brand }} {{ $vehicle->model }}">
-        <h3>{{ $vehicle->brand }} {{ $vehicle->model }}</h3>
-        <p>Price per Day: RM {{ number_format($vehicle->price_per_day, 2) }}</p>
-        <p>Total Payment: RM {{ number_format(session('total_payment'), 2) }}</p> <!-- Use session('total_payment') to display the total payment -->
+        <div class="d-flex flex-wrap gap-4">
+            <!-- Rental Details Section -->
+            <div class="rental-details" style="flex: 1; padding: 15px; background: #ffffff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+                <h3 style="margin-bottom: 20px; color: #34495e;">Rental Details</h3>
+                <div class="vehicle-details text-center">
+                    <img src="{{ asset($vehicles->image) }}" alt="{{ $vehicles->brand }} {{ $vehicles->model }}" style="width: 100%; max-width: 200px; border-radius: 10px; margin-bottom: 20px;">
+                    <h4>{{ $vehicles->brand }} {{ $vehicles->model }}</h4>
+                    <p><strong>Price per Day:</strong> RM {{ number_format($vehicles->price_per_day, 2) }}</p>
+                    <p><strong>Total Payment:</strong> RM {{ number_format(session('total_payment'), 2) }}</p>
+                    <p><strong>Pickup Date:</strong> {{ session('pickup_date') }}</p>
+                    <p><strong>Return Date:</strong> {{ session('return_date') }}</p>
+                </div>
+            </div>
+
+            <!-- Payment Form Section -->
+            <div class="payment-form-section" style="flex: 1; padding: 15px; background: #ffffff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+                <h5 style="margin-bottom: 20px; color: #34495e;">Payment Method</h>
+                <div class="text-center mb-4">
+                    <img src="{{ asset('images/visa.png') }}" alt="Visa" style="width: 70px;">
+                </div>
+
+                <form action="{{ route('rentalpayment.submit') }}" method="POST" style="display: flex; flex-direction: column; gap: 5px;">
+                    @csrf
+                    <!-- Hidden Fields -->
+                    <input type="hidden" name="vehicle_id" value="{{ $vehicles->id }}">
+                    <input type="hidden" name="brand" value="{{ $vehicles->brand }}">
+                    <input type="hidden" name="model" value="{{ $vehicles->model }}">
+                    <input type="hidden" name="price_per_day" value="{{ $vehicles->price_per_day }}">
+
+                    <div class="form-group">
+                        <label for="username" style="color: #34495e;">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card_number" style="color: #34495e;">Card Number</label>
+                        <input type="text" class="form-control" id="card_number" name="card_number" placeholder="XXXX XXXX XXXX XXXX" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="expiration_date" style="color: #34495e;">Expiration Date</label>
+                                <input type="text" class="form-control" id="expiration_date" name="expiration_date" placeholder="MM/YY" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cvv" style="color: #34495e;">CVV</label>
+                                <input type="text" class="form-control" id="cvv" name="cvv" placeholder="XXX" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="card_holder_name" style="color: #34495e;">Card Holder Name</label>
+                        <input type="text" class="form-control" id="card_holder_name" name="card_holder_name" placeholder="John Doe" required>
+                    </div>
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 10px 8px;">Confirm Payment</button>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <form action="{{ route('rentalpayment.submit') }}" method="POST">
-        @csrf
-        <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-        <input type="hidden" name="brand" value="{{ $vehicle->brand }}">
-        <input type="hidden" name="model" value="{{ $vehicle->model }}">
-        <input type="hidden" name="price_per_day" value="{{ $vehicle->price_per_day }}">
-
-        <p>Pickup Date: {{ session('pickup_date') }}</p>
-        <p>Return Date: {{ session('return_date') }}</p>
-
-        <div class="customer-detail">
-        <div class="form-group">
-            <label for="customer_name">Customer Name</label>
-            <input type="text" id="customer_name" name="customer_name" required>
-        </div>
-
-        <div class="form-group">
-            <label for="bank_details">Bank Card Details</label>
-            <input type="text" id="bank_details" name="bank_details" required>
-        </div>
-        </div>
-
-
-        <button type="submit" class="btn">Proceed to Payment</button>
-    </form>
 </div>
+
+<!-- Payment Success Modal -->
+<div id="paymentSuccessModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+    <div style="background: #fff; padding: 20px; border-radius: 10px; text-align: center; max-width: 400px;">
+        <h2 style="color: #28a745;">Payment Successful!</h2>
+        <p>Thank you for your payment. Your transaction has been processed successfully.</p>
+        <button id="closeModal" class="btn btn-primary">Close</button>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('paymentSuccessModal');
+    const closeModal = document.getElementById('closeModal');
+
+
+    closeModal.addEventListener('click', function () {
+        modal.style.display = 'none';
+    });
+
+
+});
+</script>
 
 @endsection

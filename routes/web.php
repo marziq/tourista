@@ -54,6 +54,8 @@ Route::post('/payment/processFlight', [PaymentController::class, 'processFlight'
 // Create a new flight (authentication might be needed if you want to restrict access)
 //Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
 
+
+
 //Attraction
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
 Route::get('/attractions', [AttractionController::class, 'index'])->name('attractions.index');

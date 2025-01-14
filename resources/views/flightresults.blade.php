@@ -98,7 +98,7 @@
         @forelse($flights as $flight)
             <div class="col-md-4 mb-4">
                 <div class="flight-card">
-                    <img src="{{ asset('storage/flights/' . $flight->image) }}" alt="Flight Image" class="flight-image">
+                    <img src="{{ asset($flight->image) }}" alt="Flight Image" class="flight-image">
                     <div class="card-body">
                         <h4>{{ $flight->departure }} to {{ $flight->arrival }}</h4>
                         <p class="text-muted">Date: {{ $flight->travel_date }}</p>

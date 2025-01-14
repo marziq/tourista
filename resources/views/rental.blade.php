@@ -4,18 +4,22 @@
 
 <style>
     .vehicle-container {
-        margin-top: 20px;
+        margin-top: 40px;
+        padding: 20px;
     }
 
     .vehicle-card {
         border: none;
-        border-radius: 10px !important;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         text-align: center;
-        margin-bottom: 20px;
         background: #fff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .vehicle-card:hover {
@@ -25,30 +29,32 @@
 
     .vehicle-card img {
         width: 100%;
+        max-width: 300px;
         height: 200px;
         object-fit: cover;
-        border-bottom: 1px solid #ddd;
+        border-radius: 10px;
+        margin-bottom: 20px;
     }
 
     .vehicle-card h3 {
-        font-size: 1.25rem;
-        margin: 15px 0;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
         color: #333;
     }
 
     .vehicle-card p {
-        font-size: 1rem;
+        font-size: 1.1rem;
         color: #666;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 
     .vehicle-card .btn {
         background-color: #006400;
         color: #fff;
-        padding: 10px 20px;
+        padding: 12px 24px;
         border: none;
         border-radius: 5px;
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: bold;
         cursor: pointer;
         transition: background-color 0.3s ease;
@@ -63,11 +69,19 @@
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
+        justify-content: center;
     }
 
     .vehicle-col {
         flex: 1 1 calc(33.333% - 20px);
         max-width: calc(33.333% - 20px);
+        display: flex;
+        justify-content: center;
+    }
+
+    .image{
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
     }
 
     @media (max-width: 768px) {
@@ -87,7 +101,7 @@
 
 <div class="home">
     <div class="home_content">
-        <div class="home_title">Rental</div>
+        <div class="home_title">Vehicle Rentals</div>
     </div>
 </div>
 
@@ -99,7 +113,7 @@
             <div class="card-content">
                 <h3>{{ $vehicle->brand }} {{ $vehicle->model }}</h3>
                 <p>From RM {{ number_format($vehicle->price_per_day, 2) }}</p>
-                <form action="{{ route('rentalpayment') }}" method="GET">
+                <form action="{{ route('rentalpayment') }}" method="GET" style="margin-top: 10px;">
                     <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
                     <button type="submit" class="btn">Book Now</button>
                 </form>
@@ -109,7 +123,8 @@
 
 </div>
 
-<div>TEST - Is this showing?</div>
-
+<div>
+    TEST - Is this showing?
+</div>
 
 @endsection

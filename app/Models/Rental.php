@@ -10,6 +10,8 @@ class Rental extends Model
     use HasFactory;
     protected $fillable = [
         'vehicle_id',
+        'brand',
+        'model',
         'pickup_date',
         'return_date',
         'price_per_day',
