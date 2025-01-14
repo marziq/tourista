@@ -99,7 +99,6 @@
             @forelse ($hotel as $hotel)
                 <div class="col-lg-6 col-md-6 col-sm-12 offers_col">
                     <div class="offers_item">
-                        <!-- Image with Price Overlay -->
                         <div class="offers_image_container">
                             @if($hotel->image)
                                 <div class="offers_image_background" style="background-image: url({{ asset('images/' . $hotel->image) }});"></div>
@@ -122,9 +121,17 @@
                                 <div class="offers_price_overlay">
                                     RM{{ number_format($hotel->price, 2) }}
                                 </div>
-                                <form action="{{ route('hotelBook') }}" method="POST" class="d-inline">
+                                <form action="{{ route('payment_hotel') }}" method="GET" class="d-inline">
                                     @csrf
-                                    <button type="submit" class="search_button">Book Now</button>
+                                    <input type="hidden" name="hotel_id" value="{{ $hotel->id }}">
+                                    <input type="hidden" name="hotel_name" value="{{ $hotel->name }}">
+                                    <input type="hidden" name="check_in" id="check_in_{{ $hotel->id }}" value="{{ 'check_in' }}">
+                                    <input type="hidden" name="check_out" id="check_out_{{ $hotel->id }}" value="{{ 'check_out' }}">
+                                    <input type="hidden" name="pax" id="quantity-input-{{ $hotel->id }}" value="1">
+                                    <input type="hidden" name="price" value="{{ $hotel->price }}">
+                                    <input type="hidden" name="total_price" id="total-price-{{ $hotel->id }}" value="{{ $hotel->price }}">
+
+                                    <button type="submit" class="btn btn-primary">Book Now</button>
                                 </form>
                             </div>
                         </div>

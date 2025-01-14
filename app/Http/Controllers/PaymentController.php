@@ -51,6 +51,20 @@ class PaymentController extends Controller
 
         return view('payment_flight', compact('flightData'));
     }
+    public function showHotel(Request $request)
+    {
+        $hotelData = [
+            'hotel_id' => $request->input('hotel_id'),       // Hotel ID
+            'hotel_name' => $request->input('hotel_name'),   // Hotel Name
+            'check_in' => $request->input('check_in'),       // Check In Date
+            'check_out' => $request->input('check_out'),     // Check Out Date
+            'pax' => (int)$request->pax,                     //pax
+            'price' => $request->price,
+            'total_price' => (float) $request->input('total_price'), // Total price
+        ];
+
+        return view('payment_hotel', compact('hotelData'));
+    }
     // public function success()
     // {
     //     return view('payment-success');
@@ -128,6 +142,34 @@ class PaymentController extends Controller
         $paymentHistory = new PaymentHistory();
         $paymentHistory->username = $request->username;
         $paymentHistory->quantity =  (int) $request->input('passengers');
+        $paymentHistory->total_price = (float) $request->input('total_price');
+        $paymentHistory->payment_method = $paymentMethod;
+        $paymentHistory->save();
+
+        // Set the session variable for payment success
+        return response()->json([
+            'message' => 'Payment Successful! Your transaction has been processed.',
+    ]);
+    }
+
+    public function processHotel(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'username' => 'required|string|max:255',
+            'card_number' => 'required|string|regex:/^\d{4}\s?\d{4}\s?\d{4}\s?\d{4}$/',
+            'expiration_date' => 'required|string|regex:/^\d{2}\/\d{2}$/',
+            'cvv' => 'required|string|size:3',
+            'card_holder_name' => 'required|string|max:255',
+        ]);
+
+        // Assuming the payment method is always 'Visa'
+        $paymentMethod = 'Visa';
+
+        // Create a new payment history record
+        $paymentHistory = new PaymentHistory();
+        $paymentHistory->username = $request->username;
+        $paymentHistory->quantity =  (int) $request->input('pax');
         $paymentHistory->total_price = (float) $request->input('total_price');
         $paymentHistory->payment_method = $paymentMethod;
         $paymentHistory->save();
