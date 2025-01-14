@@ -6,7 +6,7 @@
 <div id="paymentSuccessModal" class="modal">
     <div class="modal-content">
         <h2>Payment Successful!</h2>
-        <p>Thank you for your payment. Your tour booking has been processed successfully.</p>
+        <p>Thank you for your payment. Your Payment  has been processed successfully.</p>
         <button id="closeModal" class="btn btn-primary">Close</button>
     </div>
 </div>

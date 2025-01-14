@@ -22,7 +22,7 @@ class HotelController extends Controller
      */
     public function create()
     {
-        return view('hotels.create');
+        return view('hotel.create');
     }
 
     /**
@@ -30,7 +30,16 @@ class HotelController extends Controller
      */
     public function store(Request $request)  //to create a new booking
     {
-        //
+        $hotel = new Hotel();
+        $hotel->name = $request->name;
+        $hotel->location = $request->location;
+        $hotel->price = $request->price;
+        $hotel->description = $request->description;
+        $hotel->check_in = $request->check_in;
+        $hotel->check_out = $request->check_out;
+        $hotel->save();
+
+        return redirect()->route('admin')->with('success', 'Hotel created successfully.');
     }
 
     /**
@@ -105,9 +114,9 @@ class HotelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)  //to edit a booking
+    public function edit(Hotel $hotel)  //to edit a booking
     {
-        //
+        return view('hotel.edit', compact('hotel'));
     }
 
     /**
@@ -115,7 +124,17 @@ class HotelController extends Controller
      */
     public function update(Request $request, string $id)  //to update a booking
     {
-        //
+        $hotel = Hotel::findOrFail($id); // Retrieve the hotel instance by ID
+
+        $hotel->name = $request->name;
+        $hotel->location = $request->location;
+        $hotel->price = $request->price;
+        $hotel->description = $request->description;
+        $hotel->check_in = $request->check_in;
+        $hotel->check_out = $request->check_out;
+        $hotel->save();
+
+        return redirect()->route('admin')->with('success', 'Hotel updated successfully.');
     }
 
     /**
@@ -123,7 +142,10 @@ class HotelController extends Controller
      */
     public function destroy(string $id)  //to delete a booking
     {
-        //
+        $hotel = Hotel::findOrFail($id); // Retrieve the hotel instance by ID
+        $hotel->delete(); // Delete the hotel
+
+        return redirect()->route('admin')->with('success', 'Hotel deleted successfully.');
     }
 }
 

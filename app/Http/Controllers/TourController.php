@@ -48,7 +48,7 @@ class TourController extends Controller
      */
     public function create()
     {
-        //
+        return view('tour.create');
     }
 
     /**
@@ -56,7 +56,13 @@ class TourController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tour = new TourPackage();
+        $tour->package_name = $request->name;
+        $tour->description = $request->description;
+        $tour->price = $request->price;
+        $tour->save();
+
+        return redirect()->route('admin')->with('success', 'Tour created successfully.');
     }
 
     /**
@@ -70,24 +76,31 @@ class TourController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(TourPackage $tour)
     {
-        //
+        return view('tour.edit', compact('tour'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, TourPackage $tour)
     {
-        //
+        $tour->package_name = $request->name;
+        $tour->description = $request->description;
+        $tour->price = $request->price;
+        $tour->save();
+
+        return redirect()->route('admin')->with('success', 'Tour updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(TourPackage $tour)
     {
-        //
+        $tour->delete();
+
+        return redirect()->route('admin')->with('success', 'Tour deleted successfully.');
     }
 }

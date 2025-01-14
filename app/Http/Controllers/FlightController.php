@@ -16,6 +16,25 @@ class FlightController extends Controller
         return view('flightresults', compact('flights'));
     }
 
+     public function create()
+    {
+        return view('flights.create');
+    }
+
+    public function store(Request $request)
+    {
+        $flight = new Flight();
+        $flight->departure = $request->departure;
+        $flight->arrival = $request->arrival;
+        $flight->travel_date = $request->travel_date;
+        $flight->passenger_count = $request->passenger_count;
+        $flight->price = $request->price;
+        $flight->airline = $request->airline;
+        $flight->save();
+
+        return redirect()->route('admin')->with('success', 'Flight created successfully.');
+    }
+
     // Handle flight search
     public function search(Request $request)
 {
@@ -48,5 +67,29 @@ class FlightController extends Controller
     return view('flightresults', compact('flights', 'passengers'));
 }
 
+    public function edit(Flight $flight)
+    {
+         return view('flights.edit', compact('flight'));
+    }
+
+    public function update(Request $request, Flight $flight)
+    {
+        $flight->departure = $request->departure;
+        $flight->arrival = $request->arrival;
+        $flight->travel_date = $request->travel_date;
+        $flight->passenger_count = $request->passenger_count;
+        $flight->price = $request->price;
+        $flight->airline = $request->airline;
+        $flight->save();
+
+        return redirect()->route('admin')->with('success', 'Flight updated successfully.');
+    }
+
+    public function destroy(Flight $flight)
+    {
+        $flight->delete();
+
+        return redirect()->route('admin')->with('success', 'Flight deleted successfully.');
+    }
 
 }

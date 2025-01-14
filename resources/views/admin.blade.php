@@ -116,48 +116,37 @@ h1, h2 {
 
 
 
-        <!-- Rentals Table -->
-        <h2>Manage Rentals</h2>
+        <!-- Vehicles Table -->
+        <h2>Manage Vehicles</h2>
         <table class="table">
-            <thead>
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Price Per Day</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($vehicles as $vehicle)
                 <tr>
-                    <th>Vehicle ID</th>
-                    <th>Pickup Date</th>
-                    <th>Return Date</th>
-                    <th>Price Per Day</th>
-                    <th>Number of Days</th>
-                    <th>Total Payment</th>
-                    <th>Location</th>
-                    <th>Customer Name</th>
-                    <th>Bank Details</th>
-                    <th>Actions</th>
+                    <td>{{ $vehicle->brand }}</td>
+                    <td>{{ $vehicle->model }}</td>
+                    <td>{{ $vehicle->price_per_day }}</td>
+                    <td>
+                        <a href="{{ route('vehicles.edit', $vehicle->id) }}" class="btn     btn-warning">Edit</a>
+                        <form action="{{ route('vehicles.destroy', $vehicle->id) }}"    method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach($rentals as $rental)
-                    <tr>
-                        <td>{{ $rental->vehicle_id }}</td>
-                        <td>{{ $rental->pickup_date }}</td>
-                        <td>{{ $rental->return_date }}</td>
-                        <td>{{ $rental->price_per_day }}</td>
-                        <td>{{ $rental->number_of_days }}</td>
-                        <td>{{ $rental->total_payment }}</td>
-                        <td>{{ $rental->location }}</td>
-                        <td>{{ $rental->customer_name }}</td>
-                        <td>{{ $rental->bank_details }}</td>
-                        <td>
-                            <a href="{{ route('rentals.edit', $rental->id) }}" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('rentals.destroy', $rental->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
+            @endforeach
+        </tbody>
         </table>
-        <a href="{{ route('rentals.create') }}" class="btn btn-primary">Create Rental</a>
+     <a href="{{ route('vehicles.create') }}" class="btn btn-primary">Create    Vehicle</a>
+
 
         <!-- Flights Table -->
         <h2>Manage Flights</h2>
@@ -202,7 +191,7 @@ h1, h2 {
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Destination</th>
+                    <th>Description</th>
                     <th>Price</th>
                     <th>Actions</th>
                 </tr>

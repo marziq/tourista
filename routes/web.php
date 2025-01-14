@@ -12,6 +12,7 @@ use App\Http\Controllers\RentalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VehicleController;
 
 Route::get('/', function () {
     return view('mainpage');
@@ -130,9 +131,40 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
     Route::resource('/admin/hotels', HotelController::class);
-    Route::resource('/admin/rentals', RentalController::class);
+    Route::resource('/admin/vehicles', VehicleController::class);
     Route::resource('/admin/flights', FlightController::class);
     Route::resource('/admin/tours', TourController::class);
     Route::resource('/admin/attractions', AttractionController::class);
 });
 
+//admin CRUD
+//hotel
+Route::get('/hotels/create', [HotelController::class, 'create'])->name('hotels.create');
+Route::post('/hotels', [HotelController::class, 'store'])->name('hotels.store');
+Route::get('/hotels/{hotel}/edit', [HotelController::class, 'edit'])->name('hotels.edit');
+Route::put('/hotels/{hotel}', [HotelController::class, 'update'])->name('hotels.update');
+Route::delete('/hotels/{hotel}', [HotelController::class, 'destroy'])->name('hotels.destroy');
+
+//rental
+
+//flight
+Route::get('/flights/create', [FlightController::class, 'create'])->name('flights.create');
+Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
+Route::get('/flights/{flight}/edit', [FlightController::class, 'edit'])->name('flights.edit');
+Route::put('/flights/{flight}', [FlightController::class, 'update'])->name('flights.update');
+Route::delete('/flights/{flight}', [FlightController::class, 'destroy'])->name('flights.destroy');
+
+//tour
+Route::get('/tours/create', [TourController::class, 'create'])->name('tours.create');
+Route::post('/tours', [TourController::class, 'store'])->name('tours.store');
+Route::get('/tours/{tour}/edit', [TourController::class, 'edit'])->name('tours.edit');
+Route::put('/tours/{tour}', [TourController::class, 'update'])->name('tours.update');
+Route::delete('/tours/{tour}', [TourController::class, 'destroy'])->name('tours.destroy');
+
+//attraction
+
+Route::get('/attractions/create', [AttractionController::class, 'create'])->name('attractions.create');
+Route::post('/attractions', [AttractionController::class, 'store'])->name('attractions.store');
+Route::get('/attractions/{attraction}/edit', [AttractionController::class, 'edit'])->name('attractions.edit');
+Route::put('/attractions/{attraction}', [AttractionController::class, 'update'])->name('attractions.update');
+Route::delete('/attractions/{attraction}', [AttractionController::class, 'destroy'])->name('attractions.destroy');
