@@ -12,6 +12,7 @@ use App\Http\Controllers\RentalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VehicleController;
 
 Route::get('/', function () {
     return view('mainpage');
@@ -129,7 +130,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
     Route::resource('/admin/hotels', HotelController::class);
-    Route::resource('/admin/rentals', RentalController::class);
+    Route::resource('/admin/vehicles', VehicleController::class);
     Route::resource('/admin/flights', FlightController::class);
     Route::resource('/admin/tours', TourController::class);
     Route::resource('/admin/attractions', AttractionController::class);

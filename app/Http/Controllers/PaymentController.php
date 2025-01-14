@@ -95,7 +95,7 @@ class PaymentController extends Controller
 
 
         // Return success response (can redirect to a success page or return a success message)
-        return redirect()->route('profile.show')->with('success', 'Payment Successful! Your transaction has been processed.');
+        return redirect()->route('payment_tour')->with('payment_success', true);
     }
 
     public function processTour(Request $request)
@@ -147,9 +147,8 @@ class PaymentController extends Controller
         $paymentHistory->save();
 
         // Set the session variable for payment success
-        return response()->json([
-            'message' => 'Payment Successful! Your transaction has been processed.',
-    ]);
+        return redirect()->route('payment_tour')->with('payment_success', true);
+
     }
 
     public function processHotel(Request $request)
@@ -175,9 +174,7 @@ class PaymentController extends Controller
         $paymentHistory->save();
 
         // Set the session variable for payment success
-        return response()->json([
-            'message' => 'Payment Successful! Your transaction has been processed.',
-    ]);
+        return redirect()->route('payment_tour')->with('payment_success', true);
     }
 
     //crud
