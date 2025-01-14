@@ -77,7 +77,9 @@ Route::post('/paymentTour/process', [PaymentController::class, 'processTour'])->
 
 //Hotel Controller
 Route::post('/hotel', [HotelController::class, 'search'])->name('hotel');  // Display available hotels
-Route::post('/hotelBook', [HotelController::class, 'book'])->name('hotelBook'); // Book a room
+Route::get('/payment_hotel', [PaymentController::class, 'showHotel'])->name('payment_hotel'); // Book a hotel
+Route::post('/payment_hotel/process', [PaymentController::class, 'processHotel'])->name('payment.processHotel');
+
 
 //Rental
 Route::get('/rental', function () {

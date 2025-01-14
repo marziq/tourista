@@ -44,22 +44,22 @@ class HotelController extends Controller
     /**
      * Handle room booking.
      */
-    public function book(Request $request, $id)
+    /*public function book(Request $request, $id)
     {
        $hotelData = [
             'hotel_id' => $request->hotel_id,
-            'check_in' => $request->check_in,
-            'check_out' => $request->check_out,
+            'check_in_date' => $request->check_in,
+            'check_out_date' => $request->check_out,
             'guests' => $request->guests,
         ];
 
-        return view('HotelBook', compact('hotelData'));
+        return view('payment_hotel', compact('hotelData'));
 
-    }
+    }*/
 
     public function search(Request $request)
     {
-        // Initialize the query builder for the Hotel model
+        /*// Initialize the query builder for the Hotel model
         $query = Hotel::query();
 
         // Apply the search filters for destination, check-in, and check-out dates
@@ -75,6 +75,30 @@ class HotelController extends Controller
         $hotel = $query->get();
 
         // Return the filtered results to the view
+        return view('hotel', compact('hotel', 'checkinDate', 'checkoutDate'));*/
+
+        $request->validate([
+            'destination' => 'required|string',
+            'check_in' => 'required|date|after:today',
+            'check_out' => 'required|date|after:check_in',
+            'pax' => 'required|integer|min:1',
+        ]);
+
+        $destination = $request->input('destination');
+        $checkIn = $request->input('check_in');
+        $checkOut = $request->input('check_out');
+
+        // Fetch hotels that match the criteria and do not have overlapping dates
+        $hotel = Hotel::where('location', $destination)
+            ->where(function ($query) use ($checkIn, $checkOut) {
+                $query->whereNull('check_in') // Include hotels with no bookings
+                      ->orWhere(function ($subQuery) use ($checkIn, $checkOut) {
+                          $subQuery->where('check_out', '<=', $checkIn) // Ensure no overlap
+                                   ->orWhere('check_in', '>=', $checkOut);
+                      });
+            })
+            ->get();
+
         return view('hotel', compact('hotel'));
     }
 

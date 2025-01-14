@@ -138,11 +138,11 @@
                             </div>
                             <div class="search_item">
                                 <div>Check In</div>
-                                <input type="date" name="check_in" class="check_in search_input" required="required" value="{{ request('check_in') }}" placeholder="YYYY-MM-DD">
+                                <input type="date" name="check_in" class="check_in search_input" required="required" value="{{ old('check_in', request('check_in')) }}" placeholder="YYYY-MM-DD">
                             </div>
                             <div class="search_item">
                                 <div>Check Out</div>
-                                <input type="date" name="check_out" class="check_out search_input" required="required" value="{{ request('check_out') }}" placeholder="YYYY-MM-DD">
+                                <input type="date" name="check_out" class="check_out search_input" required="required" value="{{ old('check_out', request('check_out')) }}" placeholder="YYYY-MM-DD">
                             </div>
                             <div class="search_item">
                                 <div>Pax</div>
