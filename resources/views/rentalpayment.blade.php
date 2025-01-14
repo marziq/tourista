@@ -13,9 +13,10 @@
                     <img src="{{ asset($vehicles->image) }}" alt="{{ $vehicles->brand }} {{ $vehicles->model }}" style="width: 100%; max-width: 200px; border-radius: 10px; margin-bottom: 20px;">
                     <h4>{{ $vehicles->brand }} {{ $vehicles->model }}</h4>
                     <p><strong>Price per Day:</strong> RM {{ number_format($vehicles->price_per_day, 2) }}</p>
-                    <p><strong>Total Payment:</strong> RM {{ number_format(session('total_payment'), 2) }}</p>
+                    <p><strong>Pickup Location:</strong> {{ session('location') }}</p>
                     <p><strong>Pickup Date:</strong> {{ session('pickup_date') }}</p>
                     <p><strong>Return Date:</strong> {{ session('return_date') }}</p>
+                    <p><strong>Total Payment:</strong> RM {{ number_format(session('total_payment'), 2) }}</p>
                 </div>
             </div>
 

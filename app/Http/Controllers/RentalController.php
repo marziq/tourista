@@ -11,7 +11,7 @@ class RentalController extends Controller
     public function showVehicles()
 {
     $vehicles = Vehicle::all();  // Fetch vehicles from the database
-    return view('vehicle-list', compact('vehicles'));
+    return view('rental', compact('vehicles'));
 }
 
 public function showPaymentForm(Request $request)
