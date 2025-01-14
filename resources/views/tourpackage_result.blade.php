@@ -141,8 +141,7 @@
         @forelse($tourPackages as $tourPackage)
             <div class="col-md-4 mb-4">
                 <div class="tour-card">
-                    <img src="{{ asset('storage/' . $tourPackage->image) }}" alt="{{ $tourPackage->package_name }}" class="tour-image">
-                    <div class="card-body">
+                    <img src="{{ asset($tourPackage->image) }}" alt="{{ $tourPackage->package_name }}" class="tour-image">                    <div class="card-body">
                         <h4>{{ $tourPackage->package_name }}</h4>
                         <p class="text-muted">{{ $tourPackage->location }}</p>
                         <p>{{ $tourPackage->description }}</p>

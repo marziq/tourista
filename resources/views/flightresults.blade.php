@@ -104,7 +104,7 @@
                         <p class="text-muted">Date: {{ $flight->travel_date }}</p>
                         <p>Airline: {{ $flight->airline }}</p>
                         <span class="price">RM {{ number_format($flight->price, 2) }} per pax</span>
-                        <form action="{{ route('flights.show') }}" method="GET" class="mt-3">
+                        <form action="{{ route('flights.showFlight',['flight' => $flight->id] ) }}" method="GET" class="mt-3">
                             @csrf
                             <input type="hidden" name="airline" value="{{ $flight->airline }}">
                             <input type="hidden" name="departure" value="{{ $flight->departure }}">
@@ -127,6 +127,6 @@
 </div>
 
 <!-- End of content -->
- 
+
 @endsection
 
