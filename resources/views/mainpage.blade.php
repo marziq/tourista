@@ -208,7 +208,7 @@
 			<!-- Departure Field -->
 			<div class="search_item">
 				<label for="departure">DEPARTURE</label>
-				<input type="text" name="departure" id="departure" class="search_input" placeholder="Enter departure city" required>
+				<input type="text" name="departure" class="search_input" placeholder="Enter departure city" required>
 			</div>
 
 			<!-- Destination Field -->

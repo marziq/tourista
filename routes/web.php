@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RentalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\AdminController;
+
 Route::get('/', function () {
     return view('mainpage');
 });
@@ -45,11 +48,13 @@ Route::get('/flights/search', [FlightController::class, 'search'])->name('flight
 
 
 // Book a flight (no authentication needed)
-Route::get('/flights/payment', [PaymentController::class, 'showFlight'])->name('flights.show');
+Route::get('/flights/payment', [PaymentController::class, 'showFlight'])->name('flights.showFlight');
 Route::post('/payment/processFlight', [PaymentController::class, 'processFlight'])->name('payment.processFlight'); // Processes the payment
 
 // Create a new flight (authentication might be needed if you want to restrict access)
-Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
+//Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
+
+
 
 //Attraction
 Route::get('/', [AttractionController::class, 'mainPage'])->name('main.page');
@@ -92,4 +97,26 @@ Route::post('/rental-payment', [RentalController::class, 'processPayment'])->nam
 Route::get('/rentalbooking-success', function () {
     return view('rentalbooking-success');
 })->name('rentalbooking.success');
+
+
+
+//admin dashboard
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    Route::get('/admin', function () {
+        if (Auth::check() && Auth::user()->email === 'admin@admin.com') {
+            return view('admin');
+        }
+        return redirect('/');
+    })->name('admin');
+});
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+    Route::resource('/admin/hotels', HotelController::class);
+    Route::resource('/admin/rentals', RentalController::class);
+    Route::resource('/admin/flights', FlightController::class);
+    Route::resource('/admin/tours', TourController::class);
+    Route::resource('/admin/attractions', AttractionController::class);
+});
 

@@ -98,13 +98,13 @@
         @forelse($flights as $flight)
             <div class="col-md-4 mb-4">
                 <div class="flight-card">
-                    <img src="{{ asset('storage/flights/' . $flight->image) }}" alt="Flight Image" class="flight-image">
+                    <img src="{{ asset($flight->image) }}" alt="Flight Image" class="flight-image">
                     <div class="card-body">
                         <h4>{{ $flight->departure }} to {{ $flight->arrival }}</h4>
                         <p class="text-muted">Date: {{ $flight->travel_date }}</p>
                         <p>Airline: {{ $flight->airline }}</p>
                         <span class="price">RM {{ number_format($flight->price, 2) }} per pax</span>
-                        <form action="{{ route('flights.show') }}" method="GET" class="mt-3">
+                        <form action="{{ route('flights.showFlight',['flight' => $flight->id] ) }}" method="GET" class="mt-3">
                             @csrf
                             <input type="hidden" name="airline" value="{{ $flight->airline }}">
                             <input type="hidden" name="departure" value="{{ $flight->departure }}">
@@ -127,6 +127,6 @@
 </div>
 
 <!-- End of content -->
- 
+
 @endsection
 
