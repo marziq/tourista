@@ -202,7 +202,7 @@ h1, h2 {
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Destination</th>
+                    <th>Description</th>
                     <th>Price</th>
                     <th>Actions</th>
                 </tr>

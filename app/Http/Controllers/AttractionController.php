@@ -37,7 +37,7 @@ class AttractionController extends Controller
 
     public function create()
     {
-        //
+        return view('attractions.create');
     }
 
 
@@ -46,7 +46,14 @@ class AttractionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attraction = new Attraction();
+        $attraction->name = $request->name;
+        $attraction->location = $request->location;
+        $attraction->description = $request->description;
+        $attraction->price = $request->price;
+        $attraction->save();
+
+        return redirect()->route('admin')->with('success', 'Attraction created successfully.');
     }
 
 
@@ -62,27 +69,35 @@ class AttractionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Attraction $attraction)
     {
-        //
+        return view('attractions.edit', compact('attraction'));
     }
 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Attraction $attraction)
     {
-        //
+        $attraction->name = $request->name;
+        $attraction->location = $request->location;
+        $attraction->description = $request->description;
+        $attraction->price = $request->price;
+        $attraction->save();
+
+        return redirect()->route('admin')->with('success', 'Attraction updated successfully.');
     }
 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Attraction $attraction)
     {
-        //
+     $attraction->delete();
+
+     return redirect()->route('admin')->with('success', 'Attraction deleted successfully.');
     }
 
 }
