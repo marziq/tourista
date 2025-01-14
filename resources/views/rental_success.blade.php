@@ -4,7 +4,7 @@
 
 <style>
 .full-page {
-    height: 100vh;
+    height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,6 +14,7 @@
 
 .rental-success {
     text-align: center;
+    margin-top: 180px;
     padding: 60px;
     background-color: #ffffff;
     border-radius: 15px;
@@ -47,7 +48,11 @@ p {
     <div class="rental-success">
         <h2>Rental Successful!</h2>
         <p>Thank you for your rental booking. Your transaction has been processed successfully.</p>
-        <a href="{{ route('homepage') }}" class="btn btn-primary">Go to Home</a>
+        <!-- Book Now Button -->
+        <form action="{{ route('homepage')}}" method="GET">
+            @csrf
+            <button type="submit" class="btn btn-primary">Go to Home</button>
+        </form>
     </div>
 </div>
 

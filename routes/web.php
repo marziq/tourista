@@ -108,8 +108,9 @@ Route::post('/rentalpayment/submit', [RentalController::class, 'storeRental'])->
 Route::get('/rental-success', function () {
     return view('rental_success');
 })->name('rental.success');
-Route::get('/homepage', function () {
-    return view('homepage');  // Alias to make it cleaner
+
+Route::post('/', function () {
+    return view('homepage');  // Homepage route pointing to homepage.blade.php
 })->name('homepage');
 
 
