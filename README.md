@@ -128,7 +128,11 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 6. **Attractions**
    
 ## The challenge/difficulties to develop the application
+Developing our project which is tourista came with several challenges, especially at the beginning. One of the biggest difficulties we faced was communication within the team. Since we were not familiar with each other, it was hard to share ideas, understand how everyone worked, and collaborate effectively.
 
+As time went on, we worked to solve this problem by having regular team discussions, using tools to help us work together, and being open and honest in our communication. These efforts helped us build trust and improve teamwork.
+
+In the end, we were able to work well as a team and successfully complete the project. Along the way, we also improved our skills in problem-solving and teamwork. This experience taught us how important it is to communicate, adapt, and stay determined to reach our goals.
 ## References
 
 1. Athuraliya, A., & Creately. (2022, December 12). _Sequence Diagram Tutorial – Complete Guide with Examples._ Creately. https://creately.com/guides/sequence-diagram-tutorial/
