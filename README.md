@@ -31,9 +31,11 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
     - Update: Allow users to update their profile information, such as changing their email address, password, and contact details.
     - Delete: Allow users to delete or deactivate their accounts.
 2. **Flight Booking**:
+   
    **User**
     - Create: Allow users to book a flight by entering required details such as departure and arrival locations , travel date and passenger count.
     - Read: Display available flights schedules based on user inputs.
+      
    **Admin**
     - Update: Allow users to modify their flight bookings, including changing flight dates and edit passenger count.
     - Delete: Let users cancel their flight.
