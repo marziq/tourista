@@ -59,7 +59,7 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
    **Admin**
     - Create: Allow users to book a car by entering required details like dates, location, and preferences.
     - Update: Enable users to modify bookings, such as changing dates or vehicle type.
-    - Delete: Allow users to cancel bookings within the specified cancellation policy.
+    - Delete: Delete bookings from the database, ensuring that cancellations are handled according to the company’s cancellation policies.
 5. **Tour Package Booking**:
             
    **User**
