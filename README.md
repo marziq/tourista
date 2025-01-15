@@ -103,7 +103,30 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
     ![Checkout(cart)](https://github.com/user-attachments/assets/4d1ed0f0-011d-421a-b3de-b718d6079726)
 
 ## Project system captured screen and explanation
-
+1. **Home Page**
+2. **About Us**
+3. **Teams**
+4. **Header**
+5. **Footer**
+   
+## User View
+1. **Register**
+2. **Login**
+3. **Hotels**
+4. **Rentals**
+5. **Flight**
+6. **Trips**
+7. **Attractions**
+8. **Payment**
+   
+## Admin View
+1. **Login**
+2. **Hotels**
+3. **Rentals**
+4. **Flight**
+5. **Trips**
+6. **Attractions**
+   
 ## The challenge/difficulties to develop the application
 
 ## References
