@@ -134,22 +134,94 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
 5. **Footer**
    
 ## User View
-1. **Register**
-2. **Login**
-3. **Hotels**
-4. **Rentals**
-5. **Flight**
-6. **Trips**
-7. **Attractions**
-8. **Payment**
+1. **Register** - A screen for new users to create an account
+
+Key Features:
+Form for user details (name, email, password).
+Validation and success/error messages.
+
+2. **Login** - Allows users to log in to their accounts
+
+Key Features:
+Fields for email/username and password.
+
+3. **Hotels** - Displays available hotels and their details
+
+Key Features:
+Search filters (destination, check in, check out, pax).
+Hotel listings with images and prices.
+Booking option.
+
+4. **Rentals** - Display available rental cars and their details
+
+Key Features:
+Search filters (pickup location, pickup date, return date).
+Rental listings with images, details and prices.
+Booking option.
+
+5. **Flight** - Display available flights and their details
+
+Key Features:
+Search filter (departure, destination, travel dates, passengers).
+Rental listings with images, prices and details
+Booking option.
+
+6. **Trips** - Displays pre-planned travel packages
+
+Key Features:
+Trip categories (package name, price range).
+Trip listing package with images, prices and details.
+Booking options.
+
+7. **Attractions** - Display popular attractions in a specific area.
+
+Key Features:
+Search filter (destination, date and category).
+Attraction listing details with images, pax, price and descriptions.
+Booking options.
+
+8. **Payment** - Facilitates the transaction process for bookings
+
+Key Features:
+Payment option (credit card)
+Summary of the purchase.
+Billing details form.
    
 ## Admin View
-1. **Login**
-2. **Hotels**
-3. **Rentals**
-4. **Flight**
-5. **Trips**
-6. **Attractions**
+1. **Login** - Allows administrators to log in
+
+Key Features:
+Administrator has a unique username and password for personalized access.
+
+2. **Hotels** - Admin panel to manage hotel listings
+
+Key Features:
+Add, edit, or delete hotels.
+View booking 
+
+3. **Rentals** - Admin panel for rental cars
+
+Key Features:
+Create, update and delete rentals.
+View booking 
+
+4. **Flight** - Admin view for managing flights
+
+Key Features:
+Create, update and delete flights.
+View booking 
+
+5. **Trips** - Admin interface for managing trip packages
+
+Key Features:
+Create, update and delete trips.
+View booking 
+
+6. **Attractions** - Admin panel for managing attractions
+
+Key Features:
+Create, update and delete attractions.
+View booking 
    
 ## The challenge/difficulties to develop the application
 Developing our project which is tourista came with several challenges, especially at the beginning. One of the biggest difficulties we faced was communication within the team. Since we were not familiar with each other, it was hard to share ideas, understand how everyone worked, and collaborate effectively.
