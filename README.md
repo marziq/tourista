@@ -81,7 +81,7 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
     - Update:Allow users to modify their bookings, such as adjusting the date and or number of participants.
     - Delete: Permit users to cancel attraction bookings only before payment is completed.
 7. **Payment Integration**:
-    - Create: Allow users to make a payment for their options.
+    - Create: Allow users to make a payment for their bookings.
     - Read: Display all the details like total price that need to pay, the information of their information, and etc.
 
 ## Entity-Relationship Diagram (ERD)
