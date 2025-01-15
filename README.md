@@ -37,33 +37,52 @@ The primary goal of Tourista is to simplify travel planning by integrating multi
     - Read: Display available flights schedules based on user inputs.
       
    **Admin**
+    - Create: Allow users to book a flight by entering required details such as departure and arrival locations , travel date and passenger count.
     - Update: Allow users to modify their flight bookings, including changing flight dates and edit passenger count.
     - Delete: Let users cancel their flight.
-4. **Hotel Booking**:
+3. **Hotel Booking**:
+      
+   **User**
     - Create: Allow users to book hotel rooms by selecting a hotel, room type, check-in and check-out dates, and the number of guests.
     - Read: Display a list of available hotels with detailed descriptions, including room types, pricing, amenities, and availability based on the selected dates.
+            
+   **Admin**
+    - Create: Allow users to book hotel rooms by selecting a hotel, room type, check-in and check-out dates, and the number of guests.
     - Update: Allow users to modify their existing bookings by changing the check-in/out dates, room type, or number of guests, subject to availability.
     - Delete: Allow users to cancel their booking.
-5. **Vehicle Rental Booking**:
-    - Create: Allow users to book a vehicle by entering required details like dates, location, and preferences.
-    - Read: Display vehicle listings with detailed descriptions, availability, and pricing.
+4. **Car Rental Booking**:
+         
+   **User**
+    - Create: Allow users to book a car by entering required details like dates, location, and preferences.
+    - Read: Display car listings with detailed descriptions, availability, and pricing.
+                  
+   **Admin**
+    - Create: Allow users to book a car by entering required details like dates, location, and preferences.
     - Update: Enable users to modify bookings, such as changing dates or vehicle type.
     - Delete: Allow users to cancel bookings within the specified cancellation policy.
-6. **Tour Package Booking**:
+5. **Tour Package Booking**:
+            
+   **User**
     - Create: Allow users to book a tour packages by selecting one of the packages available.
     - Read: Display a complete details about packages like the price per pax, duration and etc.
+                        
+   **Admin**
+   - Create: Allow users to book a tour packages by selecting one of the packages available.
     - Update: Allow users to modify the pax for the tour packages.
     - Deleet: Allow users to cancel their booking.
-7. **Attraction Booking**:
+6. **Attraction Booking**:
+                
+   **User**
     - Create: Enable users to book attractions by selecting desired locations,date and category attractions.
     - Read:Display a comprehensive list of available attractions with descriptions, ratings, operational hours, and ticket pricing.
+                        
+   **Admin**
+    - Create: Enable users to book attractions by selecting desired locations,date and category attractions.
     - Update:Allow users to modify their bookings, such as adjusting the date and or number of participants.
     - Delete: Permit users to cancel attraction bookings only before payment is completed.
-8. **Payment Integration**:
+7. **Payment Integration**:
     - Create: Allow users to make a payment for their options.
     - Read: Display all the details like total price that need to pay, the information of their information, and etc.
-    - Update: Allows users to modify their payment details like adjusting the number of bank card.
-    - Delete: Allow users to cancel the payment.
 
 ## Entity-Relationship Diagram (ERD)
 
